@@ -1,0 +1,32 @@
+name: Quests
+version: ${project.version}
+main: com.jagsnet.minecraft.plugins.quests.Quests
+api-version: 1.16
+authors: [ Melon ]
+description: Quests for AC
+depend: [WorldGuard]
+commands:
+  quest:
+    description: Base command for the quest plugin.
+    usage: /quest
+  aquest:
+    description: Base admin command for the quest plugin.
+    usage: /aquest
+  gquest:
+    description: Base admin command for generating preset scrolls.
+    usage: /gquest
+  cquest:
+    description: Base admin command for completing sections of the scroll.
+    usage: /cquest
+  wiki:
+    description: Base wiki command
+    usage: /wiki
+  addeve:
+    description: Melon plugin help command.
+    usage: /addeve
+  melon:
+    description: Melon plugin help command.
+    usage: /melon
+  melmon:
+    description: Melon plugin help command.
+    usage: /melmon
