@@ -572,11 +572,20 @@ The global configurations file, `Global.yml`, allows you to set certain server w
 
 ## Auto
 
-## 
+## Commands 
 
 ---
 
 # Lists
+The lists file allows the creation of lists that can be used within quest configurations. The lists file enables randomisation and custom placeholders.  
+**Example lists file:**
+```yaml
+
+```
+
+---
+
+# Quest Paths
 
 ---
 
