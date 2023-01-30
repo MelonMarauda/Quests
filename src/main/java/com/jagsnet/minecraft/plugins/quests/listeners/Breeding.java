@@ -1,6 +1,5 @@
 package com.jagsnet.minecraft.plugins.quests.listeners;
 
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Match;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

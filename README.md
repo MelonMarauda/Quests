@@ -106,7 +106,7 @@ To achieve this you would just set the reward for the first scroll to be the sec
 ## Defining A Scroll In A Config File
 
 Quests are defined in `.yml` files. Within one file you can define multiple quests as seen below.
-The general structure for quests starts with a name to use for `/gquest` and then tabbed after that all of the configuration options.
+The general structure for quests starts with a name/id, in the below case `coords1` and `coords2`, to use for `/gquest` and then tabbed after that all of the configuration options.
 Below the example config are all available configuration options and their structure.
 
 **Example quest YML file**
@@ -161,7 +161,7 @@ name: &fExample Name
 ### Lines
 **Required**  
 The lines configuration option allows you to set the lines of your quest scroll including your objectives. Here you can also set &f, &k and &m. &f sets the line to white with the default being grey, &k scrambles the line so players can’t see certain sections of text and &m puts a strikethrough a line and marks it as locked.  
-Default placeholders: `<player>` `<break>` `<empty>`  
+Default placeholders: `<player>` `<break>` `<empty>` `<date>`  
 You can create your own placeholders by adding a list to `Lists.yml` in the quests folder. Then you can reference that list by using `<listName>`. When a list is referenced it will randomly select a line from the list. This can be particularly useful for weekly/daily quests which you want to be randomly generated. You can also use nested lists. Lists will be gone over in more detail below.
 You can define number ranges so that a random number is selected every time a quest is generated. For example `[10-20]` will give you any number from 10 to 20.  
 **Example:**  
