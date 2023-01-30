@@ -36,7 +36,7 @@ public class Strange implements Listener {
 
             if (mainHandItem.equalsIgnoreCase("bucket")) mainHandItem = "milk";
             if (mainHandItem.equals("milk") && player.getInventory().getItemInMainHand().getAmount() > 1) {
-                Utils.sendMessage(player, "You can't use more than one bucket at a time, I know, a pain, sorry.");
+                Utils.sendMessage(player, "You can't use more than one bucket at a time. I know, a pain, sorry.");
                 return;
             }
             if (mainHandItem.equalsIgnoreCase("shears")) mainHandItem = "shear";

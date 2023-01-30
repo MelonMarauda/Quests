@@ -195,7 +195,7 @@ public class Admin implements CommandExecutor {
                 String white = ChatColor.WHITE + "";
                 player.sendMessage(gold + bold + "QUESTS" + white + bold + " VERSION 1.7.2");
                 player.sendMessage(white + bold + "-------------------------------------------");
-                player.sendMessage(gold + bold + "Quest Documentation:" + white + " https://docs.google.com/document/d/1Zof3tSpYgvVUhJiKXcB6uv8NPTHfI35DyLOospBB7Lk/edit?pli=1#");
+                player.sendMessage(gold + bold + "Quest Documentation:" + white + " https://github.com/MelonMarauda/Quests");
                 return true;
             }
             // ------------------------------------------------------

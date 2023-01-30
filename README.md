@@ -43,6 +43,10 @@ This plugin is best used for daily, weekly, monthly etc quests.
 
   Selects a quest path specified on the scroll.
 
+- `/quest list`
+
+  Lists all available quests as defined in the `Global.yml` file.
+
 ## Completers
 
 These commands are useful to attach to NPCs or run through the console to complete quest lines when run
@@ -129,7 +133,7 @@ Quests are defined in `.yml` files. Within one file you can define multiple ques
 The general structure for quests starts with a name to use for `/gquest` and then tabbed after that all of the configuration options.
 Below the example config are all available configuration options and their structure.
 
-**Example Config**
+**Example quest YML file**
 
 ```yaml
 coords1:
@@ -167,198 +171,340 @@ coords2:
 
 ## Available configurations options
 
-### Name  
+Some options only look to see if any value exists to set the configuration so it is recommended to only include configurations that you want on the scroll.
 
-**Required**
-
+### Name
+**Required**  
 Use the name configuration option to set the name of a quest scroll when it is generated. This is the name as seen on the item given to the player.  
-Supports colour codes. Defaults to orange/gold.
-
-Example:
-
+Supports colour codes. Defaults to orange/gold.  
+**Example:**
 ```yaml
 name: &fExample Name
 ```
 
 ### Lines
-
 **Required**  
 The lines configuration option allows you to set the lines of your quest scroll including your objectives. Here you can also set &f, &k and &m. &f sets the line to white with the default being grey, &k scrambles the line so players can’t see certain sections of text and &m puts a strikethrough a line and marks it as locked.  
-Available placeholders: `<player>` `<break>` `<empty>`  
+Default placeholders: `<player>` `<break>` `<empty>`  
+You can create your own placeholders by adding a list to `Lists.yml` in the quests folder. Then you can reference that list by using `<listName>`. When a list is referenced it will randomly select a line from the list. This can be particularly useful for weekly/daily quests which you want to be randomly generated. You can also use nested lists. Lists will be gone over in more detail below.
+You can define number ranges so that a random number is selected every time a quest is generated. For example `[10-20]` will give you any number from 10 to 20.  
 **Example:**  
 ```yaml
 lines:
 - <player>'s Quest Scroll
 - <break>
 - <empty>
-- '&fKill 10 Zombies: 0'
+- '&fKill [10-20] <mobs>: 0'
 - <empty>
 - <break>
 - Use /quest help for quest info
 ```
 
-Rewards
-Required
-The rewards configuration option allows you to set rewards for players when they complete a quest. The rewards are just a list of commands which allows you to run ANY commands when the scroll is completed. If a command requires a playername you can use <player> in the configuration line to have it autofill the players name. If you change this in the config it will change the outcome of completing the quest even if the scroll has already been generated.
+### Rewards
+**Required**  
+The rewards configuration option allows you to set rewards for players when they complete a quest. The rewards are just a list of commands which allows you to run ANY commands when the scroll is completed. If a command requires a playername you can use `<player>` in the configuration line to have it autofill the players name. If you change this in the config it will change the outcome of completing the quest even if the scroll has already been generated.  
+**Example:**
+```yaml
+rewards:
+- smite <player>
+- give <player> stone 1
+```
 
-Message
-Recommended
-The message configuration allows you to set a message that is sent to the player when they first collect the quest scroll. This message is only shown when the /gquest command is run.
+### Message
+**Recommended**  
+The message configuration allows you to set a message that is sent to the player when they first collect the quest scroll. This message is only shown when the `/gquest` command is run.  
+The colour must be generic Minecraft colour, in capitals, with underscores where applicable. The full list is `BLACK` `DARK_BLUE` `DARK_GREEN` `DARK_AQUA` `DARK RED` `DARK_PURPLE` `GOLD` `GRAY` `DARK_GRAY` `BLUE` `GREEN` `AQUA` `RED` `LIGHT_PURPLE` `YELLOW` `WHITE`  
+**Example:**
+```yaml
+message:
+  lines:
+    - Blah blah
+    - Blah
+  name: Applebranch
+  colour: BLUE
+```
 
-ClaimMessage
-Recommended
-The message configuration allows you to set a message that is sent to the player when they claim the quest scroll. This message is only shown when /quest claim or /aquest claim commands are run.
+### ClaimMessage
+**Recommended**  
+The message configuration allows you to set a message that is sent to the player when they claim the quest scroll. This message is only shown when `/quest claim` or `/aquest claim` commands are run successfully.  
+The colour must be a generic Minecraft colour as specified just above.  
+**Example:**
+```yaml
+claimMessage:
+  lines:
+  - Blah blah
+  - Blah
+  name: Applebranch
+  colour: BLUE
+```
 
-Help
-Recommended
-The help configuration option allows you to set quest specific help and hints. Lines here show up when a player holding the scroll does /quest help. If you change this in the config it will change the outcome of /quest help even if the scroll has already been generated.
+### Help
+**Recommended**  
+The help configuration option allows you to set quest specific help and hints. Lines here show up when a player holding the scroll does /quest help. If you change this in the config it will change the outcome of /quest help even if the scroll has already been generated.  
+**Example:**
+```yaml
+help:
+- This shows when they do /quest help
+- This shows when they do /quest help
+```
 
-Locked
-If this is defined in any way then the scroll is marked as having locked lines. If the objective above a locked objective is completed, then the objective unlocks and becomes completable.
+### Locked
+If this is defined in any way then the scroll is marked as having locked lines. If the objective above a locked objective is completed, then the objective unlocks and becomes completable. To lock a line use `&m` at the start of the line in question. If you use `&m` but don't define locked in the config then the generated scroll will never be claimable.  
+**Example:**
+```yaml
+locked: true
+```
 
-UUID
-Recommended
-If this is defined as true then the scroll cannot be completed by anyone other than the person who started.
+### UUID
+**Recommended**  
+If this is defined as true then the scroll cannot be completed by anyone other than the person who it was generated for.  
+**Example:**
+```yaml
+uuid: true
+```
 
-Expiry
-If this is defined, it sets how long it is until the scroll expires in milliseconds. This allows you to put time limits on quests. The time only starts counting down once the gquest command is run.
+### Expiry
+If this is defined, it sets how long it is until the scroll expires in milliseconds. This allows you to put time limits on quests. The time only starts counting down once the quest is generated and keeps counting down while players are offline.  
+**Example:**
+```yaml
+expiry: 807245762
+```
 
-Random
-If this is defined it will randomise the first objective one a scroll every 10 minutes using the list defined.
+### Random
+If this is defined it will randomise the first objective on a scroll every 10 minutes using the list defined.  
+**Example:**
+```yaml
+random: someListName
+```
 
-Secret
-If this is defined it will allow you to have a secret code objective on your scroll as detailed bellow in trackers as well as specific rewards for guessing the secret code. A secret code does NOT require a tracker on the scroll in which case you would also want to define the next possible config which is ultrasecrets.
+### Random Timer
+Random timer allows you to override the 10 minute default timer for scroll randomisation. The value provided is in milliseconds with a minimum of 5 seconds.  
+**Example:**
+```yaml
+randomTimer: 600000
+```
 
-UltraSecret
-This is defined as a list of commands just like rewards and the commands are run when someone correctly guesses the secret attached to the scroll.
+### Secret
+If this is defined it will allow you to have a secret code objective on your scroll as detailed bellow in trackers as well as specific rewards for guessing the secret code. A secret code does NOT require a tracker on the scroll in which case you would also want to define the next possible config which is ultrasecrets which allows for rewards to be given out when secrets are guessed correctly. To guess a secret a players uses the command `/quest secret <someSecretCode>`.  
+**Example:**
+```yaml
+secret: someSecretCode
+```
 
-Permission
-If this is defined then when a player collects the scroll they will be given a permission for the amount of time specified in the config
+### Secret Cooldown
+Secret cooldown allows you to set the cooldown between incorrect secret guesses. By default without this configuration set it is 60s.  
+**Example:**
+```yaml
+secretCooldown: 12345
+```
 
-Texture
+### Ultra Secret
+This is defined as a list of commands just like rewards and the commands are run when someone correctly guesses the secret attached to the scroll.  
+**Example:**
+```yaml
+ultraSecret:
+- smite <player>
+- give <player> stone 1
+```
 
-Region
+### Permission
+If this is defined then when a player collects the scroll they will be given a permission for the amount of time specified in the config. This requires luckperms as it runs luckperms commands. If a player has a permission set for a specific scroll then they will be unable to collect another of the same scroll through the generator command unless the `force` modifier is used.  
+**Example:**
+```yaml
+permission: 40d
+```
 
-Movement
+### Texture
+Texture allows for a texture ID to be set on the quest so that custom textures can be used.  
+**Example:**
+```yaml
+texture: 12345
+```
 
-Autocomplete
+### Region
+Region allows you to create quests that require players to enter certain worldguard regions. When set to true you can create regions with names like `visit_the_temple_of_doom` and then have objectives such as `Visit The Temple Of Doom: Incomplete`.  
+**Example:**
+```yaml
+region: true
+```
 
-Coords
+### Movement
+Movement allows for defining statistic based trackers which are mostly movement trackers but can also include things like bell ringing. When specifying values for this option, write them all on 1 line with commas seperating, no spaces.  
+Available values: `cake` `shield` `climb` `sneak` `fall` `sprint` `swim` `walk` `boat` `fly` `horse` `minecart` `pig` `strider` `jump` `ring`  
+Tracker format for these can be found below.  
+**Example:**
+```yaml
+movement: cake,sprint,ring
+```
 
-Trackers
-Entities and Items
+### Autocomplete
+Autocomplete allows quests to be setup so that once complete they automatically get claimed. This can be useful for quest lines where people have to go and talk to a bunch of NPCs and they're split into multiple quests. This then makes it so they don't have to type `/quest claim` every time.  
+This can be overridden by the global autocomplete setting in `Glboal.yml` which is defined below.
+**Example:**
+```yaml
+autocomplete: true
+```
+
+### Coords
+Coords allows you to define coordinate based objectives such as `Go To X1 Y1 Z1: Incomplete`.  
+**Example:**
+```yaml
+coords: true
+```
+
+---
+
+# Trackers
+### Entities and Items
 Below you will see entity type and item type mentioned. Entity type is the full entity name without the underscores. So cave_spider would be cave spider. You can find the name of an entity by looking on the wiki or doing /summon in-game and having a look through to find the actual name. It’s the same for item type so stone_bricks would be stone bricks. I would also suggest checking each tracker before releasing your scroll to ensure it works.
 
-Wolves
+### Wolves
 For breeding, taming and killing you can define wolves as wolves on the scroll even though their actual in game name is wolf. That way you don’t have to add “Tame 10 Wolfs: 0” and make your scroll look jank.
-Important Details
-Formatting
+
+### Formatting
 Always put a space after the : otherwise it will not work correctly. “Breed 10 Wolves: 0” and “Breed 10 Wolves:0” are not the same.
-Capitalise the first letter of each word in the line to avoid other issues as I am lazy and don’t match based on just the letters. Also it keeps all the formatting the same.
+Capitalise the first letter of each word in the line to avoid other issues as I am lazy and don’t match based on just the letters. Also it keeps all the formatting the same and looking pretty.
 For trackers that have complete and incomplete please capitalise the i in incomplete.
 
-Items and scenarios that don’t work
+### Items and scenarios that don’t work
 Most enchantments or items that cancel or modify events will cause most of the trackers to stop working properly. For example telekinesis cancels the event and then puts the item you just mined in your inventory. As a result the mining tracker will just ignore the broken block. Please alert me immediately if any of the following items or scenarios start working with the trackers. They don’t work to prevent silly interactions and quest completion abuse.
 
-Known enchantments that don’t work with the scroll
-Silk Touch
-Telekinesis
-Redstone Pickaxe
+## Tracker list
 
+### Breeding
+Doesnt work with turtles coz they fuck differently apparently…  
+**Example:**
+```
+Breed x <Entity Type>: 0  
+Breed 10 Chickens: 0  
+Breed 10 Wolves: 0  
+```
 
-
-Scenarios where a scroll should not work
-Inside a claim where you don’t have trust
-Inside a worldguard you don’t have trust in
-Using reaver shark on blocks that aren’t obsidian
-
-
-Trackers
-Breeding
-Doesnt work with turtles coz they fuck differently apparently…
-Breed x <Entity Type>: 0
-Breed 10 Chickens: 0
-Breed 10 Wolves: 0
-
-Crafting
+### Crafting
+**Example:**
+```
 Craft x <Item Type>: 0
 Craft 10 Stone Bricks: 0
+```
 
-Taking Damage
+### Taking Damage
+**Example:**
+```
 Take x Damage: 0
 Take 100 Damage: 0
 Take x Damage From <Entity Type>: 0
 Take 100 Damage From Zombies: 0
+```
 
-Dealing Damage
+### Dealing Damage
+**Example:**
+```
 Deal x Damage: 0
 Deal 100 Damage: 0
 Deal x Damage To <Entity Type>: 0
 Deal 100 Damage To Zombies: 0
+```
 
-Eating
+### Eating
+**Example:**
+```
 Eat x <Item Type>: 0
 Eat 10 Apples: 0
+```
 
-Enchanting
+### Enchanting
+**Example:**
+```
 Enchant x <Item Type>: 0
 Enchant 10 Diamond Swords: 0
+```
 
-Fishing
+### Fishing
+**Example:**
+```
 Fish x Times: 0
 Catch x <Item Type>: 0
 Fish 10 Times: 0
 Catch 10 Pufferfish: 0
+```
 
-Mining
+### Mining
 Does not take into account whether or not a block was placed so try and make block breaking trackers just for blocks that change state when mined like diamond ore etc. Does not work with silk touch.
-For crops it requires them to be fully grown or it will not track, that way players can't just break and place, break and place.
-Mine|Dig|Harvest|Chop|Break x <Block Type>: 0
+For crops it requires them to be fully grown or it will not track, that way players can't just break and place, break and place.  
+**Example:**  
+```
+[Mine|Dig|Harvest|Chop|Break] x <Block Type>: 0
 Mine 10 Redstone Ore: 0
 Chop 10 Oak Logs: 0
+```
 
-Killing Mobs
-Custom mobs such as Berty need to be summoned with “CustomNameVisible:1” so that the mob is distinguishable from a mob some random player used a nametag on.
+### Killing Mobs
+Custom mobs such as Berty need to be summoned with “CustomNameVisible:1” so that the mob is distinguishable from a mob some random player used a nametag on.  
+**Example:**  
+```
 Kill x <Entity type>: 0
 Kill 10 Chickens: 0
-Visiting Biomes
 Kill <EntityName>: Incomplete
 Kill Berty: Incomplete
+```
 
-Biomes
+### Biomes
+**Example:**
+```
 Visit The <Biome Type> Biome: Incomplete
 Visit The Desert Hills Biome: Incomplete
+```
 
-Taming
+### Taming
+**Example:**  
+```
 Tame x <entity type>: 0
 Tame 10 Wolves: 0
+```
 
-Throwing
+### Throwing
+**Example:**
+```
 Throw x <Projectile Type>: 0
 Throw 10 Eggs: 0
 Launch x <Projectile Type>: 0
 Launch 10 Fireworks: 0
 Shoot x <Projectile Type>: 0
 Shoot 10 Arrows: 0
+```
 
-Villager Trading
+### Villager Trading
+**Example:**
+```
 Trade x Times With Villagers: 0
 Trade 10 Times With Villagers: 0
+```
 
-Gaining Exp
-Exp is NOT levels, it's the bit in between levels
+### Gaining Exp
+Exp is NOT levels, it's the bit in between levels  
+**Example:**
+```
 Gain x Exp: 0
 Gain 200 Exp: 0
+```
 
-Smelting
+### Smelting
 The thing it says to smelt should be the result of smelting, not the actual thing you smelt. So it would NOT be smelt x iron ore but instead smelt x iron ingot.
+**Example:**  
+```
 Smelt x <smeltResult>: 0
 Smelt 200 Iron Ingots: 0
+```
 
-Secret Codes
+### Secret Codes
+**Example:**
+```
 Guess The Secret Code: Incomplete
+```
 
-Movement
+### Movement
+**Example:**
+```
 Eat x Slices Of Cake: 0
 Block x Damage With A Shield: 0
 Climb x Blocks: 0
@@ -374,22 +520,30 @@ Travel  x Blocks In A Minecart: 0
 Travel  x Blocks On A Pig: 0
 Travel x Blocks On A Strider: 0
 Jump x Times: 0
+Ring x Bells: 0
+```
 
-
-cake,shield,climb,sneak,fall,sprint,swim,walk,boat,fly,horse,minecart,pig,strider,jump
-
-Shearing
+### Shearing
+**Example:**
+```
 Shear x <colour> Sheep: 0
 Shear x White Sheep: 0
+Shear x <mobType>: 0
+Shear x Cows: 0
+```
 
-Death
+### Death
+**Example:**  
+```
 Die By x: Incomplete
 Die To x: Incomplete
 Die From x: Incomplete
 Fall Victim To x: Incomplete
 x To Death: Incomplete
 x And Die: Incomplete
-X may contain
+```
+X may be any of the following values:  
+```
 A mobtype such as creeper, zombie, etc
 Freeze
 Fall
@@ -409,64 +563,78 @@ Area Effect Cloud (Like ender dragon fire)
 Void (Dying to the void)
 Starvation
 Fly Into Wall
+```
 
-Fill Buckets
+### Fill Buckets
+**Example:**  
+```
 Fill x Buckets With [Lava|Water|Milk]: 0
 Catch x <mobType> In Buckets: 0
+Milk x <mobType>: 0
+Milk x Zombies: 0
+```
 
-Coords
+### Coords
+**Example:**  
+```
 Go To Xx Yy Zz: Incomplete
 Go To X2 Y3 Z4: Incomplete
+```
 
-Chat
+### Chat
+**Example:**
+```
 Say “<someLine>”: Incomplete
 Say “Welcome back Noss!”: Incomplete
+```
 
-Changelog
-Version 1.7.2
+---
+
+# Changelog
+
+### 1.7.2
 Added “secretCooldown” as an optional configuration option. If not set it defaults to 60s. Takes milliseconds as an input.
-Version 1.7.0
+### 1.7.0
 Added chat tracking
-
-Version 1.6.1
-Added bells rung to stats trackers
+### 1.6.1
+Added bells rung to stats trackers  
 Allowed randomized quests to use nested lists
-Version 1.6.0
+### 1.6.0
 Added coords tracker
-Version 1.5.0
-Added custom quest commands which can be defined. This allows players to collect scrolls anywhere using predefined commands with predefined cooldowns. These commands are defined as shown below in the global config file.
-Refactored generation code to allow other things to generate quests rather than just /gquest
-Added /quest list which lists all available quests to them as defined in the global config
-Version 1.4.3
-Added /aquest setwho <UUID> to be able to manually set UUIDs to scrolls.
-Refactored a bunch of functions to use MLib and so now quests requires MLib to be installed.
-Version 1.4.1
-Added <date> placeholder for quest generation and reward lines.
-Added the ability to force /aquest claim to bypass permission checks by doing /aquest claim force
-Version 1.4
+### 1.5.0
+Added custom quest commands which can be defined. This allows players to collect scrolls anywhere using predefined commands with predefined cooldowns. These commands are defined as shown below in the global config file.  
+Refactored generation code to allow other things to generate quests rather than just /gquest  
+Added /quest list which lists all available quests to them as defined in the global config  
+### 1.4.3
+Added /aquest setwho <UUID> to be able to manually set UUIDs to scrolls.  
+Refactored a bunch of functions to use MLib and so now quests requires MLib to be installed.  
+### 1.4.1
+Added <date> placeholder for quest generation and reward lines.  
+Added the ability to force /aquest claim to bypass permission checks by doing /aquest claim force  
+### 1.4
 Added shearing and milking for all mobs while a quest has an objective for it. Shearing and milking through this method has a 30 second cooldown.
-Version 1.3.1
+### 1.3.1
 Fixed crafting objective bug
-Version 1.3
-Commands /quest expiry and /quest secret now work with the scroll in offhand
-Added a new quest type, quest paths. This allows you to make branching questlines
-Added /quest path <num> command
-Added /aquest help and /aquest auto <true|false>
-Added autocomplete config option
-Added a global config file and first global config option
-Commands run by quests are now logged in the console
-Version 1.2
-Scrolls will generate into your offhand if available
-Added claimMessage config option for sending a message when the scroll is claimed
-Added noverbose option to /gquest which will cause players not to receive feedback that they have already collected a scroll when trying to collect the same one twice
-Removed deprecated add and delete reward commands
-Updated /aquest rewardlist to actually work
-Version 1.1.1
+### 1.3
+Commands /quest expiry and /quest secret now work with the scroll in offhand  
+Added a new quest type, quest paths. This allows you to make branching questlines  
+Added /quest path <num> command  
+Added /aquest help and /aquest auto <true|false>  
+Added autocomplete config option  
+Added a global config file and first global config option  
+Commands run by quests are now logged in the console  
+### 1.2
+Scrolls will generate into your offhand if available  
+Added claimMessage config option for sending a message when the scroll is claimed  
+Added noverbose option to /gquest which will cause players not to receive feedback that they have already collected a scroll when trying to collect the same one twice  
+Removed deprecated add and delete reward commands  
+Updated /aquest rewardlist to actually work  
+### 1.1.1
 Scrolls can now be claimed from your offhand
-Version 1.1
+### 1.1
 Added extra message options in the scroll configs allowing you to specify a name that the message is coming from and a colour for that name
-Version 1
-Added /aquest version
-Added permission config option allowing you to prevent people from collecting the scroll if they already have the permission. The config option when set gives people the permission
-Added force option for /gquest allowing you to bypass permission config option
-Added inventory space checks for quests with ultrasecrets
+### 1
+Added /aquest version  
+Added permission config option allowing you to prevent people from collecting the scroll if they already have the permission. The config option when set gives people the permission  
+Added force option for /gquest allowing you to bypass permission config option  
+Added inventory space checks for quests with ultrasecrets  
