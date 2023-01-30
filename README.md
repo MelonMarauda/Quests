@@ -590,6 +590,18 @@ Say “Welcome back Noss!”: Incomplete
 
 ---
 
+# Global Configurations
+
+---
+
+# Lists
+
+---
+
+# Folder Structure
+
+---
+
 # Changelog
 
 ### 1.7.2
