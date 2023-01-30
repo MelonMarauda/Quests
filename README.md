@@ -568,11 +568,32 @@ Say “Welcome back Noss!”: Incomplete
 
 # Global Configurations
 
-The global configurations file, `Global.yml`, allows you to set certain server wide quest settings as detailed below.
+The global configurations file, `Global.yml`, allows you to set certain server wide quest settings as detailed below.  
+**Example global file:**
+```yaml
+auto: true
+commands:
+  weekly:
+    dateFormat: ww
+    permissionName: weekly
+    permissionCooldown: 8d
+    quest: weekly_weekly
+    denyMessage: You have already collected a weekly quest scroll this week.
+    description: Randomly generated weekly quest scroll.
+```
 
 ## Auto
+Auto allows you to override the autcomplete feature defined on scrolls at a global level. If set to false then no quest will autocomplete. If set to true then autocomplete must be defined on a per quest basis to work.
 
 ## Commands 
+Commands allows you to add quests to the `/quest list` commands output as well as control how often people can collect them. All configurations are required.  
+**Configuration descriptions:**  
+`dateFormat` - Allows you to configure how often people can collect the scroll. Allows for `dd` `ww` `MM` `yyyy`.  
+`permissionName` - A unique name for the permission used to ensure people can't collect more than 1 scroll per above specified time period.  
+`permissionCooldown` - Time set for temporary permission. Set just longer than the time between being able to collect the scroll.  
+`quest` - The location of the quest attached to this command. For example the above configuration would target `weekly.yml` and the quest called weekly within it. The first half is the file name and the second half is the quest name.  
+`denyMessage` - The message displayed if the player has already collected the quest.  
+`description` - The description of the quest as shown in `/quest list`.
 
 ---
 
@@ -580,16 +601,59 @@ The global configurations file, `Global.yml`, allows you to set certain server w
 The lists file allows the creation of lists that can be used within quest configurations. The lists file enables randomisation and custom placeholders.  
 **Example lists file:**
 ```yaml
-
+DailyRewards:
+- ie give idfk
+- ie give idfk2
+Daily1:
+- 'Craft [5-10] Cakes: 0'
+- 'Craft [15-20] Sugar: 0'
+- 'Craft [10-15] Candles: 0'
+- 'Craft [10-15] Tinted Glass: 0'
+- 'Craft [10-20] Cookies: 0'
+Daily2:
+- 'Craft [10-20] <NestedList>: 0'
+- 'Eat [10-20] <NestedList>: 0'
+NestedList:
+- Cakes
+- Sugar
+- etc
+```
+**Example quest using above lists:**
+```yaml
+daily:
+  name: Daily Quest Scroll
+  lines:
+  - <player>'s Daily Quest Scroll
+  - <break>
+  - <empty>
+  - '&f<Daily1>'
+  - '&f<Daily2>'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - give <player> some reward
 ```
 
 ---
 
 # Quest Paths
 
+
 ---
 
 # Folder Structure
+Brief folder diagram to show where files are supposed to be located.
+```
+plugins
+├───Quests.jar
+├───Quests
+│   ├───Global.yml
+│   ├───Lists.yml
+│   ├───questName1.yml
+│   ├───questName2.yml
+│   └───questNameX.yml
+```
 
 ---
 
