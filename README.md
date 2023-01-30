@@ -21,6 +21,14 @@ This plugin is best used for daily, weekly, monthly etc quests.
 
 # Commands
 
+## Permissions
+- `quest.admin`  
+Permission will provide access to all admin, completer and generator commands.
+- `quest.<permissionName>.<dateFormat>`  
+Permission format for quests stored in `/quest list`.
+- `quest.<file>_<quest>`  
+Permission format to prevent people from collecting multiple of the same quest. If set and a player has `/gquest` run against them for the specified quest then a new quest wont generate.
+
 ## Player
 - `/quest help`  
   Lists the 3 player commands if they are not holding a scroll. If they are holding a scroll defined with help lines in the config it will then display those help lines.
@@ -221,7 +229,7 @@ The help configuration option allows you to set quest specific help and hints. L
 ```yaml
 help:
 - This shows when they do /quest help
-- This shows when they do /quest help
+- This shows more info when they do /quest help
 ```
 
 ### Locked
@@ -285,6 +293,7 @@ ultraSecret:
 
 ### Permission
 If this is defined then when a player collects the scroll they will be given a permission for the amount of time specified in the config. This requires luckperms as it runs luckperms commands. If a player has a permission set for a specific scroll then they will be unable to collect another of the same scroll through the generator command unless the `force` modifier is used.  
+The permission format is `quest.<file>_<quest>` for example `quest.coords_coords1`. If you know the name of the quest file and the quest then you can apply the permission for it to people manually to prevent them from collecting more of that quest.  
 **Example:**
 ```yaml
 permission: 40d
@@ -589,7 +598,7 @@ Auto allows you to override the autcomplete feature defined on scrolls at a glob
 Commands allows you to add quests to the `/quest list` commands output as well as control how often people can collect them. All configurations are required.  
 **Configuration descriptions:**  
 `dateFormat` - Allows you to configure how often people can collect the scroll. Allows for `dd` `ww` `MM` `yyyy`.  
-`permissionName` - A unique name for the permission used to ensure people can't collect more than 1 scroll per above specified time period.  
+`permissionName` - A unique name for the permission used to ensure people can't collect more than 1 scroll per above specified time period. The complete permission format is `quest.<permissionName>.<dateFormat>`  
 `permissionCooldown` - Time set for temporary permission. Set just longer than the time between being able to collect the scroll.  
 `quest` - The location of the quest attached to this command. For example the above configuration would target `weekly.yml` and the quest called weekly within it. The first half is the file name and the second half is the quest name.  
 `denyMessage` - The message displayed if the player has already collected the quest.  
