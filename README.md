@@ -11,7 +11,6 @@ This plugin is best used for daily, weekly, monthly etc quests.
 - WorldGuard - 7.05+
 - Luckperms - any version (not required, just recommended for permissions features)
 
-
 ---
 
 ### MINECRAFT VERSION
@@ -23,28 +22,22 @@ This plugin is best used for daily, weekly, monthly etc quests.
 # Commands
 
 ## Player
-- `/quest help`
- 
+- `/quest help`  
   Lists the 3 player commands if they are not holding a scroll. If they are holding a scroll defined with help lines in the config it will then display those help lines.
 
-- `/quest claim`
-
+- `/quest claim`  
   Allows a player to claim the reward from a completed quest. This removes the quest scroll in the process. The scroll is required to be in the players main hand to use.
 
-- `/quest expiry`
-
+- `/quest expiry`  
   Checks how long you have left to complete the scroll in your main hand. Returns a number in hours.
 
-- `/quest secret <code>`
-
+- `/quest secret <code>`  
   Attempts to solve a quest code.
 
-- `/quest path <num>`
-
+- `/quest path <num>`  
   Selects a quest path specified on the scroll.
 
-- `/quest list`
-
+- `/quest list`  
   Lists all available quests as defined in the `Global.yml` file.
 
 ## Completers
@@ -55,59 +48,42 @@ These commands are useful to attach to NPCs or run through the console to comple
 
 **REMEMBER all objectives require the quest to be in your offhand when complete. This applies to running the cquest commands as well.**
 
-- `/cquest txt <playerName> <matchOne> <matchTwo>`
-  
+- `/cquest txt <playerName> <matchOne> <matchTwo>`  
   This command allows you to complete something on someones scroll such as “Speak To Bob: Incomplete”. 
   All it does is match the first and second arguments to a complete/incomplete line on a quest scroll to complete it. 
   This matching is case insensitive. For example
   `Speak To Bob: Incomplete` could be completed with `/cquest txt <playerName> speak bob`
 
-- `/cquest num <playerName> <matchOne> <matchTwo> <integer>`
-
+- `/cquest num <playerName> <matchOne> <matchTwo> <integer>`  
   Adds the integer value to the line specified. Acts almost identically to cquest txt.
 
-- `/cquest unlock <playerName> <matchOne> <matchTwo>`
-
+- `/cquest unlock <playerName> <matchOne> <matchTwo>`  
   Unlocks a line that is specified in the command. Locked lines are ones with a strike through them.
 
 ## Admin
 
 **The following commands require the quests.admin permission to run.**
 
-- `/aquest rewardlist`
-
-  Lists all rewards given out by the scroll in your main hand.
-
-- `/aquest expiry <TimeInMilliseconds>`
-
-  Manually sets the expiry for the quest scroll in your main hand.
-
-- `/aquest claim`
- 
-  Claims the reward of the quest scroll you’re holding regardless of whether or not its complete.
-
-- `/aquest who`
-
-  If the scroll can only be completed by a certain person it will tell you who if you hold it in your mainhand.
-
-- `/aquest reloadlist`
-  
-  Reloads the list config in case you need to make a change while the server is running. Prevents you from having to restart the server.
-
-- `/aquest version|help`
-
-  Tells you the version you are running as well as gives you a link to this page.
-
-- `/aquest auto [true|false]`
-
+- `/aquest rewardlist`  
+  Lists all rewards given out by the scroll in your main hand.  
+- `/aquest expiry <TimeInMilliseconds>`  
+  Manually sets the expiry for the quest scroll in your main hand.  
+- `/aquest claim`  
+  Claims the reward of the quest scroll you’re holding regardless of whether or not its complete.  
+- `/aquest who`  
+  If the scroll can only be completed by a certain person it will tell you who if you hold it in your mainhand.  
+- `/aquest reloadlist`  
+  Reloads the list config in case you need to make a change while the server is running. Prevents you from having to restart the server.  
+- `/aquest version|help`  
+  Tells you the version you are running as well as gives you a link to this page.  
+- `/aquest auto [true|false]`  
   If true or false is not specified then it returns the current autocomplete status. If true or false is specified then it sets the global autocomplete config option.
 
 ## Generator Command
 
 **The following commands require the quests.admin permission to run.**
 
-- `/gquest <configName> <scrollName> <playerName> (force | noverbose)`
-
+- `/gquest <configName> <scrollName> <playerName> (force | noverbose)`  
   Gives a quest scroll from the specified config file to the specified player. The scroll will be formatted and contain requirements as defined in the config manually. You can also add force on to the end if the player has the permission set for that scroll and it will bypass any permission restrictions and still give them one which is useful for giving opped players scrolls. Noverbose prevents players receiving the feedback message that they have already collected the quest scroll.
 
 ---
@@ -592,7 +568,11 @@ Say “Welcome back Noss!”: Incomplete
 
 # Global Configurations
 
-(#some-markdown-heading)
+The global configurations file, `Global.yml`, allows you to set certain server wide quest settings as detailed below.
+
+## Auto
+
+## 
 
 ---
 
