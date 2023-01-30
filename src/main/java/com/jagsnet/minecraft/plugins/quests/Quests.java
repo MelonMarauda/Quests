@@ -2,7 +2,6 @@ package com.jagsnet.minecraft.plugins.quests;
 
 import com.jagsnet.minecraft.plugins.quests.commands.*;
 import com.jagsnet.minecraft.plugins.quests.listeners.*;
-import com.jagsnet.minecraft.plugins.quests.otherCommands.Wiki;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
 import com.jagsnet.minecraft.plugins.quests.scheduledTasks.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -77,7 +76,6 @@ public final class Quests extends JavaPlugin {
             public void run() { Coords.track(); }
         }, 5L, 100L);
 
-
         // Register commands for quests
         this.getCommand("quest").setExecutor(new Main());
         this.getCommand("aquest").setExecutor(new Admin());
@@ -86,9 +84,6 @@ public final class Quests extends JavaPlugin {
         this.getCommand("addeve").setExecutor(new Help());
         this.getCommand("melon").setExecutor(new Help());
         this.getCommand("melmon").setExecutor(new Help());
-
-        // Register random commands
-        //this.getCommand("wiki").setExecutor(new Wiki());
 
         // For using persistent data container, don't touch k thx
         instance = this;
