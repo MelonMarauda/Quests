@@ -1,0 +1,20 @@
+MP5:
+  name: Moon Phase 5 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fEnter The Ufo: Incomplete'
+  - '&f&mSpeak To The Hologram: Incomplete'
+  - '&f&mKill Alien UFO Pilot: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest MoonP6 MP6 <player>
+  - lp user <player> permission set applecraft.moon.phase6 true
+  UUID: 'true'
+  message: I really should get that last part for my ship! Maybe that crashed UFO
+    on my radar has some salvageable parts (Claim this scroll once you've finished
+    it with /quest claim to get the scroll for the last phase)
+  locked: 'true'

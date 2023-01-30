@@ -1,0 +1,207 @@
+november1:
+  name: 'Pewter City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Mine 320 Diorite: 0'
+  - 'Craft 128 Stone Bricks: 0'
+  - 'Mine 128 Deepslate: 0'
+  - 'Kill 10 Iron Golems: 0'
+  - 'Mine 256 Copper Ore: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november2 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november2:
+  name: 'Cerulean City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 64 Dried Kelp Blocks: 0'
+  - 'Kill 25 Squid: 0'
+  - 'Breed 10 Axolotls: 0'
+  - 'Catch 50 Raw Cod: 0'
+  - 'Mine 320 Sand: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november3 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november3:
+  name: 'Vermilion City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Mine 256 Redstone Ore: 0'
+  - 'Craft 32 Redstone Blocks: 0'
+  - 'Kill 25 Glow Squid: 0'
+  - 'Eat 64 Glow Berries: 0'
+  - 'Travel 500 Blocks In A Minecart: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november4 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+  movement: minecart
+november4:
+  name: 'Celadon City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 125 Chickens: 0'
+  - 'Craft 32 Honeycomb Blocks: 0'
+  - 'Mine 256 Grass Blocks: 0'
+  - 'Harvest 16 Moss Blocks: 0'
+  - 'Pick 64 Sunflowers: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november5 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november5:
+  name: 'Fuchsia City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 50 Cave Spiders: 0'
+  - 'Take 500 Damage From Witch: 0'
+  - 'Craft 64 Tipped Arrows: 0'
+  - 'Harvest 128 Nether Wart: 0'
+  - 'Eat 64 Rotten Flesh: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november6 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november6:
+  name: 'Saffron City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 2 Ghasts: 0'
+  - 'Harvest 320 Amethyst Shards: 0'
+  - 'Craft 256 Candles: 0'
+  - 'Eat 5 Enchanted Gold Apples: 0'
+  - 'Gain 500 Exp: 0' 
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november7 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november7:
+  name: 'Cinnabar City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 25 Magma Cube: 0'
+  - 'Craft 32 TNT: 0'
+  - 'Kill 10 Blaze: 0'
+  - 'Mine 256 Coal Ore: 0'
+  - 'Chop 128 Crimson Stem: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november8 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november8:
+  name: 'Viridian City Gym'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Mine 256 Gravel: 0'
+  - 'Shear 50 White Sheep: 0'
+  - 'Craft 64 Coarse Dirt: 0'
+  - 'Chop 128 Oak Logs: 0'
+  - 'Harvest 32 Dripstone: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november9 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+november9:
+  name: 'Elite 4'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 1 Wither: 0'
+  - 'Take 10 Damage From Lightning: 0'
+  - 'Take 250 Damage From Pufferfish: 0'
+  - 'Craft 8 Shulker Boxes: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest november november1 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There are 9 scrolls total this month!
+  help:
+  - This quest expires after 4 days.
+  - There are 9 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'

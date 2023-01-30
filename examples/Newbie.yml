@@ -1,0 +1,77 @@
+Newbie1:
+  name: 'Newbie Quest Scroll #1'
+  lines:
+  - Quest Scroll
+  - Welcome to Applecraft! If you follow
+  - this quest scroll you will learn a
+  - little bit about the server!
+  - <break>
+  - <empty>
+  - '&fRun The /Rules Command: Incomplete'
+  - <empty>
+  - <break>
+  - Dont forget to hold this in your offhand when
+  - completing the objectives.
+  - Do /quest claim once your quest is complete!
+  rewards:
+  - gquest Newbie Newbie2 <player>
+  UUID: 'true'
+Newbie2:
+  name: 'Newbie Quest Scroll #2'
+  lines:
+  - Quest Scroll
+  - Next we will learn how to vote
+  - for the server!
+  - <break>
+  - <empty>
+  - '&fRun The /Vote Command: Incomplete'
+  - '&fVote And Get Player Rank: Incomplete'
+  - <empty>
+  - <break>
+  - Dont forget to hold this in your offhand when
+  - completing the objectives.
+  - Do /quest claim once your quest is complete!
+  rewards:
+  - gquest Newbie Newbie3 <player>
+  UUID: 'true'
+  message: Check the new quest scroll in your inventory to see what you need to complete next!
+Newbie3:
+  name: 'Newbie Quest Scroll #3'
+  lines:
+  - Quest Scroll
+  - Lets go to the wild and make your
+  - first base. Objectives do not need
+  - to be completed in order.
+  - <break>
+  - <empty>
+  - '&fUse The Wild Warp At Spawn: Incomplete'
+  - '&fUse The /Claim Command: Incomplete'
+  - '&fUse The /Sethome Command: Incomplete'
+  - <empty>
+  - <break>
+  - Dont forget to hold this in your offhand when
+  - completing the objectives.
+  - Do /quest claim once your quest is complete!
+  rewards:
+  - gquest Newbie Newbie4 <player>
+  UUID: 'true'
+  message: Check the new quest scroll in your inventory to see what you need to complete next!
+Newbie4:
+  name: 'Newbie Quest Scroll #4'
+  lines:
+  - Quest Scroll
+  - For your final quest, lets go to
+  - the shop world and buy something!
+  - <break>
+  - <empty>
+  - '&fMine 10 Diamond Ore: 0'
+  - '&fUse The Shop Warp At Spawn: Incomplete'
+  - <empty>
+  - <break>
+  - Dont forget to hold this in your offhand when
+  - completing the objectives.
+  - Do /quest claim once your quest is complete!
+  rewards:
+  - something
+  UUID: 'true'
+  message: Check the new quest scroll in your inventory to see what you need to complete next!

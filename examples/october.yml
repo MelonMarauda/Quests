@@ -1,0 +1,262 @@
+october1:
+  name: 'October Quest #1'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Breed 100 Chicken: 0'
+  - 'Eat 50 Chicken: 0'
+  - 'Throw 200 Eggs: 0'
+  - 'Kill 100 Baby chickens: 0'
+  - 'Die From Contact With A Cactus: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october2 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october2:
+  name: 'October Quest #2'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 200 Cave Spiders: 0'
+  - 'Eat 50 Spider Eyes: 0'
+  - 'Harvest 200 Cobweb: 0'
+  - 'Craft 100 Fermented Spider Eye: 0'
+  - 'Die To Spiders: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october3 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october3:
+  name: 'October Quest #3'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 50 Witches: 0'
+  - 'Eat 50 Suspicious Stew: 0'
+  - 'Craft 100 Glass Bottles: 0'
+  - 'Craft 150 Spectral Arrows: 0'
+  - 'Die From A Splash Potion: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october4 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october4:
+  name: 'October Quest #4'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 50 Glow Squid: 0'
+  - 'Eat 50 Tropical Fish: 0'
+  - 'Throw 50 Tridents: 0'
+  - 'Take 1000 Damage from Drowned: 0'
+  - 'Die By Drowning: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october5 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october5:
+  name: 'October Quest #5'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 10 Zombie Villagers: 0'
+  - 'Trade 100 Times With Villagers: 0'
+  - 'Eat 50 Rotten Flesh: 0'
+  - 'Craft 20 Cauldrons: 0'
+  - 'Die To A Falling Block: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october6 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october6:
+  name: 'October Quest #6'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 100 Skeletons: 0'
+  - 'Take 100 Damage from Arrows: 0'
+  - 'Craft 50 Bone Blocks: 0'
+  - 'Throw 200 Snowballs: 0'
+  - 'Freeze To Death: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october7 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october7:
+  name: 'October Quest #7'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 50 Creepers: 0'
+  - 'Craft 100 TNT: 0'
+  - 'Breed 50 Cats: 0'
+  - 'Launch 25 Fireworks: 0'
+  - 'Fall Victim To Primed TNT: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october8 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october8:
+  name: 'October Quest #8'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Eat 25 Poisonous Potatoes: 0'
+  - 'Craft 50 Pumpkin Pie: 0'
+  - 'Harvest 200 Pumpkins: 0'
+  - 'Harvest 200 Wheat: 0'
+  - 'Die From Starvation: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october9 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+october9:
+  name: 'October Quest #9'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 100 Piglins: 0'
+  - 'Kill 50 Blaze: 0'
+  - 'Travel 1000 Blocks On A Strider: 0'
+  - 'Harvest 500 Soul Sand: 0'
+  - 'Die From Fire: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october10 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective. The scrolls are not a way to keep levels when you die
+    any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+  movement: strider
+october10:
+  name: 'October Quest #10'
+  lines:
+  - <player>'s Spooky Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 100 Enderman: 0'
+  - 'Fly 20000 Blocks: 0'
+  - 'Eat 50 Chorus Fruit: 0'
+  - 'Throw 100 Ender Pearls: 0'
+  - 'Fall Victim To The Void: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest october october1 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget when you die completing an objective you do not lose your levels.
+  help:
+  - This quest expires after 4 days.
+  - Objectives that require you to die will not lose you any levels but ONLY when
+    completing the objective for the first time. The scrolls are not a way to keep
+    levels when you die any other way.
+  - There are 10 scrolls total each with a 4 day expiry.
+  UUID: 'false'
+  expiry: '345600000'
+  movement: fly

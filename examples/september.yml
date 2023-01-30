@@ -1,0 +1,24 @@
+september:
+  name: September Quest
+  lines:
+  - <player>'s Wild Quest Scroll
+  - <break>
+  - <empty>
+  - '&fKill 10000 Chickens: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august2 <player>
+  message: This quest expires in 14 days! Use /quest expiry to see how long you have
+    left. Dont forget the objective changes every 10 minutes!
+  help:
+  - This quest expires after 14 days.
+  - This month the quest objective changes every 10 minutes. Your progress will carry
+    over. These means you need to complete 10,000 interactions total, not 10,000 of
+    each.
+  - The objective wont change unless it is in your offhand.
+  - When you hear a bell sound that means the scroll has changed.
+  UUID: 'false'
+  expiry: '864000000'
+  random: wildcard

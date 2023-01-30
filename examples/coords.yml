@@ -1,0 +1,17 @@
+coords:
+  name: Daily Quest Scroll
+  lines:
+  - <player>'s Daily Quest Scroll
+  - <break>
+  - <empty>
+  - '&fGo To X1 Y1 Z1: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest 2022 2 <player> force
+  autocomplete: true
+  UUID: true
+  expiry: 86400000
+  coords: true
+  

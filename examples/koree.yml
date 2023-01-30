@@ -1,0 +1,22 @@
+birthday:
+  name: Cake Order 
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fTalk to Edwin Baker: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - generate second scroll 
+  message:
+    lines:
+    - So, the staff is away working hard on moderating the server…But the issue is I need some help setting up for the party celebrating Applecraft’s 6th birthday! You look like you could be helpful. 
+    - First thing we need is a birthday cake. What’s a party without the cake!? I think someone in Helper Village could point you in the right direction. 
+    name: Applebranch
+    colour: RED
+  help:
+  - This shows when they do /quest help
+  - This shows when they do /quest help 
+  UUID: true

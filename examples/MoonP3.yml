@@ -1,0 +1,24 @@
+MP3:
+  name: Moon Phase 3 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fKill 20 Zombies: 0'
+  - '&fKill 20 Skeletons: 0'
+  - '&f&mFind The Alien Experimental Area: Incomplete'
+  - '&f&mKill Alien Inquisitor: Incomplete'
+  - '&fGuess The Secret Code: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest MoonP4 MP4 <player>
+  - ie give OxygenTankMoon1 <player> 2
+  - ie give <player> 1
+  UUID: 'true'
+  message: This uhh doesn't look very good! Apparently there's another life-form here...
+    Hope they're not hostile (Claim this scroll once you've finished it with /quest
+    claim to get the scroll for the fourth phase)
+  locked: 'true'
+  secret: WE MUST DESTROY ALL HUMANS

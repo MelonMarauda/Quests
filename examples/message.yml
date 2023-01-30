@@ -1,0 +1,40 @@
+permsTest:
+  name: permsTest 3000
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fFill 10 Buckets With Milk: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  - smite <player>
+  message:
+    lines:
+    - Blah blah
+    - Blah
+    name: Applebranch
+    colour: BLUE
+  claimMessage:
+    lines:
+    - Blah blah
+    - Blah
+    name: Applebranch
+    colour: BLUE
+  help:
+  - This shows when they do /quest help
+  - This shows when they do /quest help
+  secret: somerandomcode
+  ultraSecret:
+  - smite <player>
+  - smite <player>
+  expiry: 6758976458764
+  UUID: true
+  locked: true
+  random: list
+  permission: 40d
+  texture: 32456789
+  region: true
+  movement: fly,walk

@@ -1,0 +1,15 @@
+mp1:
+  name: Moon Phase 1 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Campsite: Complete'
+  - <empty>
+  - <break>
+  rewards:
+  - ie give Moonquest1 <player> 1
+  - ie give <player> 1
+  - ie give <player> 1
+  UUID: 'false'
+  message: Oof

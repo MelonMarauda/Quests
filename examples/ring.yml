@@ -1,0 +1,18 @@
+ring:
+  name: Daily Quest Scroll
+  lines:
+  - <player>'s Daily Quest Scroll
+  - <break>
+  - <empty>
+  - '&fRing 10 Bells: 0'
+  - '&fFall 10 Blocks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest ring ring <player> force
+  autocomplete: true
+  UUID: true
+  expiry: 86400000
+  movement: fall,ring
+  

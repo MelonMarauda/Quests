@@ -1,0 +1,22 @@
+MP1:
+  name: Moon Phase 1 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Campsite: Incomplete'
+  - '&f&mSpeak To The Campsite Hologram: Incomplete'
+  - '&f&mDiscover The Fallen Meteorite: Incomplete'
+  - '&f&mEnter The Cave: Incomplete'
+  - '&f&mSpeak To The Cave Hologram: Incomplete'
+  - '&f&mEnter The Biodome: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest MoonP2 MP2 <player>
+  UUID: 'true'
+  message: Oof was a rough landing... I better start exploring since my oxygen runs
+    out quickly! (Claim this scroll once you've finished it with /quest claim to get
+    the scroll for the second phase)
+  locked: 'true'

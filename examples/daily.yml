@@ -1,0 +1,18 @@
+daily:
+  name: Daily Quest Scroll
+  lines:
+  - <player>'s Daily Quest Scroll
+  - <break>
+  - <empty>
+  - '&f<Daily1>'
+  - '&f<Daily2>'
+  - '&f<Daily3>'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest 2022 2 <player> force
+  autocomplete: true
+  UUID: true
+  expiry: 86400000
+  

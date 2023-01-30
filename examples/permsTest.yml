@@ -1,0 +1,23 @@
+permsTest:
+  name: permsTest 3000
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fFill 10 Buckets With Milk: 0'
+  - '&fFill 10 Buckets With Lava: 0'
+  - '&fFill 10 Buckets With Water: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: Something something permissions something
+  permission: 40d
+  help:
+  - This
+  secret: test
+  ultraSecret:
+  - smite <player>
+  - smite <player>
+  - smite <player>

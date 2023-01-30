@@ -1,0 +1,384 @@
+Sheep1:
+  name: 'SheepHunt Scroll #1'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 1: Incomplete'
+  - '&fSpeak To Sheep 2: Incomplete'
+  - '&fSpeak To Sheep 3: Incomplete'
+  - '&fSpeak To Sheep 4: Incomplete'
+  - '&fSpeak To Sheep 5: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep2 <player>
+  UUID: 'true'
+Sheep2:
+  name: 'SheepHunt Scroll #2'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 6: Incomplete'
+  - '&fSpeak To Sheep 7: Incomplete'
+  - '&fSpeak To Sheep 8: Incomplete'
+  - '&fSpeak To Sheep 9: Incomplete'
+  - '&fSpeak To Sheep 10: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep3 <player>
+  UUID: 'true'
+Sheep3:
+  name: 'SheepHunt Scroll #3'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 11: Incomplete'
+  - '&fSpeak To Sheep 12: Incomplete'
+  - '&fSpeak To Sheep 13: Incomplete'
+  - '&fSpeak To Sheep 14: Incomplete'
+  - '&fSpeak To Sheep 15: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep4 <player>
+  UUID: 'true'
+Sheep4:
+  name: 'SheepHunt Scroll #4'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 16: Incomplete'
+  - '&fSpeak To Sheep 17: Incomplete'
+  - '&fSpeak To Sheep 18: Incomplete'
+  - '&fSpeak To Sheep 19: Incomplete'
+  - '&fSpeak To Sheep 20: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep5 <player>
+  UUID: 'true'
+Sheep5:
+  name: 'SheepHunt Scroll #5'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 21: Incomplete'
+  - '&fSpeak To Sheep 22: Incomplete'
+  - '&fSpeak To Sheep 23: Incomplete'
+  - '&fSpeak To Sheep 24: Incomplete'
+  - '&fSpeak To Sheep 25: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep6 <player>
+  UUID: 'true'
+Sheep6:
+  name: 'SheepHunt Scroll #6'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 26: Incomplete'
+  - '&fSpeak To Sheep 27: Incomplete'
+  - '&fSpeak To Sheep 28: Incomplete'
+  - '&fSpeak To Sheep 29: Incomplete'
+  - '&fSpeak To Sheep 30: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep7 <player>
+  UUID: 'true'
+Sheep7:
+  name: 'SheepHunt Scroll #7'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 31: Incomplete'
+  - '&fSpeak To Sheep 32: Incomplete'
+  - '&fSpeak To Sheep 33: Incomplete'
+  - '&fSpeak To Sheep 34: Incomplete'
+  - '&fSpeak To Sheep 35: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep8 <player>
+  UUID: 'true'
+Sheep8:
+  name: 'SheepHunt Scroll #8'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 36: Incomplete'
+  - '&fSpeak To Sheep 37: Incomplete'
+  - '&fSpeak To Sheep 38: Incomplete'
+  - '&fSpeak To Sheep 39: Incomplete'
+  - '&fSpeak To Sheep 40: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep9 <player>
+  UUID: 'true'
+Sheep9:
+  name: 'SheepHunt Scroll #9'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 41: Incomplete'
+  - '&fSpeak To Sheep 42: Incomplete'
+  - '&fSpeak To Sheep 43: Incomplete'
+  - '&fSpeak To Sheep 44: Incomplete'
+  - '&fSpeak To Sheep 45: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep10 <player>
+  UUID: 'true'
+Sheep10:
+  name: 'SheepHunt Scroll #10'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 46: Incomplete'
+  - '&fSpeak To Sheep 47: Incomplete'
+  - '&fSpeak To Sheep 48: Incomplete'
+  - '&fSpeak To Sheep 49: Incomplete'
+  - '&fSpeak To Sheep 50: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep11 <player>
+  UUID: 'true'
+Sheep11:
+  name: 'SheepHunt Scroll #11'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 51: Incomplete'
+  - '&fSpeak To Sheep 52: Incomplete'
+  - '&fSpeak To Sheep 53: Incomplete'
+  - '&fSpeak To Sheep 54: Incomplete'
+  - '&fSpeak To Sheep 55: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep12 <player>
+  UUID: 'true'
+Sheep12:
+  name: 'SheepHunt Scroll #12'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 56: Incomplete'
+  - '&fSpeak To Sheep 57: Incomplete'
+  - '&fSpeak To Sheep 58: Incomplete'
+  - '&fSpeak To Sheep 59: Incomplete'
+  - '&fSpeak To Sheep 60: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep13 <player>
+  UUID: 'true'
+Sheep13:
+  name: 'SheepHunt Scroll #13'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 61: Incomplete'
+  - '&fSpeak To Sheep 62: Incomplete'
+  - '&fSpeak To Sheep 63: Incomplete'
+  - '&fSpeak To Sheep 64: Incomplete'
+  - '&fSpeak To Sheep 65: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep14 <player>
+  UUID: 'true'
+Sheep14:
+  name: 'SheepHunt Scroll #14'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 66: Incomplete'
+  - '&fSpeak To Sheep 67: Incomplete'
+  - '&fSpeak To Sheep 68: Incomplete'
+  - '&fSpeak To Sheep 69: Incomplete'
+  - '&fSpeak To Sheep 70: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep15 <player>
+  UUID: 'true'
+Sheep15:
+  name: 'SheepHunt Scroll #15'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 71: Incomplete'
+  - '&fSpeak To Sheep 72: Incomplete'
+  - '&fSpeak To Sheep 73: Incomplete'
+  - '&fSpeak To Sheep 74: Incomplete'
+  - '&fSpeak To Sheep 75: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep16 <player>
+  UUID: 'true'
+Sheep16:
+  name: 'SheepHunt Scroll #16'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 76: Incomplete'
+  - '&fSpeak To Sheep 77: Incomplete'
+  - '&fSpeak To Sheep 78: Incomplete'
+  - '&fSpeak To Sheep 79: Incomplete'
+  - '&fSpeak To Sheep 80: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep17 <player>
+  UUID: 'true'
+Sheep17:
+  name: 'SheepHunt Scroll #17'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 81: Incomplete'
+  - '&fSpeak To Sheep 82: Incomplete'
+  - '&fSpeak To Sheep 83: Incomplete'
+  - '&fSpeak To Sheep 84: Incomplete'
+  - '&fSpeak To Sheep 85: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep18 <player>
+  UUID: 'true'
+Sheep18:
+  name: 'SheepHunt Scroll #18'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 86: Incomplete'
+  - '&fSpeak To Sheep 87: Incomplete'
+  - '&fSpeak To Sheep 88: Incomplete'
+  - '&fSpeak To Sheep 89: Incomplete'
+  - '&fSpeak To Sheep 90: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep19 <player>
+  UUID: 'true'
+Sheep19:
+  name: 'SheepHunt Scroll #19'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 91: Incomplete'
+  - '&fSpeak To Sheep 92: Incomplete'
+  - '&fSpeak To Sheep 93: Incomplete'
+  - '&fSpeak To Sheep 94: Incomplete'
+  - '&fSpeak To Sheep 95: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - gquest SheepHunt Sheep20 <player>
+  UUID: 'true'
+Sheep20:
+  name: 'SheepHunt Scroll #20'
+  lines:
+  - Quest Scroll
+  - Find all 100 sheep to win!
+  - <break>
+  - <empty>
+  - '&fSpeak To Sheep 96: Incomplete'
+  - '&fSpeak To Sheep 97: Incomplete'
+  - '&fSpeak To Sheep 98: Incomplete'
+  - '&fSpeak To Sheep 99: Incomplete'
+  - '&fSpeak To Sheep 100: Incomplete'
+  - <empty>
+  - <break>
+  - All sheep are located around spawn
+  - and the shops world. Good Luck!
+  rewards:
+  - ie give SheepHunt1 <player> 1
+  - ie give SheepHunt2 <player> 5
+  - ie give SheepHunt3 <player> 5
+  - ie give SheepHunt4 <player> 5
+  - ie give SheepHunt5 <player> 5
+  UUID: 'true'

@@ -1,0 +1,500 @@
+a1:
+  name: 'Day 1'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 150 Chickens: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a2:
+  name: 'Day 2'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Eat 64 Apples: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a3:
+  name: 'Day 3'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 64 Note Blocks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a4:
+  name: 'Day 4'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Breed 32 Mushroom Cows: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a5:
+  name: 'Day 5'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Mine 64 Diamond Ore: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a6:
+  name: 'Day 6'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 32 White Beds: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a7:
+  name: 'Day 7'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Fish 128 Times: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a8:
+  name: 'Day 8'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 32 Phantoms: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a9:
+  name: 'Day 9'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Breed 64 Chickens: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a10:
+  name: 'Day 10'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Chop 512 Oak Logs: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a11:
+  name: 'Day 11'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Tame 1 Parrot: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a12:
+  name: 'Day 12'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 320 Sticks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a13:
+  name: 'Day 13'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Mine 128 Nether Gold Ore: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a14:
+  name: 'Day 14'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Breed 16 Bees: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a15:
+  name: 'Day 15'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 32 Packed Ice: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a16:
+  name: 'Day 16'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 256 Bread: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a17:
+  name: 'Day 17'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Throw 256 Eggs: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a18:
+  name: 'Day 18'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Tame 16 Wolves: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a19:
+  name: 'Day 19'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Harvest 64 Beetroots: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a20:
+  name: 'Day 20'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 16 Flower Pots: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a21:
+  name: 'Day 21'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Kill 5 Iron Golems: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a22:
+  name: 'Day 22'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 128 Tinted Glass: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a23:
+  name: 'Day 23'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Eat 32 Cooked Chicken: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a24:
+  name: 'Day 24'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Throw 512 Snowballs: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'
+a25:
+  name: 'Day 25'
+  lines:
+  - <player>'s Advent Quest Scroll
+  - <break>
+  - <empty>
+  - 'Craft 64 Snow Blocks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. There is a scroll every day this month! Make sure to find them all around the advent village.
+  help:
+  - This quest expires after 4 days.
+  - There are 25 scrolls this month, 1 every day until christmas!
+  - The other scrolls can be found by speaking to NPCs around the advent village.
+  UUID: 'false'
+  expiry: '345600000'

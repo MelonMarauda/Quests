@@ -1,0 +1,18 @@
+monster:
+  name: Monster Hunter Quest
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fGuess The Secret Code: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - ie give <MonsterRewards> <player> 1
+  UUID: 'true'
+  message: Remember you can only claim one weekly scroll from one npc per week!
+  help:
+  - This quest does not expire.
+  - You can only get one weekly scroll from one npc per week.
+  - 

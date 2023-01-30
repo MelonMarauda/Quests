@@ -1,0 +1,37 @@
+july:
+  name: July Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - 'Eat x Slices Of Cake: 0'
+  - 'Block x Damage With A Shield: 0'
+  - 'Climb x Blocks: 0'
+  - 'Sneak x Blocks: 0'
+  - 'Fall x Blocks: 0'
+  - 'Sprint x Blocks: 0'
+  - 'Swim x Blocks: 0'
+  - 'Walk x Blocks: 0'
+  - 'Travel  x Blocks In A Boat: 0'
+  - 'Fly x Blocks: 0'
+  - 'Travel x Blocks On A Horse: 0'
+  - 'Travel  x Blocks In A Minecart: 0'
+  - 'Travel  x Blocks On A Pig: 0'
+  - 'Travel x Blocks On A Strider: 0'
+  - 'Jump x Times: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for extra quest info
+  expiry: '604800000'
+  rewards:
+  - ie give julyquest1 <player> 1
+  - ie give julyquest2 <player> 1
+  - ie give julyquest3 <player> 1
+  UUID: 'false'
+  message: Dont forget this quest expires in 7 days. Use /quest expiry to check how
+    long you have left!
+  help:
+  - This quest expires 7 days from when you collect it. Use /quest expiry while holding the quest to check
+    how long you have left.
+  - There are 3 rewards for this quest!
+  movement: cake,shield,climb,sneak,fall,sprint,swim,walk,boat,fly,horse,minecart,pig,strider,jump

@@ -1,0 +1,25 @@
+mp1:
+  name: Moon Phase 1 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Campsite: Incomplete'
+  - '&f&mSpeak To The Campsite Hologram: Incomplete'
+  - '&f&mVisit The Fallen Meteorite: Incomplete'
+  - '&f&mMine 2 Iron Ore: 0'
+  - '&f&mCraft 1 Iron Sword: 0'
+  - '&f&mVisit The Moon Cave: Incomplete'
+  - '&f&mSpeak To The Cave Hologram: Incomplete'
+  - '&f&mVisit The Moon Base: Incomplete'
+  - <empty>
+  - <break>
+  rewards:
+  - ie give Moonquest1 <player> 1
+  - ie give <player> 1
+  - ie give <player> 1
+  UUID: 'false'
+  message: Oof that was a rough landing... I better start exploring since my oxygen
+    runs out quickly!(Claim this scroll once you've finished it with /quest claim
+    to get the scroll for the second phase)
+  locked: 'true'

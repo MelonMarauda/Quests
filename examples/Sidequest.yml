@@ -1,0 +1,21 @@
+SDQ:
+  name: Moon Sidequest Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fFind Secret 1: Incomplete'
+  - '&fFind Secret 2: Incomplete'
+  - '&fFind Secret 3: Incomplete'
+  - '&fSpeak To The Crewmate: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - ie give SidequestReward <player> 1
+  UUID: 'true'
+  message: I was given a quest by a fallen astronaut pilot. I should continue it and
+    discover the secrets of this planet! (Claim this scroll once you've finished it
+    with /quest claim. Remember to switch this scroll to your off-hand when you are
+    near something special!)
+  locked: 'false'

@@ -1,0 +1,49 @@
+'1':
+  name: Birthday Scroll 1
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fSpeak To <admin1>: Incomplete'
+  - '&fSpeak To <admin2>: Incomplete'
+  - '&fSpeak To <admin3>: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest bd 2 <player> force
+  message:
+    name: Spanna
+    colour: RED
+    lines:
+    - My good friend Apple is hosting Applecrafts 7th birthday party at her house. Im just making the rounds inviting players to the party! Some of the admins were bringing party supplies but they got held up for some reason. I need you to visit them and bring these supplies to the party!
+  help:
+  - Filler?
+  autocomplete: true
+'2':
+  name: Birthday Scroll 2
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fSpeak To Spanna: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - some reward
+  message:
+    name: Applecraft
+    colour: RED
+    lines:
+    - Better head back to Spanna to report back.
+  claimMessage:
+    name: Spanna
+    colour: RED
+    lines:
+    - Thanks for helping round up the admins! I hope you enjoy the party!
+  help:
+  - Filler?
+  autocomplete: true
+
+

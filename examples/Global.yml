@@ -1,0 +1,29 @@
+auto: true
+commands:
+  library:
+    dateFormat: yyyy
+    permissionName: library
+    permissionCooldown: 40d
+    quest: library_library1
+    denyMessage: You have already collected this monthly quest scroll.
+    description: §x§b§a§4§f§f§b◇§x§c§0§5§1§f§5☀§x§c§6§5§3§e§f◆ §x§c§b§5§4§e§9L§x§d§1§5§6§e§3i§x§d§7§5§8§d§db§x§d§d§5§a§d§7r§x§e§3§5§c§d§1a§x§e§9§5§e§c§br§x§e§e§5§f§c§5y
+      §x§f§4§6§1§b§fQ§x§f§a§6§3§b§9u§x§f§c§6§7§b§1e§x§f§a§6§d§a§7s§x§f§8§7§4§9§dt
+      §x§f§5§7§a§9§2S§x§f§3§8§0§8§8c§x§f§1§8§6§7§er§x§e§f§8§d§7§4o§x§e§d§9§3§6§al§x§e§b§9§9§6§0l
+      §x§e§8§9§f§5§5◆§x§e§6§a§6§4§b☀§x§e§4§a§c§4§1◇
+  thanks:
+    dateFormat: yyyy
+    permissionName: thanks
+    permissionCooldown: 40d
+    quest: thanks_thanks1
+    denyMessage: You have already collected this special quest scroll.
+    description: §x§f§b§3§3§3§3❉ §x§f§b§3§9§3§3T§x§f§b§3§f§3§3h§x§f§b§4§5§3§3a§x§f§b§4§b§3§3n§x§f§b§5§1§3§3k§x§f§b§5§7§3§3s§x§f§b§5§d§3§3g§x§f§b§6§3§3§3i§x§f§b§6§9§3§3v§x§f§b§6§f§3§3i§x§f§b§7§5§3§3n§x§f§b§7§b§3§3g
+      §x§f§b§8§3§3§3Q§x§f§b§8§b§3§2u§x§f§c§9§3§3§2e§x§f§c§9§b§3§2s§x§f§c§a§3§3§1t
+      §x§f§c§a§c§3§1S§x§f§c§b§4§3§1c§x§f§c§b§c§3§0r§x§f§d§c§4§3§0o§x§f§d§c§c§3§0l§x§f§d§d§4§2§fl
+      §x§f§d§d§c§2§f❉
+  weekly:
+    dateFormat: ww
+    permissionName: weekly
+    permissionCooldown: 8d
+    quest: weekly_weekly
+    denyMessage: You have already collected a weekly quest scroll this week.
+    description: Randomly generated weekly quest scroll.

@@ -1,0 +1,26 @@
+MP2:
+  name: Moon Phase 2 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Main Biodome: Incomplete'
+  - '&f&mVisit The Armory: Incomplete'
+  - '&f&mSpeak To The Armory Hologram: Incomplete'
+  - '&f&mVisit The Water Room: Incomplete'
+  - '&f&mVisit The Filmset: Incomplete'
+  - '&f&mMine 30 Coal Ore: 0'
+  - '&f&mExplore The Hangar: 0'
+  - '&fGuess The Secret Code: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest MoonP3 MP3 <player>
+  - ie give OxygenTankMoon1 <player> 2
+  UUID: 'true'
+  message: Hmm, I don't remember this base being abandoned! I should investigate what
+    happened (Claim this scroll once you've finished it with /quest claim to get the
+    scroll for the third phase)
+  locked: 'true'
+  secret: '1816'

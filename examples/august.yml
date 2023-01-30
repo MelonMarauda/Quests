@@ -1,0 +1,377 @@
+august1:
+  name: 'August Quest #1'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Plains Biome: Incomplete'
+  - '&f&mShear 20 White Sheep: 0'
+  - '&fVisit The Sunflower Plains Biome: Incomplete'
+  - '&f&mCraft 64 Yellow Dye: 0'
+  - '&fVisit The Forest Biome: Incomplete'
+  - '&f&mKill 64 Baby Chickens: 0'
+  - '&fVisit The Birch Forest Biome: Incomplete'
+  - '&f&mCraft 256 Birch Planks: 0'
+  - '&fVisit The Flower Forest Biome: Incomplete'
+  - '&f&mBreed 10 Bees: 0'
+  - '&fVisit The Dark Forest Biome: Incomplete'
+  - '&f&mChop 256 Dark Oak Logs: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august2 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry. When you complete each one use /quest claim to get the next
+    one.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august2:
+  name: 'August Quest #2'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Swamp Biome: Incomplete'
+  - '&f&mHarvest 128 Vines: 0'
+  - '&fVisit The Jungle Biome: Incomplete'
+  - '&f&mHarvest 32 Melons: 0'
+  - '&fVisit The Bamboo Jungle Biome: Incomplete'
+  - '&f&mHarvest 64 Bamboo: 0'
+  - '&fVisit The River Biome: Incomplete'
+  - '&f&mFish 50 Times: 0'
+  - '&fVisit The Beach Biome: Incomplete'
+  - '&f&mMine 32 Clay: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august3 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Harvesting bamboo requires it to grow a little. Think about setting up a farm.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august3:
+  name: 'August Quest #3'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Taiga Biome: Incomplete'
+  - '&f&mBreed 10 Foxes: 0'
+  - '&fVisit The Taiga Mountains Biome: Incomplete'
+  - '&f&mHarvest 64 Spruce Leaves: 0'
+  - '&fVisit The Giant Tree Taiga Biome: Incomplete'
+  - '&f&mMine 16 Podzol: 0'
+  - '&fVisit The Giant Spruce Taiga Biome: Incomplete'
+  - '&f&mCraft 256 Spruce Planks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august4 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august4:
+  name: 'August Quest #4'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Snowy Taiga Biome: Incomplete'
+  - '&f&mHarvest 32 Fern: 0'
+  - '&fVisit The Snowy Tundra Biome: Incomplete'
+  - '&f&mCraft 64 Snow Blocks: 0'
+  - '&fVisit The Ice Spikes Biome: Incomplete'
+  - '&f&mCraft 32 Packed Ice: 0'
+  - '&fVisit The Snowy Beach Biome: Incomplete'
+  - '&f&mMine 128 Sand: 0'
+  - '&fVisit The Frozen River Biome: Incomplete'
+  - '&f&mKill 5 Stray: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august5 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august5:
+  name: 'August Quest #5'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Badlands Biome: Incomplete'
+  - '&f&mHarvest 32 Dead Bushes: 0'
+  - '&fVisit The Eroded Badlands Biome: Incomplete'
+  - '&f&mMine 128 Terracotta: 0'
+  - '&fVisit The Wooded Badlands Plateau Biome: Incomplete'
+  - '&f&mMine 32 Gold Ore: 0'
+  - '&fVisit The Savanna Biome: Incomplete'
+  - '&f&mChop 64 Acacia Logs: 0'
+  - '&fVisit The Shattered Savanna Plateau Biome: Incomplete'
+  - '&f&mHarvest 128 Grass: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august6 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august6:
+  name: 'August Quest #6'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Desert Biome: Incomplete'
+  - '&f&mKill 10 Rabbits: 0'
+  - '&fVisit The Desert Lakes Biome: Incomplete'
+  - '&f&mCraft 64 Sandstone: 0'
+  - '&fVisit The Desert Hills Biome: Incomplete'
+  - '&f&mMine 256 Sand: 0'
+  - '&fVisit The Mushroom Fields Biome: Incomplete'
+  - '&f&mBreed 10 Mushroom Cows: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august7 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august7:
+  name: 'August Quest #7'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Ocean Biome: Incomplete'
+  - '&f&mHarvest 64 Seagrass: 0'
+  - '&fVisit The Deep Cold Ocean Biome: Incomplete'
+  - '&f&mMine 64 Magma Blocks: 0'
+  - '&fVisit The Warm Ocean Biome: Incomplete'
+  - '&f&mKill 20 Squid: 0'
+  - '&fVisit The Lukewarm Ocean Biome: Incomplete'
+  - '&f&mKill 10 Turtles: 0'
+  - '&fVisit The Frozen Ocean Biome: Incomplete'
+  - '&f&mCraft 16 Blue Ice: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august8 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august8:
+  name: 'August Quest #8'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Mountains Biome: Incomplete'
+  - '&f&mMine 128 Coal Ore: 0'
+  - '&fVisit The Gravelly Mountains Biome: Incomplete'
+  - '&f&mMine 128 Gravel: 0'
+  - '&fVisit The Wooded Mountains Biome: Incomplete'
+  - '&f&mCraft 256 Oak Planks: 0'
+  - '&fVisit The Stone Shore Biome: Incomplete'
+  - '&f&mSmelt 512 Stone: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august9 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august9:
+  name: 'August Quest #9'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The Nether Wastes Biome: Incomplete'
+  - '&f&mMine 32 Nether Quartz Ore: 0'
+  - '&fVisit The Soul Sand Valley Biome: Incomplete'
+  - '&f&mMine 128 Soul Sand: 0'
+  - '&fVisit The Crimson Forest Biome: Incomplete'
+  - '&f&mMine 64 Nether Wart Blocks: 0'
+  - '&fVisit The Warped Forest Biome: Incomplete'
+  - '&f&mChop 64 Warped Stem: 0'
+  - '&fVisit The Basalt Deltas Biome: Incomplete'
+  - '&f&mCraft 64 Polished Basalt: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest august august10 <player>
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august10:
+  name: 'August Quest #10'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fVisit The The End Biome: Incomplete'
+  - '&f&mKill 25 Enderman: 0'
+  - '&fVisit The End Highlands Biome: Incomplete'
+  - '&f&mHarvest 32 Chorus Flowers: 0'
+  - '&fVisit The End Midlands Biome: Incomplete'
+  - '&f&mEat 64 Chorus Fruit: 0'
+  - '&fVisit The End Barrens Biome: Incomplete'
+  - '&f&mCraft 128 End Stone Bricks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - ie give augustreward1 <player> 1
+  - ie give augustreward2 <player> 1
+  - ie give augustreward3 <player> 1
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+august11:
+  name: 'August Quest #10'
+  lines:
+  - <player>'s Quest Scroll
+  - <break>
+  - <empty>
+  - '&fDig 10 Grass Blocks: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - ie give augustreward1 <player> 1
+  - ie give augustreward2 <player> 1
+  - ie give augustreward3 <player> 1
+  message: This quest expires in 4 days! Use /quest expiry to see how long you have
+    left. Dont forget there are 10 quests all of which you have to complete, each
+    with a 4 day expiry.
+  help:
+  - This quest expires after 4 days.
+  - This month there are 10 scrolls. Each one has a 4 day expiry. Once you complete
+    one use /quest claim to get the next one. You get the rewards after completing
+    the 10th.
+  - If a quest objective has a strike through it, that means its locked and it requires
+    you to complete the quest objective above it before you can start work on it.
+  - Shift click crafting does not work with Quests.
+  locked: 'true'
+  UUID: 'false'
+  expiry: '345600000'
+  random: test

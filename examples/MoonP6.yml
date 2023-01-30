@@ -1,0 +1,21 @@
+MP6:
+  name: Moon Phase 6 Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fKill Alien Invader: Incomplete'
+  - '&f&mKill Alien Brute: Incomplete'
+  - '&f&mKill Alien Mechanic: Incomplete'
+  - '&f&mKill Alien Explorer: Incomplete'
+  - '&f&mKill Alien Leader: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - tp <player> -272 4 -1096
+  UUID: 'true'
+  message: Dangit! The Space Station is under attack, I should fly back and try to
+    save it!! (Claim this scroll once you've finished it with /quest claim to finish
+    your quest)
+  locked: 'true'

@@ -1,0 +1,28 @@
+meloncrate:
+  name: Chicken Tracker 3000
+  lines:
+  - <player>'s Chicken Tracker
+  - <break>
+  - <empty>
+  - '&fKill Every Chicken: 0'
+  - '&fDeal Mad Damage To Chickens: 0'
+  - '&fBreed The Chickens: 0'
+  - '&fThrow Their Eggs: 0'
+  - '&fKill The Baby Chickens: 0'
+  - '&fEat Slimy Chicken: 0'
+  - '&fEat Juicy Cooked Chicken: 0'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - smite <player>
+  message: This tracks all of your chicken related actions and potentially has other
+    secrets within.
+  help:
+  - This is not a conventional quest scroll, it cannot be claimed. It exists to track.
+  - The first of the second of each advent scroll will unlock bonuses within. Goocluck!
+  - Questions relating to the aforementioned secret will be ignored.
+  secret: haha
+  ultraSecret:
+  - ie give MelonCrate1 <player> 1
+  - ie give MelonCrate2 <player> 1

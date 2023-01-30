@@ -1,0 +1,29 @@
+june:
+  name: June Quest Scroll
+  lines:
+  - Quest Scroll
+  - <break>
+  - <empty>
+  - '&fGuess The Secret Code: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest expiry to check when this quest will expire.
+  - The enchanting objective must be completed on an
+  - enchantment table.
+  expiry: '604800000'
+  rewards:
+  - ie give JuneQuest <player> 1
+  - ie give JuneQuest2 <player> 1
+  - ie give JuneQuest3 <player> 1
+  UUID: 'false'
+  message: Dont forget this quest expires in 7 days. Use /quest expiry to check how
+    long you have left!
+  help:
+  - This quest expires 7 days from when you collect it. Use /quest expiry to check
+    how long you have left.
+  - The enchanting objective must be completed on an enchanting table.
+  - I hate this plugin so much it keeps shitting itself whenever I try to make it
+    do cool new things.
+  - Fuck everyone and everything, you can all rot in hell for all I care.
+  secret: Test
+  locked: 'false'

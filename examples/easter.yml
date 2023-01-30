@@ -1,0 +1,76 @@
+e1:
+  name: 'Easter Egg Hunt #1'
+  lines:
+  - <player>'s Egg Hunt Quest Scroll
+  - <break>
+  - <empty>
+  - '&fBunny 1: Incomplete'
+  - '&fBunny 2: Incomplete'
+  - '&fBunny 3: Incomplete'
+  - '&fBunny 4: Incomplete'
+  - '&fBunny 5: Incomplete'
+  - '&fBunny 6: Incomplete'
+  - '&fBunny 7: Incomplete'
+  - '&fBunny 8: Incomplete'
+  - '&fBunny 9: Incomplete'
+  - '&fBunny 10: Incomplete'
+  - '&fBunny 11: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest easter e2 <player> force
+  autocomplete: true
+  UUID: true
+  permission: 30d
+e2:
+  name: 'Easter Egg Hunt #2'
+  lines:
+  - <player>'s Egg Hunt Quest Scroll
+  - <break>
+  - <empty>
+  - '&fBunny 12: Incomplete'
+  - '&fBunny 13: Incomplete'
+  - '&fBunny 14: Incomplete'
+  - '&fBunny 15: Incomplete'
+  - '&fBunny 16: Incomplete'
+  - '&fBunny 17: Incomplete'
+  - '&fBunny 18: Incomplete'
+  - '&fBunny 19: Incomplete'
+  - '&fBunny 20: Incomplete'
+  - '&fBunny 21: Incomplete'
+  - '&fBunny 22: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - gquest easter e3 <player> force
+  autocomplete: true
+  UUID: true
+  permission: 30d
+e3:
+  name: 'Easter Egg Hunt #3'
+  lines:
+  - <player>'s Egg Hunt Quest Scroll
+  - <break>
+  - <empty>
+  - '&fBunny 23: Incomplete'
+  - '&fBunny 24: Incomplete'
+  - '&fBunny 25: Incomplete'
+  - '&fBunny 26: Incomplete'
+  - '&fBunny 27: Incomplete'
+  - '&fBunny 28: Incomplete'
+  - '&fBunny 29: Incomplete'
+  - '&fBunny 30: Incomplete'
+  - '&fBunny 31: Incomplete'
+  - '&fBunny 32: Incomplete'
+  - '&fBunny 33: Incomplete'
+  - <empty>
+  - <break>
+  - Use /quest help for quest info
+  rewards:
+  - minecraft:clear <player>
+  - lp user <player> permission settemp easter2022.complete true 30d
+  autocomplete: true
+  UUID: true
+  permission: 30d
