@@ -638,7 +638,36 @@ daily:
 ---
 
 # Quest Paths
+Quest paths allow for you to specify different path options on quest so that a player can decide what they want to do. In the below example a player could choose to run `/quest path 1` which would trigger the commands listed under path 1 to be run, in this case they would be smitten. This can be used to creating branching quest lines, allow players to choose what rewards they get or even just give the illusion of choice.  
+**Example Quest Path:**
+```yaml
+path:
+  name: Quest Path Example
+  lines:
+    - <player>'s Quest Path
+    - <break>
+    - <empty>
+    - '&f1. Help the bard'
+    - '&f2. Help the fisherman'
+    - '&f3. Help Melon'
+    - <empty>
+    - <break>
+    - Use "/quest path number" to select a quest path
+    - <empty>
+    - Use /quest help for quest info
+  rewards:
+    - smite <player>
+  path:
+    '1':
+      - smite <player>
+    '2':
+      - smite <player>
+      - smite <player>
+    '3':
+      - gquest path path <player> force
 
+
+```
 
 ---
 
