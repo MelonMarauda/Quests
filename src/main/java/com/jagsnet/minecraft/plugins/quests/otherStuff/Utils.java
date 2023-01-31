@@ -410,6 +410,7 @@ public class Utils {
 
                 if (current.equals("Incomplete")) {
                     totalLines++;
+                    return false;
                 } else if (current.equals("Complete")) {
                     totalLines++;
                     totalComplete++;
@@ -422,6 +423,8 @@ public class Utils {
                         totalLines++;
                         if (currentCount >= targetCount) {
                             totalComplete++;
+                        } else {
+                            return false;
                         }
                     } catch (Exception e) {
                     }

@@ -190,40 +190,26 @@ public class Generators implements CommandExecutor {
                 scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, player.getUniqueId().toString());
             }
         }
-        if (Utils.get().getString(args[1] + ".movement") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "movement");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".movement"));
+
+        String[] configs = {"movement", "coords", "locked", "rank", "region", "autocomplete", "randomTimer", "random"};
+
+        for (String s : configs) {
+            if (Utils.get().getString(args[1] + "." + s) != null) {
+                key = new NamespacedKey(Quests.getInstance(), s);
+                scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + "." + s));
+
+                if (s.equalsIgnoreCase("random")) {
+                    key = new NamespacedKey(Quests.getInstance(), "randomTime");
+                    if (Utils.get().getString(args[1] + ".randomTimer") != null) {
+                        key = new NamespacedKey(Quests.getInstance(), "randomTimer");
+                        scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, Utils.get().getLong(args[1] + ".randomTimer"));
+                    } else {
+                        scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, 600000L);
+                    }
+                }
+            }
         }
-        if (Utils.get().getString(args[1] + ".coords") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "coords");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".coords"));
-        }
-        if (Utils.get().getString(args[1] + ".locked") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "locked");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".locked"));
-        }
-        if (Utils.get().getString(args[1] + ".random") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "random");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".random"));
-            key = new NamespacedKey(Quests.getInstance(), "randomTime");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, 600000L);
-        }
-        if (Utils.get().getString(args[1] + ".rank") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "rank");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".rank"));
-        }
-        if (Utils.get().getString(args[1] + ".region") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "region");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".region"));
-        }
-        if (Utils.get().getString(args[1] + ".autocomplete") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "autocomplete");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + ".autocomplete"));
-        }
-        if (Utils.get().getString(args[1] + ".randomTimer") != null) {
-            key = new NamespacedKey(Quests.getInstance(), "randomTimer");
-            scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, Utils.get().getLong(args[1] + ".randomTimer"));
-        }
+
         if (Utils.get().getString(args[1] + ".texture") != null) {
             String textureS = Utils.get().getString(args[1] + ".texture");
             int texture = 0;

@@ -31,20 +31,15 @@ Permission format to prevent people from collecting multiple of the same quest. 
 
 ## Player
 - `/quest help`  
-  Lists the 3 player commands if they are not holding a scroll. If they are holding a scroll defined with help lines in the config it will then display those help lines.
-
+  Lists the 3 player commands if they are not holding a scroll. If they are holding a scroll defined with help lines in the config it will then display those help lines.  
 - `/quest claim`  
-  Allows a player to claim the reward from a completed quest. This removes the quest scroll in the process. The scroll is required to be in the players main hand to use.
-
+  Allows a player to claim the reward from a completed quest. This removes the quest scroll in the process. The scroll is required to be in the players main hand to use.  
 - `/quest expiry`  
-  Checks how long you have left to complete the scroll in your main hand. Returns a number in hours.
-
+  Checks how long you have left to complete the scroll in your main hand. Returns a number in hours.  
 - `/quest secret <code>`  
-  Attempts to solve a quest code.
-
+  Attempts to solve a quest code.  
 - `/quest path <num>`  
-  Selects a quest path specified on the scroll.
-
+  Selects a quest path specified on the scroll.  
 - `/quest list`  
   Lists all available quests as defined in the `Global.yml` file.
 
@@ -60,11 +55,9 @@ These commands are useful to attach to NPCs or run through the console to comple
   This command allows you to complete something on someones scroll such as “Speak To Bob: Incomplete”. 
   All it does is match the first and second arguments to a complete/incomplete line on a quest scroll to complete it. 
   This matching is case insensitive. For example
-  `Speak To Bob: Incomplete` could be completed with `/cquest txt <playerName> speak bob`
-
+  `Speak To Bob: Incomplete` could be completed with `/cquest txt <playerName> speak bob`  
 - `/cquest num <playerName> <matchOne> <matchTwo> <integer>`  
-  Adds the integer value to the line specified. Acts almost identically to cquest txt.
-
+  Adds the integer value to the line specified. Acts almost identically to cquest txt.  
 - `/cquest unlock <playerName> <matchOne> <matchTwo>`  
   Unlocks a line that is specified in the command. Locked lines are ones with a strike through them.
 
@@ -202,8 +195,8 @@ The colour must be generic Minecraft colour, in capitals, with underscores where
 ```yaml
 message:
   lines:
-    - Blah blah
-    - Blah
+  - Blah blah
+  - Blah
   name: Applebranch
   colour: BLUE
 ```
