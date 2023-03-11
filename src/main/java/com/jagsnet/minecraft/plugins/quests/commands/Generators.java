@@ -140,7 +140,7 @@ public class Generators implements CommandExecutor {
         String bold = ChatColor.BOLD + "";
         String random = ChatColor.MAGIC + "";
         String strike = ChatColor.STRIKETHROUGH + "";
-
+        String stats = "";
         scrollMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + Utils.get().getString(args[1] + "." + "name"));
         for (int i = 0; i < lines.size(); i++) {
             String loreLine = lines.get(i).toString();
@@ -156,6 +156,27 @@ public class Generators implements CommandExecutor {
             if (loreLine.contains("<date>")) {
                 loreLine = loreLine.replace("<date>", new SimpleDateFormat("dd-MM-yyyy").format(new Date()));
             }
+            while (loreLine.contains("<") && loreLine.contains(">")) {
+                String listName = loreLine.substring(loreLine.indexOf("<") + 1, loreLine.indexOf(">"));
+                List list = Utils.getLists().getStringList(listName);
+                int randomNum = ThreadLocalRandom.current().nextInt(0, list.size());
+                String s = String.valueOf(list.get(randomNum));
+                if (s.contains("|")) {
+                    String[] ss = s.split("\\|");
+                    if (stats.equalsIgnoreCase("")) {
+                        stats = stats + ss[1];
+                    } else {
+                        stats = stats + "," + ss[1];
+                    }
+                    s = ss[0];
+                }
+                loreLine = loreLine.replace("<" + listName + ">", s);
+            }
+            while (loreLine.contains("[") && loreLine.contains("]")) {
+                String[] range = loreLine.substring(loreLine.indexOf("[") + 1, loreLine.indexOf("]")).split("-");
+                int randomNum = ThreadLocalRandom.current().nextInt(Integer.parseInt(range[0]), Integer.parseInt(range[1]));
+                loreLine = loreLine.replace("[" + range[0]  + "-" + range[1] + "]", String.valueOf(randomNum));
+            }
             if (loreLine.contains("&f")) {
                 loreLine = loreLine.replace("&f", white);
             }
@@ -164,17 +185,6 @@ public class Generators implements CommandExecutor {
             }
             if (loreLine.contains("&m")) {
                 loreLine = loreLine.replace("&m", strike);
-            }
-            while (loreLine.contains("<") && loreLine.contains(">")) {
-                String listName = loreLine.substring(loreLine.indexOf("<") + 1, loreLine.indexOf(">"));
-                List list = Utils.getLists().getStringList(listName);
-                int randomNum = ThreadLocalRandom.current().nextInt(0, list.size());
-                loreLine = loreLine.replace("<" + listName + ">", (CharSequence) list.get(randomNum));
-            }
-            while (loreLine.contains("[") && loreLine.contains("]")) {
-                String[] range = loreLine.substring(loreLine.indexOf("[") + 1, loreLine.indexOf("]")).split("-");
-                int randomNum = ThreadLocalRandom.current().nextInt(Integer.parseInt(range[0]), Integer.parseInt(range[1]));
-                loreLine = loreLine.replace("[" + range[0]  + "-" + range[1] + "]", String.valueOf(randomNum));
             }
             lore.add(grey + loreLine);
         }
@@ -194,7 +204,20 @@ public class Generators implements CommandExecutor {
         String[] configs = {"movement", "coords", "locked", "rank", "region", "autocomplete", "randomTimer", "random"};
 
         for (String s : configs) {
-            if (Utils.get().getString(args[1] + "." + s) != null) {
+            if (s.equalsIgnoreCase("movement")) {
+                String m = "";
+                if (Utils.get().getString(args[1] + "." + s) != null) {
+                    m = Utils.get().getString(args[1] + "." + s);
+                }
+                if (stats.equalsIgnoreCase("") && m.equalsIgnoreCase("")) {
+                } else if (stats.equalsIgnoreCase("") || m.equalsIgnoreCase("")) {
+                    key = new NamespacedKey(Quests.getInstance(), s);
+                    scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, m + stats);
+                } else {
+                    key = new NamespacedKey(Quests.getInstance(), s);
+                    scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, m + "," + stats);
+                }
+            } else if (Utils.get().getString(args[1] + "." + s) != null) {
                 key = new NamespacedKey(Quests.getInstance(), s);
                 scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + "." + s));
 

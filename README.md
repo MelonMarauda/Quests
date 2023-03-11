@@ -313,8 +313,8 @@ Tracker format for these can be found below.
 **Example:**
 ```yaml
 movement: cake,sprint,ring
-```
-
+```  
+If you want to define movement based objectives dynamically using lists please scroll down to the lists documentation.
 ### Autocomplete
 Autocomplete allows quests to be setup so that once complete they automatically get claimed. This can be useful for quest lines where people have to go and talk to a bunch of NPCs and they're split into multiple quests. This then makes it so they don't have to type `/quest claim` every time.  
 This can be overridden by the global autocomplete setting in `Glboal.yml` which is defined below.
@@ -324,11 +324,32 @@ autocomplete: true
 ```
 
 ### Coords
-Coords allows you to define coordinate based objectives such as `Go To X1 Y1 Z1: Incomplete`.  
+Coords allows you to define coordinate based objectives such as `Go To X1 Y1 Z1: Incomplete`. Coords will only be checked every 5 seconds so if using this features probably let players know in `/quest help` about that.  
 **Example:**
 ```yaml
 coords: true
 ```
+
+### Modifiers
+Modifiers allow you to define effects players must be under to complete objectives on the scroll. For example you can add modifiers to say that a player must have slow falling and blindness to complete the objectives. To do this you do not need to set a configuration option but instead just add it as the second line on the scroll as seen below.  
+**Example:**
+```yaml
+ring:
+  name: 'Wildcard Quest Scroll'
+  lines:
+    - <player>'s Quest Scroll
+    - 'Modifiers: Blindness, Slow Falling'
+    - <break>
+    - <empty>
+    - '&fChop 10 Oak Logs: 0'
+    - '&f<movement>'
+    - <empty>
+    - <break>
+    - Use /quest help | for quest info
+  rewards:
+    - gquest wildcard wildcard1 <player>
+```
+The available effects are any a player can have. They must be the name of the effect as seen when applying it using the `/effect` command in game. For effects with underscores instead use a space as seen above with `Slow Falling`.
 
 ---
 
@@ -635,7 +656,16 @@ daily:
   - Use /quest help for quest info
   rewards:
   - give <player> some reward
-```
+```  
+If you want to have movement based objectives defined in lists they need to be formatted as below. In the event that they are defined in lists then you do NOT need to define movement as a configuration option.  
+**Example movement list:**
+```yaml
+movement:
+- 'Ring 10 Bells: 0|ring'
+- 'Walk 10 Blocks: 0|walk'
+- 'Swim 10 Blocks: 0|swim'
+```  
+The configuration goes `<objective>|<movementName>` where objective is the `objective` you will see on the scroll and `movementName` is the movement config option as defined above.
 
 ---
 

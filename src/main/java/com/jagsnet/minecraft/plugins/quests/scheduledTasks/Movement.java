@@ -125,7 +125,6 @@ public class Movement {
                 }
                 String entity = "Test";
                 String entity2 = "Test";
-                ArrayList<String> lore = (ArrayList<String>) p.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (String s : stats) {
 
@@ -136,278 +135,91 @@ public class Movement {
                     int statD = 0;
                     switch (s) {
                         case "cake":
-                            key = new NamespacedKey(Quests.getInstance(), "cake");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CAKE_SLICES_EATEN));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.CAKE_SLICES_EATEN);
-                            if (statP <= statS) break;
-                            statD = statP - statS;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CAKE_SLICES_EATEN));
-                            setStat = true;
-                            entity = "eat";
-                            entity2 = "slices of cake";
+                            setStat(p, "cake", meta, Statistic.CAKE_SLICES_EATEN, "eat", "slices of cake", 1);
                             break;
                         case "shield":
-                            key = new NamespacedKey(Quests.getInstance(), "shield");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.DAMAGE_BLOCKED_BY_SHIELD));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.DAMAGE_BLOCKED_BY_SHIELD);
-                            if (statP <= statS) break;
-                            statD = statP - statS;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.DAMAGE_BLOCKED_BY_SHIELD));
-                            setStat = true;
-                            entity = "block";
-                            entity2 = "damage with a shield";
+                            setStat(p, "shield", meta, Statistic.DAMAGE_BLOCKED_BY_SHIELD, "block", "damage with a shield", 1);
                             break;
                         case "climb":
-                            key = new NamespacedKey(Quests.getInstance(), "climb");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CLIMB_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.CLIMB_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CLIMB_ONE_CM));
-                            setStat = true;
-                            entity = "climb";
-                            entity2 = "blocks";
+                            setStat(p, "climb", meta, Statistic.CLIMB_ONE_CM, "climb", "blocks", 100);
                             break;
                         case "sneak":
-                            key = new NamespacedKey(Quests.getInstance(), "sneak");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CROUCH_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.CROUCH_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.CROUCH_ONE_CM));
-                            setStat = true;
-                            entity = "sneak";
-                            entity2 = "blocks";
+                            setStat(p, "sneak", meta, Statistic.CROUCH_ONE_CM, "sneak", "blocks", 100);
                             break;
                         case "fall":
-                            key = new NamespacedKey(Quests.getInstance(), "fall");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.FALL_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.FALL_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.FALL_ONE_CM));
-                            setStat = true;
-                            entity = "fall";
-                            entity2 = "blocks";
+                            setStat(p, "fall", meta, Statistic.FALL_ONE_CM, "fall", "blocks", 100);
                             break;
                         case "sprint":
-                            key = new NamespacedKey(Quests.getInstance(), "sprint");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.SPRINT_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.SPRINT_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.SPRINT_ONE_CM));
-                            setStat = true;
-                            entity = "sprint";
-                            entity2 = "blocks";
+                            setStat(p, "sprint", meta, Statistic.SPRINT_ONE_CM, "sprint", "blocks", 100);
                             break;
                         case "swim":
-                            key = new NamespacedKey(Quests.getInstance(), "swim");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.SWIM_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.SWIM_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.SWIM_ONE_CM));
-                            setStat = true;
-                            entity = "swim";
-                            entity2 = "blocks";
+                            setStat(p, "swim", meta, Statistic.SWIM_ONE_CM, "swim", "blocks", 100);
                             break;
                         case "walk":
-                            key = new NamespacedKey(Quests.getInstance(), "walk");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.WALK_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.WALK_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.WALK_ONE_CM));
-                            setStat = true;
-                            entity = "walk";
-                            entity2 = "blocks";
+                            setStat(p, "walk", meta, Statistic.WALK_ONE_CM, "walk", "blocks", 100);
                             break;
                         case "boat":
-                            key = new NamespacedKey(Quests.getInstance(), "boat");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BOAT_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.BOAT_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BOAT_ONE_CM));
-                            setStat = true;
-                            entity = "travel";
-                            entity2 = "blocks in a boat";
+                            setStat(p, "boat", meta, Statistic.BOAT_ONE_CM, "travel", "blocks in a boat", 100);
                             break;
                         case "fly":
-                            key = new NamespacedKey(Quests.getInstance(), "fly");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.AVIATE_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.AVIATE_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 200;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.AVIATE_ONE_CM));
-                            setStat = true;
-                            entity = "fly";
-                            entity2 = "blocks";
+                            setStat(p, "fly", meta, Statistic.AVIATE_ONE_CM, "fly", "blocks", 200);
                             break;
                         case "horse":
-                            key = new NamespacedKey(Quests.getInstance(), "horse");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.HORSE_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.HORSE_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.HORSE_ONE_CM));
-                            setStat = true;
-                            entity = "travel";
-                            entity2 = "blocks on a horse";
+                            setStat(p, "horse", meta, Statistic.HORSE_ONE_CM, "travel", "blocks on a horse", 100);
                             break;
                         case "minecart":
-                            key = new NamespacedKey(Quests.getInstance(), "minecart");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.MINECART_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.MINECART_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.MINECART_ONE_CM));
-                            setStat = true;
-                            entity = "travel";
-                            entity2 = "blocks in a minecart";
+                            setStat(p, "minecart", meta, Statistic.MINECART_ONE_CM, "travel", "blocks in a minecart", 100);
                             break;
                         case "pig":
-                            key = new NamespacedKey(Quests.getInstance(), "pig");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.PIG_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.PIG_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 100;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.PIG_ONE_CM));
-                            setStat = true;
-                            entity = "travel";
-                            entity2 = "blocks on a pig";
+                            setStat(p, "pig", meta, Statistic.PIG_ONE_CM, "travel", "blocks on a pig", 100);
                             break;
                         case "strider":
-                            key = new NamespacedKey(Quests.getInstance(), "strider");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.STRIDER_ONE_CM));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.STRIDER_ONE_CM);
-                            if (statP <= statS) break;
-                            statD = (statP - statS) / 1000;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.STRIDER_ONE_CM));
-                            setStat = true;
-                            entity = "travel";
-                            entity2 = "blocks on a strider";
+                            setStat(p, "strider", meta, Statistic.STRIDER_ONE_CM, "travel", "blocks on a strider", 1000);
                             break;
                         case "jump":
-                            key = new NamespacedKey(Quests.getInstance(), "jump");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.JUMP));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.JUMP);
-                            if (statP <= statS) break;
-                            statD = statP - statS;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.JUMP));
-                            setStat = true;
-                            entity = "jump";
-                            entity2 = "times";
+                            setStat(p, "jump", meta, Statistic.JUMP, "jump", "times", 1);
                             break;
                         case "ring":
-                            key = new NamespacedKey(Quests.getInstance(), "ring");
-                            if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
-                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BELL_RING));
-                                setStat = true; notTrack = true;
-                                break;
-                            }
-                            statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
-                            statP = p.getStatistic(Statistic.BELL_RING);
-                            if (statP <= statS) break;
-                            statD = statP - statS;
-                            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BELL_RING));
-                            setStat = true;
-                            entity = "ring";
-                            entity2 = "bells";
+                            setStat(p, "ring", meta, Statistic.BELL_RING, "ring", "bells", 1);
                             break;
                         default: break;
                     }
-                    if (setStat) {
-                        ItemStack itemStack = p.getInventory().getItemInOffHand();
-                        itemStack.setItemMeta(meta);
-                        if (notTrack) {
-                            continue;
-                        }
-                    }
+                }
+            }
+        }
+    }
 
-                    for (int i = 0; i < lore.size(); i++) {
-                        if (lore.get(i).toLowerCase().contains(entity) && lore.get(i).toLowerCase().contains(entity2)) {
-                            if (Utils.updateNumLine(lore, p, statD, i)) {
-                                break;
-                            }
-                        }
-                    }
+    public static void setStat(Player p, String k, ItemMeta meta, Statistic stat, String e1, String e2, int d) {
+        boolean setStat = false;
+        boolean notTrack = false;
+        int statD = 0;
+        NamespacedKey key = new NamespacedKey(Quests.getInstance(), k);
+        if (!meta.getPersistentDataContainer().has(key, PersistentDataType.INTEGER)) {
+            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(stat));
+            setStat = true; notTrack = true;
+        }
+        if (!setStat && !notTrack) {
+            int statS = meta.getPersistentDataContainer().get(key, PersistentDataType.INTEGER);
+            int statP = p.getStatistic(stat);
+            if (statP <= statS) return;
+            statD = (statP - statS) / d;
+            meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(stat));
+            setStat = true;
+        }
+
+        if (setStat) {
+            ItemStack itemStack = p.getInventory().getItemInOffHand();
+            itemStack.setItemMeta(meta);
+            if (notTrack) {
+                return;
+            }
+        }
+        ArrayList<String> lore = (ArrayList<String>) p.getInventory().getItemInOffHand().getItemMeta().getLore();
+
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).toLowerCase().contains(e1) && lore.get(i).toLowerCase().contains(e2)) {
+                if (Utils.updateNumLine(lore, p, statD, i)) {
+                    return;
                 }
             }
         }

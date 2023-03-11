@@ -15,6 +15,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.potion.PotionEffectType;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,68 +53,40 @@ public class Utils {
     }
 
     // ------------- Scroll Check For Commands -------------------------
-    public static boolean isScrollMain(Player player) {
-        ItemMeta mainHandItem;
-        try {
-            mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
-            if (!player.getInventory().getItemInMainHand().getType().equals(Material.PAPER)) {
-                return false;
-            }
-        } catch (NullPointerException e) {
-            return false;
-        }
-        if (mainHandItem == null) {
-            return false;
-        }
-        if (!mainHandItem.hasLore()) {
-            return false;
-        }
-        if (mainHandItem.getLore().get(0).contains("Quest Path") || mainHandItem.getLore().get(0).contains("Quest Scroll") || mainHandItem.getLore().get(0).contains("Tracker")) {
-            if (player.getInventory().getItemInMainHand().getAmount() > 1) {
-                sendMessage(player, "You may only use one quest scroll at a time");
-                return false;
-            }
-            NamespacedKey key = new NamespacedKey(Quests.getInstance(), "UUID");
-            if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)
-                && !player.hasPermission("quests.admin")) {
-                String UUID = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-                if (!UUID.equals(player.getUniqueId().toString())) {
-                    sendMessage(player, "You may only use this scroll if it was assigned to you.");
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
+    public static boolean isScrollMain(Player p) {
+        return isScroll(p, p.getInventory().getItemInMainHand());
     }
     // ------------- Scroll Check For Listeners ------------------------
-    public static boolean isScrollOff(Player player) {
-        ItemMeta offHandItem;
+    public static boolean isScrollOff(Player p) {
+        return isScroll(p, p.getInventory().getItemInOffHand());
+    }
+
+    public static boolean isScroll(Player p, ItemStack i) {
+        ItemMeta iM = i.getItemMeta();
         try {
-            offHandItem = player.getInventory().getItemInOffHand().getItemMeta();
-            if (!player.getInventory().getItemInOffHand().getType().equals(Material.PAPER)) {
+            if (!i.getType().equals(Material.PAPER)) {
                 return false;
             }
         } catch (NullPointerException e) {
             return false;
         }
-        if (offHandItem == null) {
+        if (i == null) {
             return false;
         }
-        if (!offHandItem.hasLore()) {
+        if (!iM.hasLore()) {
             return false;
         }
-        if (offHandItem.getLore().get(0).contains("Quest Path") || offHandItem.getLore().get(0).contains("Quest Scroll") || offHandItem.getLore().get(0).contains("Tracker")) {
-            if (player.getInventory().getItemInOffHand().getAmount() > 1) {
-                sendMessage(player, "You may only use one quest scroll at a time");
+        if (iM.getLore().get(0).contains("Quest Path") || iM.getLore().get(0).contains("Quest Scroll") || iM.getLore().get(0).contains("Tracker")) {
+            if (i.getAmount() > 1) {
+                sendMessage(p, "You may only use one quest scroll at a time");
                 return false;
             }
             NamespacedKey key = new NamespacedKey(Quests.getInstance(), "UUID");
-            if (offHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)
-                    && !player.hasPermission("quests.admin")) {
-                String UUID = offHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-                if (!UUID.equals(player.getUniqueId().toString())) {
-                    sendMessage(player, "You may only use this scroll if it was assigned to you.");
+            if (iM.getPersistentDataContainer().has(key, PersistentDataType.STRING)
+                    && !p.hasPermission("quests.admin")) {
+                String UUID = iM.getPersistentDataContainer().get(key, PersistentDataType.STRING);
+                if (!UUID.equals(p.getUniqueId().toString())) {
+                    sendMessage(p, "You may only use this scroll if it was assigned to you.");
                     return false;
                 }
             }
@@ -275,7 +248,7 @@ public class Utils {
         }
     }
 
-    // ----------------- Config file functions for lists --------------------
+    // ----------------- Config file functions for global --------------------
     private static File global;
     private static FileConfiguration customGlobal;
     public static void setupGlobal(){
@@ -308,39 +281,32 @@ public class Utils {
         }
     }
 
+    // ----------------- Update lines --------------------
     public static boolean updateNumLine(ArrayList<String> lore, Player p, int newNum, int lineNum){
         try {
             String strike = ChatColor.STRIKETHROUGH + "";
-            if (lore.get(lineNum).contains(strike)) {
-                return false;
-            }
+            if (lore.get(lineNum).contains(strike)) {return false;}
+            if (!passModifiers(p, lore)) {return false;}
             String[] loreLine = lore.get(lineNum).split(": ", 0);
             int x = parseInt(loreLine[1]) + newNum;
             lore.set(lineNum, loreLine[0] + ": " + x);
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(lore.get(lineNum)));
-            boolean locked = false;
-            NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
-            if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                locked = true;
-            }
-            if (locked && lore.get(lineNum + 1).contains(strike)) {
-                if (x >= parseInt(loreLine[0].split(" ", 0)[1])) {
-                    lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
-                }
-            }
-            ItemStack itemStack = p.getInventory().getItemInOffHand();
-            ItemMeta meta = itemStack.getItemMeta();
-            meta.setLore(lore);
-            itemStack.setItemMeta(meta);
-            key = new NamespacedKey(Quests.getInstance(), "autocomplete");
-            if (meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                if (meta.getPersistentDataContainer().get(key, PersistentDataType.STRING).equals("true")) {
-                    if (Quests.auto) {
-                        if (isComplete(meta)) {
-                            claim(p, false, ".rewards", false);
-                        }
+            if (x >= parseInt(loreLine[0].split(" ", 0)[1])) {
+                NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
+                if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
+                    if (lore.get(lineNum + 1).contains(strike)) {
+                        lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
                     }
                 }
+            }
+
+            ItemStack itemStack = p.getInventory().getItemInOffHand();
+            ItemMeta m = itemStack.getItemMeta();
+            m.setLore(lore);
+            itemStack.setItemMeta(m);
+
+            if (x >= parseInt(loreLine[0].split(" ", 0)[1])) {
+                doComplete(p, itemStack.getItemMeta(), lore, itemStack);
             }
             return true;
         } catch (Exception e) {
@@ -352,40 +318,32 @@ public class Utils {
     public static boolean updateTxtLine(ArrayList<String> lore, Player p, int lineNum, Boolean isOff){
         try {
             String strike = ChatColor.STRIKETHROUGH + "";
-            if (lore.get(lineNum).contains(strike)) {
-                return false;
-            }
+            if (lore.get(lineNum).contains(strike)) {return false;}
+            if (!passModifiers(p, lore)) {return false;}
             String[] loreLine = lore.get(lineNum).split(": ", 0);
             lore.set(lineNum, loreLine[0] + ": Complete");
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(lore.get(lineNum)));
-            boolean locked = false;
-            NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
-            if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                locked = true;
-            }
-            if (locked && lore.get(lineNum + 1).contains(strike)) {
-                if (lore.get(lineNum).contains("Complete")) {
-                    lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
+            if (lore.get(lineNum).contains("Complete")) {
+                NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
+                if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
+                    if (lore.get(lineNum + 1).contains(strike)) {
+                        lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
+                    }
                 }
             }
+
             ItemStack itemStack;
             if (isOff) {
                 itemStack = p.getInventory().getItemInOffHand();
             } else {
                 itemStack = p.getInventory().getItemInMainHand();
             }
-            ItemMeta meta = itemStack.getItemMeta();
-            meta.setLore(lore);
-            itemStack.setItemMeta(meta);
-            key = new NamespacedKey(Quests.getInstance(), "autocomplete");
-            if (meta.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                if (meta.getPersistentDataContainer().get(key, PersistentDataType.STRING).equals("true")) {
-                    if (Quests.auto) {
-                        if (isComplete(meta)) {
-                            claim(p, false, ".rewards", false);
-                        }
-                    }
-                }
+            ItemMeta m = itemStack.getItemMeta();
+            m.setLore(lore);
+            itemStack.setItemMeta(m);
+
+            if (lore.get(lineNum).contains("Complete")) {
+                doComplete(p, itemStack.getItemMeta(), lore, itemStack);
             }
             return true;
         } catch (Exception e) {
@@ -394,6 +352,31 @@ public class Utils {
         }
     }
 
+    public static boolean passModifiers(Player p, ArrayList<String> lore) {
+        String s = ChatColor.stripColor(lore.get(1));
+        if (s.contains("Modifiers: ")) {
+            String[] modList = s.split(": ")[1].toUpperCase().replace(" ", "_").split(",_");
+            for (String mods : modList) {
+                if (!p.hasPotionEffect(PotionEffectType.getByName(mods))) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public static void doComplete(Player p, ItemMeta m, ArrayList<String> lore, ItemStack i) {
+        NamespacedKey key = new NamespacedKey(Quests.getInstance(), "autocomplete");
+        if (m.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
+            if (m.getPersistentDataContainer().get(key, PersistentDataType.STRING).equals("true")) {
+                if (Quests.auto) {
+                    if (isComplete(m)) {
+                        claim(p, false, ".rewards", false);
+                    }
+                }
+            }
+        }
+    }
     public static boolean isComplete(ItemMeta mainHandItem) {
         int loreLength = mainHandItem.getLore().size();
         int totalLines = 0;
