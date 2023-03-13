@@ -720,6 +720,9 @@ plugins
 
 # Changelog
 
+### 1.8
+Added modifiers  
+Allowed for "movement" objectives to be added via lists
 ### 1.7.2
 Added “secretCooldown” as an optional configuration option. If not set it defaults to 60s. Takes milliseconds as an input.
 ### 1.7.0
