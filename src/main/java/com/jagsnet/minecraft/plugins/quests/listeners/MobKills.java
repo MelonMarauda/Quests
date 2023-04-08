@@ -17,29 +17,26 @@ public class MobKills implements Listener {
             Player player = event.getEntity().getKiller();
             if (Utils.isScrollOff(player)) {
                 
-                String entity = event.getEntity().getType().toString().replace("_", " ");
+                String entity = event.getEntity().getType().toString().replace("_", " ").toLowerCase();
                 Boolean name = false;
                 if (event.getEntity().getCustomName() != null && event.getEntity().isCustomNameVisible()) {
-                    entity = ChatColor.stripColor(event.getEntity().getCustomName());
+                    entity = ChatColor.stripColor(event.getEntity().getCustomName()).toLowerCase();
                     name = true;
                 }
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 if (name) {
                     for (int i = 0; i < lore.size(); i++) {
-                        if (((lore.get(i).toLowerCase().contains(entity.toLowerCase())) &&
-                                lore.get(i).split(" ", 0).length ==
-                                entity.split(" ", 0).length + 2) && (lore.get(i).toLowerCase().contains("incomplete"))) {
+                        String line = Utils.cleanLore(lore.get(i), true, false);
+                        if (((line.contains(" " + entity)) &&
+                                line.split(" ", 0).length ==
+                                entity.split(" ", 0).length + 2) && (line.contains("incomplete"))) {
                             if (Utils.updateTxtLine(lore, player, i, true)) {
                                 return;
                             }
                         }
                     }
                 } else {
-                    boolean wolf = false;
-                    if (entity.equals("WOLF")) {
-                        wolf = true;
-                    }
                     if (event.getEntity() instanceof Ageable) {
                         Ageable crop = (Ageable) event.getEntity();
                         if (!crop.isAdult()) {
@@ -47,9 +44,10 @@ public class MobKills implements Listener {
                         }
                     }
                     for (int i = 0; i < lore.size(); i++) {
-                        if (((lore.get(i).toLowerCase().contains(entity.toLowerCase()) || (wolf && lore.get(i).toLowerCase().contains("wolves")))&&
-                                lore.get(i).split(" ", 0).length ==
-                                entity.split(" ", 0).length + 3)  && lore.get(i).contains("Kill")) {
+                        String line = Utils.cleanLore(lore.get(i), true, false);
+                        if ((line.contains(" " + entity) &&
+                                line.split(" ", 0).length ==
+                                entity.split(" ", 0).length + 3)  && line.contains("kill")) {
                             if (Utils.updateNumLine(lore, player, 1, i)) {
                                 return;
                             }

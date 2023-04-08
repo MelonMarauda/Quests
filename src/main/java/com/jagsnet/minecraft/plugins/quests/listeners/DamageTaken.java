@@ -19,29 +19,30 @@ public class DamageTaken implements Listener {
             Player player = (Player) event.getEntity();
             if (Utils.isScrollOff(player)) {
 
-                String entity = "Take";
+                String entity = "take";
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
                 boolean isEntityEvent = false;
 
                 if (event instanceof EntityDamageByEntityEvent) {
                     EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) event;
-                    entity = e.getDamager().getType().toString().replace("_", " ");
+                    entity = e.getDamager().getType().toString().replace("_", " ").toLowerCase();
                     isEntityEvent = true;
                 }
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if ((lore.get(i).split(" ", 0).length ==
-                            4) && (lore.get(i).contains("Damage") &&
-                            lore.get(i).contains("Take"))) {
+                    String line = Utils.cleanLore(lore.get(i), true, false);
+                    if ((line.split(" ", 0).length ==
+                            4) && (line.contains("damage") &&
+                            line.contains("take"))) {
                         if (Utils.updateNumLine(lore, player, (int) event.getFinalDamage(), i)) {
                             return;
                         }
                     }
 
-                    if (isEntityEvent && ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                            lore.get(i).split(" ", 0).length ==
+                    if (isEntityEvent && ((line.contains(" " + entity) &&
+                            line.split(" ", 0).length ==
                             entity.split(" ").length + 5) &&
-                            (lore.get(i).contains("Damage") && lore.get(i).contains("Take")))) {
+                            (line.contains("damage") && line.contains("take")))) {
                         if (Utils.updateNumLine(lore, player, (int) event.getFinalDamage(), i)) {
                             return;
                         }

@@ -15,6 +15,7 @@ public class Fishing implements Listener {
     @EventHandler(priority = EventPriority.MONITOR)
     public void onFish(PlayerFishEvent event) {
         if (event.isCancelled()) { return; }
+        if (event.getExpToDrop() < 1) { return; }
         if (event.getCaught() != null) {
             if (event.getPlayer() instanceof Player) {
                 Player player = event.getPlayer();
@@ -22,22 +23,23 @@ public class Fishing implements Listener {
 
                     Item item = (Item) event.getCaught();
                     ItemStack is = item.getItemStack();
-                    String entity = item.getItemStack().getType().toString().replace("_", " ");
+                    String entity = item.getItemStack().getType().toString().replace("_", " ").toLowerCase();
                     if (is.getItemMeta().hasDisplayName()) {
-                        entity = ChatColor.stripColor(is.getItemMeta().getDisplayName()).replace("_", " ");
+                        entity = ChatColor.stripColor(is.getItemMeta().getDisplayName()).replace("_", " ").toLowerCase();
                     }
                     ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                     for (int i = 0; i < lore.size(); i++) {
-                        if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                                lore.get(i).split(" ", 0).length ==
+                        String line = Utils.cleanLore(lore.get(i), true, false);
+                        if ((line.contains(" " + entity) &&
+                                line.split(" ", 0).length ==
                                 entity.split(" ", 0).length + 3) &&
-                                lore.get(i).contains("Catch")) {
+                                line.contains("catch")) {
                             if (Utils.updateNumLine(lore, player, 1, i)) {
                                 return;
                             }
-                        } else if (lore.get(i).contains("Fish") &&
-                                lore.get(i).contains("Times")) {
+                        } else if (line.contains("fish") &&
+                                line.contains("times")) {
                             if (Utils.updateNumLine(lore, player, 1, i)) {
                                 return;
                             }

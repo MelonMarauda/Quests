@@ -99,9 +99,10 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    if (offHandItem.getLore().get(i).toLowerCase().contains(entity) &&
-                            offHandItem.getLore().get(i).toLowerCase().contains(entity2) &&
-                            !offHandItem.getLore().get(i).contains("Complete")) {
+                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    if (line.contains(entity) &&
+                            line.contains(entity2) &&
+                            !line.contains("complete")) {
                         if (Utils.updateTxtLine(lore, player, i, true)) {
                             return true;
                         }
@@ -139,9 +140,10 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    if (offHandItem.getLore().get(i).toLowerCase().contains(entity) &&
-                            offHandItem.getLore().get(i).toLowerCase().contains(entity2) &&
-                            !offHandItem.getLore().get(i).contains("Complete")) {
+                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    if (line.contains(entity) &&
+                            line.contains(entity2) &&
+                            !line.contains("complete")) {
                         if (Utils.updateNumLine(lore, player, amount, i)) {
                             return true;
                         }
@@ -172,9 +174,10 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    if (offHandItem.getLore().get(i).toLowerCase().contains(entity) &&
-                            offHandItem.getLore().get(i).toLowerCase().contains(entity2) &&
-                            !offHandItem.getLore().get(i).contains("Complete")) {
+                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    if (line.contains(entity) &&
+                            line.contains(entity2) &&
+                            !line.contains("complete")) {
                         String strike = ChatColor.STRIKETHROUGH + "";
                         lore.set(i, lore.get(i).replace(strike, ""));
                         ItemStack itemStack = player.getInventory().getItemInOffHand();

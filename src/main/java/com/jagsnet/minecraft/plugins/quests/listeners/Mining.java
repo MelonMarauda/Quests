@@ -26,20 +26,21 @@ public class Mining implements Listener {
                     }
                 }
 
-                String entity = event.getBlock().getType().toString().replace("_", " ");
+                String entity = event.getBlock().getType().toString().replace("_", " ").toLowerCase();
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
-                if (entity.contains("DEEPSLATE ") && entity.contains("ORE")) {
-                    entity = entity.replace("DEEPSLATE ", "");
+                if (entity.contains("deepslate ") && entity.contains("ore")) {
+                    entity = entity.replace("deepslate ", "");
                 }
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                            lore.get(i).split(" ", 0).length ==
+                    String line = Utils.cleanLore(lore.get(i), false, true);
+                    if ((line.contains(" " + entity) &&
+                            line.split(" ", 0).length ==
                             entity.split(" ", 0).length + 3) &&
-                            (lore.get(i).contains("Mine") || lore.get(i).contains("Dig") ||
-                            lore.get(i).contains("Harvest") || lore.get(i).contains("Chop") ||
-                            lore.get(i).contains("Break") || lore.get(i).contains("Pick"))) {
+                            (line.contains("mine") || line.contains("dig") ||
+                            line.contains("harvest") || line.contains("chop") ||
+                            line.contains("break") || line.contains("pick"))) {
                         if (player.getInventory().getItemInMainHand().getItemMeta() != null) {
                             if (player.getInventory().getItemInMainHand().getItemMeta().hasEnchant(Enchantment.SILK_TOUCH)) {
                                 Utils.sendMessage(player, "You cannot use silk touch items while completing quests");

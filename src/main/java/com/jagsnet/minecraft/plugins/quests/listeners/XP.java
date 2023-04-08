@@ -19,9 +19,10 @@ public class XP implements Listener {
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
             for (int i = 0; i < lore.size(); i++) {
-                if ((lore.get(i).toLowerCase().contains("gain") &&
-                        lore.get(i).split(" ", 0).length == 4) && 
-                        lore.get(i).contains("Exp")) {
+                String line = Utils.cleanLore(lore.get(i), false, false);
+                if ((line.contains("gain") &&
+                        line.split(" ", 0).length == 4) &&
+                        line.contains("exp")) {
                     if (Utils.updateNumLine(lore, player, event.getAmount(), i)) {
                         continue;
                     }

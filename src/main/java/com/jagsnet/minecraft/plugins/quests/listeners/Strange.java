@@ -44,10 +44,13 @@ public class Strange implements Listener {
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
             int length = 2 + mainHandItem.split(" ", 0).length + entity.split(" ", 0).length;
 
+            entity = entity.toLowerCase();
+
             for (int i = 0; i < lore.size(); i++) {
-                if ((lore.get(i).toLowerCase().contains(mainHandItem) &&
-                        lore.get(i).split(" ", 0).length == (length)) &&
-                        lore.get(i).toLowerCase().contains(entity)) {
+                String line = Utils.cleanLore(lore.get(i), true, false);
+                if ((line.contains(mainHandItem) &&
+                        line.split(" ", 0).length == (length)) &&
+                        line.contains(" " + entity)) {
                     if (Utils.updateNumLine(lore, player, 1, i)) {
                         if (mainHandItem.equalsIgnoreCase("milk") && entity.equalsIgnoreCase("cow")) return;
                         event.getRightClicked().getPersistentDataContainer().set(key, PersistentDataType.LONG, System.currentTimeMillis() + 30000);

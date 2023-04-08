@@ -17,13 +17,14 @@ public class Enchanting implements Listener {
             Player player = event.getEnchanter();
             if (Utils.isScrollOff(player)) {
 
-                String entity = event.getItem().getType().toString().replace("_", " ");
+                String entity = event.getItem().getType().toString().replace("_", " ").toLowerCase();
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                            lore.get(i).split(" ", 0).length ==
-                            entity.split(" ", 0).length + 3) && lore.get(i).contains("Enchant")) {
+                    String line = Utils.cleanLore(lore.get(i), false, true);
+                    if ((line.contains(" " + entity) &&
+                            line.split(" ", 0).length ==
+                            entity.split(" ", 0).length + 3) && line.contains("enchant")) {
                         if (Utils.updateNumLine(lore, player, 1, i)) {
                             return;
                         }

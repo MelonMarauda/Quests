@@ -15,14 +15,15 @@ public class Smelting implements Listener {
         Player player = event.getPlayer();
         if (Utils.isScrollOff(player)) {
 
-            String entity = event.getItemType().toString().split(" ")[0].replace("_", " ");
+            String entity = event.getItemType().toString().split(" ")[0].replace("_", " ").toLowerCase();
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
             for (int i = 0; i < lore.size(); i++) {
-                if (((lore.get(i).toLowerCase().contains(entity.toLowerCase())) &&
-                        lore.get(i).split(" ", 0).length ==
+                String line = Utils.cleanLore(lore.get(i), false, true);
+                if ((line.contains(" " + entity) &&
+                        line.split(" ", 0).length ==
                         entity.split(" ", 0).length + 3) &&
-                        lore.get(i).contains("Smelt")) {
+                        line.contains("smelt")) {
                     if (Utils.updateNumLine(lore, player, event.getItemAmount(), i)) {
                         return;
                     }

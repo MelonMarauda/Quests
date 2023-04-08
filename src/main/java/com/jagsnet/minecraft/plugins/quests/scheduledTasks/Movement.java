@@ -116,6 +116,22 @@ public class Movement {
                                 key = new NamespacedKey(Quests.getInstance(), "ring");
                                 meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BELL_RING));
                                 break;
+                            case "break":
+                                key = new NamespacedKey(Quests.getInstance(), "break");
+                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.BREAK_ITEM));
+                                break;
+                            case "target":
+                                key = new NamespacedKey(Quests.getInstance(), "target");
+                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.TARGET_HIT));
+                                break;
+                            case "raids":
+                                key = new NamespacedKey(Quests.getInstance(), "raids");
+                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.RAID_TRIGGER));
+                                break;
+                            case "raidc":
+                                key = new NamespacedKey(Quests.getInstance(), "raidc");
+                                meta.getPersistentDataContainer().set(key, PersistentDataType.INTEGER, p.getStatistic(Statistic.RAID_WIN));
+                                break;
                             default: break;
                         }
                     }
@@ -177,10 +193,22 @@ public class Movement {
                             setStat(p, "strider", meta, Statistic.STRIDER_ONE_CM, "travel", "blocks on a strider", 1000);
                             break;
                         case "jump":
-                            setStat(p, "jump", meta, Statistic.JUMP, "jump", "times", 1);
+                            setStat(p, "jump", meta, Statistic.JUMP, "jump", "time", 1);
                             break;
                         case "ring":
-                            setStat(p, "ring", meta, Statistic.BELL_RING, "ring", "bells", 1);
+                            setStat(p, "ring", meta, Statistic.BELL_RING, "ring", "bell", 1);
+                            break;
+                        case "break":
+                            setStat(p, "break", meta, Statistic.BREAK_ITEM, "break", "item", 1);
+                            break;
+                        case "target":
+                            setStat(p, "target", meta, Statistic.TARGET_HIT, "hit", "target", 1);
+                            break;
+                        case "raids":
+                            setStat(p, "raids", meta, Statistic.RAID_TRIGGER, "trigger", "raid", 1);
+                            break;
+                        case "raidc":
+                            setStat(p, "raidc", meta, Statistic.RAID_WIN, "beat", "raid", 1);
                             break;
                         default: break;
                     }
@@ -217,7 +245,8 @@ public class Movement {
         ArrayList<String> lore = (ArrayList<String>) p.getInventory().getItemInOffHand().getItemMeta().getLore();
 
         for (int i = 0; i < lore.size(); i++) {
-            if (lore.get(i).toLowerCase().contains(e1) && lore.get(i).toLowerCase().contains(e2)) {
+            String line = Utils.cleanLore(lore.get(i), false, false);
+            if (line.contains(e1) && line.contains(e2)) {
                 if (Utils.updateNumLine(lore, p, statD, i)) {
                     return;
                 }

@@ -17,16 +17,17 @@ public class FillBucketOther implements Listener {
         Player player = event.getPlayer();
         if (Utils.isScrollOff(player)) {
 
-            String entity = event.getBlock().getType().toString().replace("_", " ");
+            String entity = event.getBlock().getType().toString().replace("_", " ").toLowerCase();
             if (event.getItemStack().getType() == Material.MILK_BUCKET) {
-                entity = "Milk";
+                entity = "milk";
             }
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
             for (int i = 0; i < lore.size(); i++) {
-                if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                        lore.get(i).split(" ", 0).length ==
-                                entity.split(" ", 0).length + 5) && lore.get(i).contains("Fill") && lore.get(i).contains("Buckets With")) {
+                String line = Utils.cleanLore(lore.get(i), false, false);
+                if ((line.contains(" " + entity) &&
+                        line.split(" ", 0).length ==
+                                entity.split(" ", 0).length + 5) && line.contains("fill") && line.contains("buckets with")) {
                     if (Utils.updateNumLine(lore, player, 1, i)) {
                         return;
                     }

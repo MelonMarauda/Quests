@@ -4,10 +4,7 @@ import com.jagsnet.minecraft.plugins.quests.Quests;
 import net.jagsnet.minecraft.plugins.mlib.utils.Messaging;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
+import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -430,5 +427,22 @@ public class Utils {
                 + ((minutes>0) ? minutes + ((minutes>1) ? " Minutes And " : " Minute And " ) : "" )
                 + seconds + " Seconds";
         return msg;
+    }
+
+    public static String cleanLore(String s, boolean fixMobs, boolean fixBlocks){
+        s = ChatColor.stripColor(s);
+        s = s.toLowerCase();
+        if (fixMobs) {
+            s = s.replace("wolves", "wolf");
+            s = s.replace("endermen", "enderman");
+        }
+        if (fixBlocks) {
+
+        }
+        return s;
+    }
+
+    public static String cleanEntity(String s) {
+        return " " + s.replace("_", " ").toLowerCase();
     }
 }

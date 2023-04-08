@@ -21,20 +21,21 @@ public class DamageDone implements Listener {
                 Player player = (Player) e.getDamager();
                 if (Utils.isScrollOff(player)) {
 
-                    String entity = e.getEntity().getType().toString().replace("_", " ");
+                    String entity = e.getEntity().getType().toString().replace("_", " ").toLowerCase();
                     ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                     for (int i = 0; i < lore.size(); i++) {
-                        if ((lore.get(i).split(" ", 0).length ==
-                                4) && (lore.get(i).contains("Damage") &&
-                                lore.get(i).contains("Deal"))) {
+                        String line = Utils.cleanLore(lore.get(i), true, false);
+                        if ((line.split(" ", 0).length ==
+                                4) && (line.contains("damage") &&
+                                line.contains("deal"))) {
                             if (Utils.updateNumLine(lore, player, (int) event.getFinalDamage(), i)) {
                                 return;
                             }
-                        } else if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                                lore.get(i).split(" ", 0).length ==
-                                entity.split(" ").length + 5) && (lore.get(i).contains("Damage")
-                                && lore.get(i).contains("Deal"))) {
+                        } else if ((line.contains(" " + entity) &&
+                                line.split(" ", 0).length ==
+                                entity.split(" ").length + 5) && (line.contains("damage")
+                                && line.contains("deal"))) {
                             if (Utils.updateNumLine(lore, player, (int) event.getFinalDamage(), i)) {
                                 return;
                             }

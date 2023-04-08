@@ -17,14 +17,15 @@ public class Throwing implements Listener {
             Player player = (Player) event.getEntity().getShooter();
             if (Utils.isScrollOff(player)) {
                 
-                String entity = event.getEntity().getType().toString().replace("_", " ");
+                String entity = event.getEntity().getType().toString().replace("_", " ").toLowerCase();
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if ((lore.get(i).toLowerCase().contains(entity.toLowerCase()) &&
-                            lore.get(i).split(" ", 0).length ==
-                            entity.split(" ", 0).length + 3) && (lore.get(i).contains("Throw") ||
-                            lore.get(i).contains("Launch") || lore.get(i).contains("Shoot"))) {
+                    String line = Utils.cleanLore(lore.get(i), false, true);
+                    if ((line.contains(" " + entity) &&
+                            line.split(" ", 0).length ==
+                            entity.split(" ", 0).length + 3) && (line.contains("throw") ||
+                            line.contains("launch") || line.contains("shoot"))) {
                         if (Utils.updateNumLine(lore, player, 1, i)) {
                             return;
                         }

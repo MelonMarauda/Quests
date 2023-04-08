@@ -16,14 +16,15 @@ public class Commands implements Listener {
         Player player = event.getPlayer();
         if (Utils.isScrollOff(player)) {
 
-            String entity = event.getMessage().split(" ")[0].replace("_", " ");
+            String entity = event.getMessage().split(" ")[0].replace("_", " ").toLowerCase();
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
             for (int i = 0; i < lore.size(); i++) {
-                if (((lore.get(i).toLowerCase().contains(entity.toLowerCase())) &&
-                        lore.get(i).split(" ", 0).length ==
+                String line = Utils.cleanLore(lore.get(i), false, false);
+                if ((line.contains(entity) &&
+                        line.split(" ", 0).length ==
                         entity.split(" ", 0).length + 4) &&
-                        lore.get(i).contains("Command")) {
+                        line.contains("command")) {
                     if (Utils.updateTxtLine(lore, player, i, true)) {
                         return;
                     }

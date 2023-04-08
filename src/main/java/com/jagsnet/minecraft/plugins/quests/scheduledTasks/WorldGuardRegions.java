@@ -40,7 +40,8 @@ public class WorldGuardRegions {
                     String entity = region.getId().replace("_", " ").toLowerCase();
                     ArrayList<String> lore = (ArrayList<String>) p.getInventory().getItemInOffHand().getItemMeta().getLore();
                     for (int i = 0; i < lore.size(); i++) {
-                        if (lore.get(i).toLowerCase().contains(entity) && lore.get(i).contains("Incomplete")) {
+                        String line = Utils.cleanLore(lore.get(i), false, false);
+                        if (line.contains(entity) && line.contains("incomplete")) {
                             if (Utils.updateTxtLine(lore, p, i, true)) {
                             }
                         }

@@ -17,19 +17,15 @@ public class Breeding implements Listener {
             Player player = (Player) event.getBreeder();
             if (Utils.isScrollOff(player)) {
 
-                String entity = event.getEntityType().toString().replace("_", " ");
+                String entity = event.getEntityType().toString().replace("_", " ").toLowerCase();
                 int entitySize = entity.split(" ", 0).length;
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
-                boolean wolf = false;
-                if (entity.equals("WOLF")) {
-                    wolf = true;
-                }
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if (((lore.get(i).toLowerCase().contains(entity.toLowerCase()) ||
-                            (wolf && lore.get(i).toLowerCase().contains("wolves"))) &&
-                            lore.get(i).split(" ", 0).length == entitySize + 3) &&
-                            lore.get(i).contains("Breed")) {
+                    String line = Utils.cleanLore(lore.get(i), true, false);
+                    if (line.contains(" " + entity) &&
+                            line.split(" ", 0).length == entitySize + 3 &&
+                            line.contains("breed")) {
                         if (Utils.updateNumLine(lore, player, 1, i)) {
                             return;
                         }

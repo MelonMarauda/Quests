@@ -40,7 +40,7 @@ public class Crafting implements Listener {
                 String itemName = stack.getType().toString();
                 int recipeAmount = stack.getAmount();
                 if (recipeAmount == 0) return;
-                itemName = itemName.replace("_", " ");
+                itemName = itemName.replace("_", " ").toLowerCase();
                 event.getResult();
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
@@ -71,10 +71,11 @@ public class Crafting implements Listener {
                  */
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if ((lore.get(i).toLowerCase().contains(itemName.toLowerCase()) &&
-                            lore.get(i).split(" ", 0).length ==
+                    String line = Utils.cleanLore(lore.get(i), false, true);
+                    if ((line.contains(" " + itemName) &&
+                            line.split(" ", 0).length ==
                             itemName.split(" ", 0).length + 3) &&
-                            (lore.get(i).contains("Craft") || lore.get(i).contains("Make"))) {
+                            (line.contains("craft") || line.contains("make"))) {
                         if (Utils.updateNumLine(lore, player, recipeAmount, i)) {
                             return;
                         }

@@ -20,7 +20,8 @@ public class Coords {
                 ArrayList<String> lore = (ArrayList<String>) p.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < lore.size(); i++) {
-                    if (lore.get(i).contains(entity)) {
+                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    if (line.contains(entity.toLowerCase())) {
                         if (Utils.updateTxtLine(lore, p, i, true)) {
                         }
                     }

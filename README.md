@@ -720,6 +720,9 @@ plugins
 
 # Changelog
 
+### 1.8.1  
+Allowed for colour codes and `&k` almost anywhere in a quest objective line.  
+Fixed problem allowing for mining stone to count as mining glowstone, sandstone, etc.  
 ### 1.8
 Added modifiers  
 Allowed for "movement" objectives to be added via lists
