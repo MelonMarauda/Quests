@@ -2,6 +2,7 @@ package com.jagsnet.minecraft.plugins.quests;
 
 import com.jagsnet.minecraft.plugins.quests.commands.*;
 import com.jagsnet.minecraft.plugins.quests.listeners.*;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.MoveToOffhand;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
 import com.jagsnet.minecraft.plugins.quests.scheduledTasks.*;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -38,6 +39,7 @@ public final class Quests extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new FillBucketOther(), this);
         getServer().getPluginManager().registerEvents(new Strange(), this);
         getServer().getPluginManager().registerEvents(new Chat(), this);
+        getServer().getPluginManager().registerEvents(new MoveToOffhand(), this);
 
         // Schedule check for player movement
         BukkitScheduler scheduler = getServer().getScheduler();

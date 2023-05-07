@@ -719,7 +719,8 @@ plugins
 ---
 
 # Changelog
-
+### 1.8.2  
+Added a thing to allow people to right click quests into their offhand so that bedrock players can offhand quests.
 ### 1.8.1  
 Allowed for colour codes and `&k` almost anywhere in a quest objective line.  
 Fixed problem allowing for mining stone to count as mining glowstone, sandstone, etc.  
