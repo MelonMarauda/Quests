@@ -3,7 +3,7 @@
 A simple quests plugin for Spigot based Minecraft servers.
 The plugin does not track completed quests and is item based.
 It has permissions features to track quest completion if required. 
-This plugin is best used for daily, weekly, monthly etc quests.
+This plugin is best used for daily, weekly, monthly etc quests but is easily adaptable allowing for complex quest lines with branching paths, secrets and support for a wide array of objectives.
 
 ---
 
