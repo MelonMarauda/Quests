@@ -9,13 +9,13 @@ This plugin is best used for daily, weekly, monthly etc quests.
 
 ### REQUIRED PLUGINS
 - WorldGuard - 7.05+
-- Luckperms - any version (not required, just recommended for permissions features)
+- Luckperms - any version (not required, just recommended otherwise permissions features wont work)
 
 ---
 
 ### MINECRAFT VERSION
- - API Compatible - 1.17.1+
- - Latest tested - 1.19.3
+ - API Compatible - Spigot 1.17.1+
+ - Latest tested - 1.20
 
 ---
 

@@ -1,10 +1,12 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Strings;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Completion;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Scroll;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
-import org.bukkit.block.Block;
 import org.bukkit.command.BlockCommandSender;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -26,18 +28,18 @@ public class Completer implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (!player.hasPermission("quests.admin")) {
-                Utils.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
+                Messaging.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
                 return true;
             }
         }
 
         if (args.length < 1) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "/cquest txt <playerName> <matchString1> <matchString2>");
-                Utils.sendMessage((Player) sender, "/cquest num <playerName> <matchString1> <matchString2> <num>");
-                Utils.sendMessage((Player) sender, "/cquest unlock <playerName> <matchString1> <matchString2>");
+                Messaging.sendMessage((Player) sender, "/cquest txt <playerName> <matchString1> <matchString2>");
+                Messaging.sendMessage((Player) sender, "/cquest num <playerName> <matchString1> <matchString2> <num>");
+                Messaging.sendMessage((Player) sender, "/cquest unlock <playerName> <matchString1> <matchString2>");
             } else {
-                Utils.log("Invalid quests command");
+                Messaging.log("Invalid quests command");
             }
             return true;
         }
@@ -70,9 +72,9 @@ public class Completer implements CommandExecutor {
             player = Bukkit.getPlayer(args[1]);
             if (!player.isOnline()) {
                 if (sender instanceof Player) {
-                    Utils.sendMessage((Player) sender, "Please specify a player that is currently online");
+                    Messaging.sendMessage((Player) sender, "Please specify a player that is currently online");
                 } else {
-                    Utils.log("Please specify a player that is currently online");
+                    Messaging.log("Please specify a player that is currently online");
                 }
                 return true;
             }
@@ -84,14 +86,14 @@ public class Completer implements CommandExecutor {
         if (args[0].equalsIgnoreCase("txt")) {
             if (args.length < 4) {
                 if (sender instanceof Player) {
-                    Utils.sendMessage((Player) sender, "Not enough arguments specified.");
+                    Messaging.sendMessage((Player) sender, "Not enough arguments specified.");
                 } else {
-                    Utils.log("Not enough arguments specified.");
+                    Messaging.log("Not enough arguments specified.");
                 }
                 return true;
             }
 
-            if (Utils.isScrollOff(player)) {
+            if (Scroll.isScrollOff(player)) {
                 ItemMeta offHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                 String entity = args[2].toLowerCase();
                 String entity2 = args[3].toLowerCase();
@@ -99,11 +101,11 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    String line = Strings.cleanLore(lore.get(i), false, false);
                     if (line.contains(entity) &&
                             line.contains(entity2) &&
-                            !line.contains("complete")) {
-                        if (Utils.updateTxtLine(lore, player, i, true)) {
+                            line.contains("incomplete")) {
+                        if (Completion.updateTxtLine(lore, player, i, true)) {
                             return true;
                         }
                     }
@@ -118,9 +120,9 @@ public class Completer implements CommandExecutor {
         if (args[0].equalsIgnoreCase("num")) {
             if (args.length < 4) {
                 if (sender instanceof Player) {
-                    Utils.sendMessage((Player) sender, "Not enough arguments specified.");
+                    Messaging.sendMessage((Player) sender, "Not enough arguments specified.");
                 } else {
-                    Utils.log("Not enough arguments specified.");
+                    Messaging.log("Not enough arguments specified.");
                 }
                 return true;
             }
@@ -132,7 +134,7 @@ public class Completer implements CommandExecutor {
                 } catch (Exception e) {}
             }
 
-            if (Utils.isScrollOff(player)) {
+            if (Scroll.isScrollOff(player)) {
                 ItemMeta offHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                 String entity = args[2].toLowerCase();
                 String entity2 = args[3].toLowerCase();
@@ -140,11 +142,10 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    String line = Strings.cleanLore(lore.get(i), false, false);
                     if (line.contains(entity) &&
-                            line.contains(entity2) &&
-                            !line.contains("complete")) {
-                        if (Utils.updateNumLine(lore, player, amount, i)) {
+                            line.contains(entity2)) {
+                        if (Completion.updateNumLine(lore, player, amount, i)) {
                             return true;
                         }
                     }
@@ -159,14 +160,14 @@ public class Completer implements CommandExecutor {
         if (args[0].equalsIgnoreCase("unlock")) {
             if (args.length < 4) {
                 if (sender instanceof Player) {
-                    Utils.sendMessage((Player) sender, "Not enough arguments specified.");
+                    Messaging.sendMessage((Player) sender, "Not enough arguments specified.");
                 } else {
-                    Utils.log("Not enough arguments specified.");
+                    Messaging.log("Not enough arguments specified.");
                 }
                 return true;
             }
 
-            if (Utils.isScrollOff(player)) {
+            if (Scroll.isScrollOff(player)) {
                 ItemMeta offHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                 String entity = args[2].replace("_", " ").toLowerCase();
                 String entity2 = args[3].replace("_", " ").toLowerCase();
@@ -174,10 +175,10 @@ public class Completer implements CommandExecutor {
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
 
                 for (int i = 0; i < loreLength; i++) {
-                    String line = Utils.cleanLore(lore.get(i), false, false);
+                    String line = Strings.cleanLore(lore.get(i), false, false);
                     if (line.contains(entity) &&
                             line.contains(entity2) &&
-                            !line.contains("complete")) {
+                            line.contains("incomplete")) {
                         String strike = ChatColor.STRIKETHROUGH + "";
                         lore.set(i, lore.get(i).replace(strike, ""));
                         ItemStack itemStack = player.getInventory().getItemInOffHand();
@@ -196,14 +197,14 @@ public class Completer implements CommandExecutor {
         if (args[0].equalsIgnoreCase("trade")) {
             if (args.length < 4) {
                 if (sender instanceof Player) {
-                    Utils.sendMessage((Player) sender, "Not enough arguments specified.");
+                    Messaging.sendMessage((Player) sender, "Not enough arguments specified.");
                 } else {
-                    Utils.log("Not enough arguments specified.");
+                    Messaging.log("Not enough arguments specified.");
                 }
                 return true;
             }
 
-            if (Utils.isScrollOff(player)) {
+            if (Scroll.isScrollOff(player)) {
                 ItemMeta offHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                 String entity = args[2].replace("_", " ").toLowerCase();
                 String entity2 = args[3].replace("_", " ").toLowerCase();
@@ -227,7 +228,7 @@ public class Completer implements CommandExecutor {
         }
 
         if (sender instanceof Player) {
-            Utils.sendMessage((Player) sender, "Please use a valid quests command");
+            Messaging.sendMessage((Player) sender, "Please use a valid quests command");
         }
         return true;
     }

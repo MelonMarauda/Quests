@@ -1,6 +1,6 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -15,26 +15,26 @@ public class Help implements CommandExecutor {
 
             Player p = (Player) sender;
             if (!p.hasPermission("quests.admin")) {
-                Utils.sendMessage(p, "You are missing quests admin permissions. Speak to Melon for more info");
+                Messaging.sendMessage(p, "You are missing quests admin permissions. Speak to Melon for more info");
                 return true;
             }
 
-            Utils.sendMessage(p, " ");
-            Utils.sendMessage(p, "Nature commands -----");
-            Utils.sendMessage(p, "/nature - Main nature plugin commands");
-            Utils.sendMessage(p, "/trees - Tree generator commands");
-            Utils.sendMessage(p, "/vines - Vine generator commands");
-            Utils.sendMessage(p, " ");
-            Utils.sendMessage(p, "Dragon Commands -----");
-            Utils.sendMessage(p, "/dragon - Player dragon commands");
-            Utils.sendMessage(p, "/adragon - Admin dragon commands");
-            Utils.sendMessage(p, " ");
-            Utils.sendMessage(p, "Quest Commands -----");
-            Utils.sendMessage(p, "/quest - Player quest commands");
-            Utils.sendMessage(p, "/aquest - Admin quest commands");
-            Utils.sendMessage(p, "/gquest - Quest generator commands");
-            Utils.sendMessage(p, "/cquest - Quest completer commands");
-            Utils.sendMessage(p, " ");
+            Messaging.sendMessage(p, " ");
+            Messaging.sendMessage(p, "Nature commands -----");
+            Messaging.sendMessage(p, "/nature - Main nature plugin commands");
+            Messaging.sendMessage(p, "/trees - Tree generator commands");
+            Messaging.sendMessage(p, "/vines - Vine generator commands");
+            Messaging.sendMessage(p, " ");
+            Messaging.sendMessage(p, "Dragon Commands -----");
+            Messaging.sendMessage(p, "/dragon - Player dragon commands");
+            Messaging.sendMessage(p, "/adragon - Admin dragon commands");
+            Messaging.sendMessage(p, " ");
+            Messaging.sendMessage(p, "Quest Commands -----");
+            Messaging.sendMessage(p, "/quest - Player quest commands");
+            Messaging.sendMessage(p, "/aquest - Admin quest commands");
+            Messaging.sendMessage(p, "/gquest - Quest generator commands");
+            Messaging.sendMessage(p, "/cquest - Quest completer commands");
+            Messaging.sendMessage(p, " ");
 
         }
         return true;

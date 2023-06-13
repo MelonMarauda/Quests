@@ -1,10 +1,12 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
 import com.jagsnet.minecraft.plugins.quests.Quests;
-import com.jagsnet.minecraft.plugins.quests.listeners.Strange;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
-import net.jagsnet.minecraft.plugins.mlib.utils.Gui;
-import net.jagsnet.minecraft.plugins.mlib.utils.Strings;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Gui;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Claim;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Completion;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Scroll;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -14,15 +16,12 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.persistence.PersistentDataType;
 
-import java.text.DateFormat;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static com.jagsnet.minecraft.plugins.quests.otherStuff.Utils.*;
 import static java.lang.Integer.parseInt;
 import static org.bukkit.Bukkit.getServer;
 
@@ -50,18 +49,18 @@ public class Main implements CommandExecutor {
 
 
                 ItemMeta mainHandItem = null;
-                if (Utils.isScrollMain(player)) {
+                if (Scroll.isScrollMain(player)) {
                     mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                 }
-                if (Utils.isScrollOff(player)) {
+                if (Scroll.isScrollOff(player)) {
                     mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                 }
                 if (mainHandItem != null) {
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
                         String[] location = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING).split("_");
-                        load(location[0]);
-                        List helps = Utils.get().getStringList( location[1] + ".help");
+                        Configs.load(location[0]);
+                        List helps = Configs.get().getStringList( location[1] + ".help");
                         if (helps != null && helps.size() != 0) {
                             player.sendMessage(boldGold + "---Quest Specific Help---");
                             for (int i = 0; i < helps.size(); i++) {
@@ -76,12 +75,12 @@ public class Main implements CommandExecutor {
             // ------------------ Claim completed quest -------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("claim")) {
-                if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
+                if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
                     ItemMeta mainHandItem = null;
-                    if (Utils.isScrollMain(player)) {
+                    if (Scroll.isScrollMain(player)) {
                         mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                     }
-                    if (Utils.isScrollOff(player)) {
+                    if (Scroll.isScrollOff(player)) {
                         mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                     }
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
@@ -90,113 +89,113 @@ public class Main implements CommandExecutor {
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.LONG)) {
                         key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
                         if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                            Utils.load(location.split("_")[0]);
-                            if (Utils.get().getString(location.split("_")[1] + ".expiry") != null) {
-                                long expiry = Long.valueOf(Utils.get().getString(location.split("_")[1] + ".expiry"));
+                            Configs.load(location.split("_")[0]);
+                            if (Configs.get().getString(location.split("_")[1] + ".expiry") != null) {
+                                long expiry = Long.valueOf(Configs.get().getString(location.split("_")[1] + ".expiry"));
                                 key = new NamespacedKey(Quests.getInstance(), "expiry");
                                 expiry += mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG);
                                 if (expiry <= System.currentTimeMillis()) {
-                                    Utils.sendMessage(player, "This scroll has expired. It can no longer be claimed");
+                                    Messaging.sendMessage(player, "This scroll has expired. It can no longer be claimed");
                                     return true;
                                 }
                             }
                         }
                     }
 
-                    if (Utils.isComplete(mainHandItem)) {
+                    if (Completion.isComplete(mainHandItem)) {
                         if (player.getInventory().getItemInMainHand().getAmount() > 1) {
-                            Utils.sendMessage(player, "You may only claim one quest scroll at a time");
+                            Messaging.sendMessage(player, "You may only claim one quest scroll at a time");
                             return true;
                         }
-                        return Utils.claim(player, true, ".rewards", false);
+                        return Claim.claim(player, true, ".rewards", false);
                     } else {
-                        Utils.sendMessage(player, "You have not completed this quest yet");
+                        Messaging.sendMessage(player, "You have not completed this quest yet");
                         return true;
                     }
                 }
-                Utils.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
+                Messaging.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
                 return true;
             }
             // ------------------------------------------------------
             // ------------------ See expiry ------------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("expiry")) {
-                if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
+                if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
                     ItemMeta mainHandItem = null;
-                    if (Utils.isScrollMain(player)) {
+                    if (Scroll.isScrollMain(player)) {
                         mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                     }
-                    if (Utils.isScrollOff(player)) {
+                    if (Scroll.isScrollOff(player)) {
                         mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                     }
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
                         String location = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-                        Utils.load(location.split("_")[0]);
-                        if (Utils.get().getString(location.split("_")[1] + ".expiry") != null) {
-                            Long expiry = Long.valueOf(Utils.get().getString(location.split("_")[1] + ".expiry"));
+                        Configs.load(location.split("_")[0]);
+                        if (Configs.get().getString(location.split("_")[1] + ".expiry") != null) {
+                            Long expiry = Long.valueOf(Configs.get().getString(location.split("_")[1] + ".expiry"));
                             key = new NamespacedKey(Quests.getInstance(), "expiry");
                             if (!mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.LONG)) {
-                                Utils.sendMessage(player, "This quest scroll does not expire");
+                                Messaging.sendMessage(player, "This quest scroll does not expire");
                                 return true;
                             }
                             expiry += mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG);
                             Long current = System.currentTimeMillis();
                             if (current > expiry) {
-                                Utils.sendMessage(player, "This scroll has expired. It can no longer be claimed");
+                                Messaging.sendMessage(player, "This scroll has expired. It can no longer be claimed");
                                 return true;
                             }
                             Long hours = (expiry / 60 / 60 / 1000) - (current / 60 / 60 / 1000);
                             if (hours < 6) {
                                 Long minutes = (expiry / 60 / 1000) - (current / 60 / 1000);
-                                Utils.sendMessage(player, "Expiry on this quest is set for " + minutes + " minutes from now");
+                                Messaging.sendMessage(player, "Expiry on this quest is set for " + minutes + " minutes from now");
                             } else {
-                                Utils.sendMessage(player, "Expiry on this quest is set for " + hours + " hours from now");
+                                Messaging.sendMessage(player, "Expiry on this quest is set for " + hours + " hours from now");
                             }
                             return true;
                         }
-                        Utils.sendMessage(player, "This quest does not have an expiry set");
+                        Messaging.sendMessage(player, "This quest does not have an expiry set");
                         return true;
                     }
 
                     key = new NamespacedKey(Quests.getInstance(), "expiry");
                     if (!mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.LONG)) {
-                        Utils.sendMessage(player, "This quest scroll does not expire");
+                        Messaging.sendMessage(player, "This quest scroll does not expire");
                         return true;
                     }
                     Long expiry = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG);
                     Long current = System.currentTimeMillis();
                     if (current > expiry) {
-                        Utils.sendMessage(player, "This scroll has expired. It can no longer be claimed");
+                        Messaging.sendMessage(player, "This scroll has expired. It can no longer be claimed");
                         return true;
                     }
                     Long hours = (expiry / 60 / 60 / 1000) - (current / 60 / 60 / 1000);
                     if (hours < 6) {
                         Long minutes = (expiry / 60 / 1000) - (current / 60 / 1000);
-                        Utils.sendMessage(player, "Expiry on this quest is set for " + minutes + " minutes from now");
+                        Messaging.sendMessage(player, "Expiry on this quest is set for " + minutes + " minutes from now");
                     } else {
-                        Utils.sendMessage(player, "Expiry on this quest is set for " + hours + " hours from now");
+                        Messaging.sendMessage(player, "Expiry on this quest is set for " + hours + " hours from now");
                     }
                     return true;
                 }
-                Utils.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
+                Messaging.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
                 return true;
             }
             // ------------------------------------------------------
             // ----------------- Complete a secret ------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("secret")) {
-                if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
+                if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
                     ItemMeta mainHandItem = null;
                     Boolean isOff = false;
-                    if (Utils.isScrollMain(player)) {
+                    if (Scroll.isScrollMain(player)) {
                         mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
-                    } else if (Utils.isScrollOff(player)) {
+                    } else if (Scroll.isScrollOff(player)) {
                         mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                         isOff = true;
                     }
                     if (args.length < 2) {
-                        Utils.sendMessage(player, "You must provide a code to test.");
+                        Messaging.sendMessage(player, "You must provide a code to test.");
                         return true;
                     }
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "secretCooldown");
@@ -204,9 +203,9 @@ public class Main implements CommandExecutor {
                         if (mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG) > System.currentTimeMillis()) {
                             long t = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG) - System.currentTimeMillis();
 
-                            String msg = "You cannot guess this secret code again for another " + time(t) + "!";
+                            String msg = "You cannot guess this secret code again for another " + Messaging.time(t) + "!";
 
-                            Utils.sendMessage(player, msg);
+                            Messaging.sendMessage(player, msg);
                             return true;
                         }
                     }
@@ -214,7 +213,7 @@ public class Main implements CommandExecutor {
                     key = new NamespacedKey(Quests.getInstance(), "ultraSecret");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
                         if (mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING).equals("Claimed")) {
-                            Utils.sendMessage(player, "You have already correctly guessed the secret on this scroll.");
+                            Messaging.sendMessage(player, "You have already correctly guessed the secret on this scroll.");
                             return true;
                         }
                     }
@@ -224,17 +223,17 @@ public class Main implements CommandExecutor {
                     List ultraSecret = null;
                     String[] location = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING).split("_");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                        load(location[0]);
-                        if (Utils.get().getStringList(location[1] + ".secret") == null) {
-                            Utils.sendMessage(player, "This quest scroll does not have a secret set");
+                        Configs.load(location[0]);
+                        if (Configs.get().getStringList(location[1] + ".secret") == null) {
+                            Messaging.sendMessage(player, "This quest scroll does not have a secret set");
                             return true;
                         }
-                        secret = Utils.get().getString(location[1] + ".secret");
-                        if (Utils.get().getStringList(location[1] + ".ultraSecret") != null) {
-                            ultraSecret = Utils.get().getStringList(location[1] + ".ultraSecret");
+                        secret = Configs.get().getString(location[1] + ".secret");
+                        if (Configs.get().getStringList(location[1] + ".ultraSecret") != null) {
+                            ultraSecret = Configs.get().getStringList(location[1] + ".ultraSecret");
                         }
                     } else {
-                        Utils.sendMessage(player, "This quest scroll does not have a secret set");
+                        Messaging.sendMessage(player, "This quest scroll does not have a secret set");
                         return true;
                     }
 
@@ -247,8 +246,8 @@ public class Main implements CommandExecutor {
                     }
                     ItemMeta m = is.getItemMeta();
 
-                    if (Utils.get().getString(location[1] + ".secretCooldown") != null) {
-                        m.getPersistentDataContainer().set(key, PersistentDataType.LONG, System.currentTimeMillis() + Utils.get().getLong(location[1] + ".secretCooldown"));
+                    if (Configs.get().getString(location[1] + ".secretCooldown") != null) {
+                        m.getPersistentDataContainer().set(key, PersistentDataType.LONG, System.currentTimeMillis() + Configs.get().getLong(location[1] + ".secretCooldown"));
                     } else {
                         m.getPersistentDataContainer().set(key, PersistentDataType.LONG, System.currentTimeMillis() + 60000);
                     }
@@ -265,10 +264,10 @@ public class Main implements CommandExecutor {
                     }
 
                     if (!secret.equals(suppliedCode)) {
-                        if (Utils.get().getString(location[1] + ".secretCooldown") != null) {
-                            Utils.sendMessage(player, "The provided secret code was wrong, try again in " + time(Utils.get().getLong(location[1] + ".secretCooldown")) + ".");
+                        if (Configs.get().getString(location[1] + ".secretCooldown") != null) {
+                            Messaging.sendMessage(player, "The provided secret code was wrong, try again in " + Messaging.time(Configs.get().getLong(location[1] + ".secretCooldown")) + ".");
                         } else {
-                            Utils.sendMessage(player, "The provided secret code was wrong, try again in 60 seconds.");
+                            Messaging.sendMessage(player, "The provided secret code was wrong, try again in 60 seconds.");
                         }
                         return true;
                     }
@@ -281,7 +280,7 @@ public class Main implements CommandExecutor {
                     }
                     for (int i = 0; i < lore.size(); i++) {
                         if (lore.get(i).contains("Guess The Secret Code") && lore.get(i).contains("Incomplete")) {
-                            Utils.updateTxtLine(lore, player, i, isOff);
+                            Completion.updateTxtLine(lore, player, i, isOff);
                         }
                     }
 
@@ -303,7 +302,7 @@ public class Main implements CommandExecutor {
                             }
                         }
                         if (count < rewardCount) {
-                            Utils.sendMessage(player, "Clear some inventory space before guessing correctly again.");
+                            Messaging.sendMessage(player, "Clear some inventory space before guessing correctly again.");
                             return true;
                         }
                         key = new NamespacedKey(Quests.getInstance(), "ultraSecret");
@@ -313,15 +312,15 @@ public class Main implements CommandExecutor {
                                 if (rewardName.contains("<player>")) {
                                     rewardName = rewardName.replace("<player>", ChatColor.stripColor(player.getName()));
                                 }
-                                loadLists();
+                                Configs.loadLists();
                                 while (rewardName.contains("<") && rewardName.contains(">")) {
                                     String listName = rewardName.substring(rewardName.indexOf("<") + 1, rewardName.indexOf(">"));
-                                    List list = getLists().getStringList(listName);
+                                    List list = Configs.getLists().getStringList(listName);
                                     int randomNum = ThreadLocalRandom.current().nextInt(0, list.size());
                                     rewardName = rewardName.replace("<" + listName + ">", (CharSequence) list.get(randomNum));
                                 }
                                 Bukkit.dispatchCommand(Bukkit.getConsoleSender(), rewardName);
-                                Utils.log("Quests ran: " + rewardName);
+                                Messaging.log("Quests ran: " + rewardName);
                             }
                         }
                     }
@@ -329,10 +328,10 @@ public class Main implements CommandExecutor {
                     meta.getPersistentDataContainer().set(key, PersistentDataType.STRING, "Claimed");
                     meta.setLore(lore);
                     itemStack.setItemMeta(meta);
-                    Utils.sendMessage(player, "You guessed the code correctly!");
+                    Messaging.sendMessage(player, "You guessed the code correctly!");
                     return true;
                 }
-                Utils.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
+                Messaging.sendMessage(player, "Please hold a valid quest scroll in your main hand to run this command");
                 return true;
             }
 
@@ -341,43 +340,43 @@ public class Main implements CommandExecutor {
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("path")) {
                 if (args.length > 1) {
-                    if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
+                    if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
                         ItemMeta mainHandItem = null;
-                        if (Utils.isScrollMain(player)) {
+                        if (Scroll.isScrollMain(player)) {
                             mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                         }
-                        if (Utils.isScrollOff(player)) {
+                        if (Scroll.isScrollOff(player)) {
                             mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                         }
                         String location;
                         NamespacedKey key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
                         if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
                             location = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-                            Utils.load(location.split("_")[0]);
+                            Configs.load(location.split("_")[0]);
                         } else {
-                            Utils.sendMessage(player, "Er, this quest isn't real, strange.");
+                            Messaging.sendMessage(player, "Er, this quest isn't real, strange.");
                             return true;
                         }
                         key = new NamespacedKey(Quests.getInstance(), "expiry");
                         if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.LONG)) {
-                            if (Utils.get().getString(location.split("_")[1] + ".expiry") != null) {
-                                long expiry = Long.valueOf(Utils.get().getString(location.split("_")[1] + ".expiry"));
+                            if (Configs.get().getString(location.split("_")[1] + ".expiry") != null) {
+                                long expiry = Long.valueOf(Configs.get().getString(location.split("_")[1] + ".expiry"));
                                 key = new NamespacedKey(Quests.getInstance(), "expiry");
                                 expiry += mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.LONG);
                                 if (expiry <= System.currentTimeMillis()) {
-                                    Utils.sendMessage(player, "This scroll has expired. It can no longer be claimed");
+                                    Messaging.sendMessage(player, "This scroll has expired. It can no longer be claimed");
                                     return true;
                                 }
                             }
                         }
-                        if (Utils.get().getStringList(location.split("_")[1] + ".path." + args[1]).size() < 1) {
-                            Utils.sendMessage(player, "Specify a valid path like /quest path 1");
+                        if (Configs.get().getStringList(location.split("_")[1] + ".path." + args[1]).size() < 1) {
+                            Messaging.sendMessage(player, "Specify a valid path like /quest path 1");
                             return true;
                         }
-                        return Utils.claim(player, true, ".path." +args[1], false);
+                        return Claim.claim(player, true, ".path." +args[1], false);
                     }
                 } else {
-                    Utils.sendMessage(player, "Specify a path like /quest path 2");
+                    Messaging.sendMessage(player, "Specify a path like /quest path 2");
                     return true;
                 }
             }
@@ -385,7 +384,7 @@ public class Main implements CommandExecutor {
             // ------------------------------------------------------
             // -------------------- List Quests ---------------------
             // ------------------------------------------------------
-            Utils.loadGlobal();
+            Configs.loadGlobal();
             if (args[0].equalsIgnoreCase("list")) {
                 String white = ChatColor.WHITE + "";
                 String boldGold = ChatColor.GOLD + "" + ChatColor.BOLD + "";
@@ -396,12 +395,12 @@ public class Main implements CommandExecutor {
 
                 ArrayList<ItemStack> items = new ArrayList<>();
 
-                for (String s : Utils.getGlobal().getKeys(true)) {
+                for (String s : Configs.getGlobal().getKeys(true)) {
                     if (s.split("\\.").length == 2 && s.split("\\.")[0].equals("commands")) {
                         String command = s.split("\\.")[1];
-                        String dateFormat = Utils.getGlobal().getString("commands." + command + ".dateFormat");
-                        String permissionName = Utils.getGlobal().getString("commands." + command + ".permissionName");
-                        String description = Utils.getGlobal().getString("commands." + command + ".description");
+                        String dateFormat = Configs.getGlobal().getString("commands." + command + ".dateFormat");
+                        String permissionName = Configs.getGlobal().getString("commands." + command + ".permissionName");
+                        String description = Configs.getGlobal().getString("commands." + command + ".description");
 
                         SimpleDateFormat df = new SimpleDateFormat(dateFormat);
                         String date = df.format(new Date());
@@ -425,18 +424,18 @@ public class Main implements CommandExecutor {
             // ------------------ Custom Commands -------------------
             // ------------------------------------------------------
             String command = args[0].toLowerCase();
-            if (Utils.getGlobal().getString("commands." + command + ".dateFormat") != null) {
-                String dateFormat = Utils.getGlobal().getString("commands." + command + ".dateFormat");
-                String permissionName = Utils.getGlobal().getString("commands." + command + ".permissionName");
-                String permissionCooldown = Utils.getGlobal().getString("commands." + command + ".permissionCooldown");
-                String quest = Utils.getGlobal().getString("commands." + command + ".quest");
-                String denyMessage = Utils.getGlobal().getString("commands." + command + ".denyMessage");
+            if (Configs.getGlobal().getString("commands." + command + ".dateFormat") != null) {
+                String dateFormat = Configs.getGlobal().getString("commands." + command + ".dateFormat");
+                String permissionName = Configs.getGlobal().getString("commands." + command + ".permissionName");
+                String permissionCooldown = Configs.getGlobal().getString("commands." + command + ".permissionCooldown");
+                String quest = Configs.getGlobal().getString("commands." + command + ".quest");
+                String denyMessage = Configs.getGlobal().getString("commands." + command + ".denyMessage");
 
                 SimpleDateFormat df = new SimpleDateFormat(dateFormat);
                 String date = df.format(new Date());
 
                 if (player.hasPermission("quest." + permissionName + "." + date)) {
-                    Utils.sendMessage(player, denyMessage);
+                    Messaging.sendMessage(player, denyMessage);
                     return true;
                 }
 
@@ -450,9 +449,9 @@ public class Main implements CommandExecutor {
                 return true;
             }
 
-            Utils.sendMessage(player, "Please use a valid quests command");
+            Messaging.sendMessage(player, "Please use a valid quests command");
         } else {
-            Utils.log("A player must run this command");
+            Messaging.log("A player must run this command");
         }
         return true;
     }

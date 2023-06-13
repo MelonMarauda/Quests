@@ -81,10 +81,5 @@
             <version>7.0.5</version>
             <scope>provided</scope>
         </dependency>
-        <dependency>
-            <groupId>net.jagsnet.minecraft.plugins</groupId>
-            <artifactId>mlib</artifactId>
-            <version>1</version>
-        </dependency>
     </dependencies>
 </project>

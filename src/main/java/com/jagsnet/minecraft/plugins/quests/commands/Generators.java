@@ -1,7 +1,8 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
 import com.jagsnet.minecraft.plugins.quests.Quests;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -29,21 +30,21 @@ public class Generators implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player) sender;
             if (!player.hasPermission("quests.admin")) {
-                Utils.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
+                Messaging.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
                 return true;
             }
         }
         if (args.length < 1) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "/gquest <fileName> <scrollName> <userName> [force|verbose]");
-            } else { Utils.log("Invalid quests command"); }
+                Messaging.sendMessage((Player) sender, "/gquest <fileName> <scrollName> <userName> [force|verbose]");
+            } else { Messaging.log("Invalid quests command"); }
             return true;
         }
         // ------------------------------------------------------
         // ------------------ Generate scroll -------------------
         // ------------------------------------------------------
-        Utils.load(args[0]);
-        Utils.loadLists();
+        Configs.load(args[0]);
+        Configs.loadLists();
         Boolean force = false;
         Boolean verbose = true;
         if (args.length > 3) {
@@ -62,63 +63,63 @@ public class Generators implements CommandExecutor {
         }
         if (args.length < 3) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Please specify a scroll name specified in the configs and a player to give it to");
+                Messaging.sendMessage((Player) sender, "Please specify a scroll name specified in the configs and a player to give it to");
             } else {
-                Utils.log("Please specify a scroll name specified in the configs and a player to give it to");
+                Messaging.log("Please specify a scroll name specified in the configs and a player to give it to");
             }
             return true;
         }
         Player player = Bukkit.getPlayer(args[2]);
         if (player == null) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Please specify a player that is currently online");
+                Messaging.sendMessage((Player) sender, "Please specify a player that is currently online");
             } else {
-                Utils.log("Please specify a player that is currently online");
+                Messaging.log("Please specify a player that is currently online");
             }
             return true;
         }
         if (!player.isOnline()) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Please specify a player that is currently online");
+                Messaging.sendMessage((Player) sender, "Please specify a player that is currently online");
             } else {
-                Utils.log("Please specify a player that is currently online");
+                Messaging.log("Please specify a player that is currently online");
             }
             return true;
         }
 
         if (player.hasPermission("quest." + args[0] + "_" + args[1]) && !force) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Player has already gotten one of these quests. Use [/gquest config quest playerName force] to give them another.");
+                Messaging.sendMessage((Player) sender, "Player has already gotten one of these quests. Use [/gquest config quest playerName force] to give them another.");
             } else {
-                Utils.log("Player has already gotten one of these quests. Use [/gquest config quest playerName force] to give them another.");
+                Messaging.log("Player has already gotten one of these quests. Use [/gquest config quest playerName force] to give them another.");
             }
             if (verbose) {
-                Utils.sendMessage(player, "You have already collected this quest. It has a " + Utils.get().getString(args[1] + ".permission") + " cooldown. Please wait until this is up.");
+                Messaging.sendMessage(player, "You have already collected this quest. It has a " + Configs.get().getString(args[1] + ".permission") + " cooldown. Please wait until this is up.");
             }
             return true;
         }
 
-        if (Utils.get().getStringList(args[1] + ".lines") == null) {
+        if (Configs.get().getStringList(args[1] + ".lines") == null) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Number of lines for this scroll not specified");
+                Messaging.sendMessage((Player) sender, "Number of lines for this scroll not specified");
             } else {
-                Utils.log("Number of lines for this scroll not specified");
+                Messaging.log("Number of lines for this scroll not specified");
             }
             return true;
         }
-        if (Utils.get().getStringList(args[1] + ".rewards") == null) {
+        if (Configs.get().getStringList(args[1] + ".rewards") == null) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Reward not set for this scroll");
+                Messaging.sendMessage((Player) sender, "Reward not set for this scroll");
             } else {
-                Utils.log("Reward not set for this scroll");
+                Messaging.log("Reward not set for this scroll");
             }
             return true;
         }
-        if (Utils.get().getString(args[1] + ".name") == null) {
+        if (Configs.get().getString(args[1] + ".name") == null) {
             if (sender instanceof Player) {
-                Utils.sendMessage((Player) sender, "Name not set for this scroll");
+                Messaging.sendMessage((Player) sender, "Name not set for this scroll");
             } else {
-                Utils.log("Name not set for this scroll");
+                Messaging.log("Name not set for this scroll");
             }
             return true;
         }
@@ -127,9 +128,9 @@ public class Generators implements CommandExecutor {
     }
 
     public static boolean genScroll(String[] args, Player player) {
-        Utils.load(args[0]);
-        Utils.loadLists();
-        List lines = Utils.get().getStringList(args[1] + ".lines");
+        Configs.load(args[0]);
+        Configs.loadLists();
+        List lines = Configs.get().getStringList(args[1] + ".lines");
 
         ItemStack scroll = new ItemStack(Material.PAPER);
         ItemMeta scrollMeta = scroll.getItemMeta();
@@ -141,7 +142,7 @@ public class Generators implements CommandExecutor {
         String random = ChatColor.MAGIC + "";
         String strike = ChatColor.STRIKETHROUGH + "";
         String stats = "";
-        scrollMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + Utils.get().getString(args[1] + "." + "name"));
+        scrollMeta.setDisplayName(ChatColor.GOLD + "" + ChatColor.BOLD + Configs.get().getString(args[1] + "." + "name"));
         for (int i = 0; i < lines.size(); i++) {
             String loreLine = lines.get(i).toString();
             if (loreLine.equals("<break>")) {
@@ -158,7 +159,7 @@ public class Generators implements CommandExecutor {
             }
             while (loreLine.contains("<") && loreLine.contains(">")) {
                 String listName = loreLine.substring(loreLine.indexOf("<") + 1, loreLine.indexOf(">"));
-                List list = Utils.getLists().getStringList(listName);
+                List list = Configs.getLists().getStringList(listName);
                 int randomNum = ThreadLocalRandom.current().nextInt(0, list.size());
                 String s = String.valueOf(list.get(randomNum));
                 if (s.contains("|")) {
@@ -194,8 +195,8 @@ public class Generators implements CommandExecutor {
         Long expiry = System.currentTimeMillis();
         key = new NamespacedKey(Quests.getInstance(), "expiry");
         scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, expiry);
-        if (Utils.get().getString(args[1] + ".UUID") != null) {
-            if (Utils.get().getString(args[1] + ".UUID").equalsIgnoreCase("true")) {
+        if (Configs.get().getString(args[1] + ".UUID") != null) {
+            if (Configs.get().getString(args[1] + ".UUID").equalsIgnoreCase("true")) {
                 key = new NamespacedKey(Quests.getInstance(), "UUID");
                 scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, player.getUniqueId().toString());
             }
@@ -206,8 +207,8 @@ public class Generators implements CommandExecutor {
         for (String s : configs) {
             if (s.equalsIgnoreCase("movement")) {
                 String m = "";
-                if (Utils.get().getString(args[1] + "." + s) != null) {
-                    m = Utils.get().getString(args[1] + "." + s);
+                if (Configs.get().getString(args[1] + "." + s) != null) {
+                    m = Configs.get().getString(args[1] + "." + s);
                 }
                 if (stats.equalsIgnoreCase("") && m.equalsIgnoreCase("")) {
                 } else if (stats.equalsIgnoreCase("") || m.equalsIgnoreCase("")) {
@@ -217,15 +218,15 @@ public class Generators implements CommandExecutor {
                     key = new NamespacedKey(Quests.getInstance(), s);
                     scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, m + "," + stats);
                 }
-            } else if (Utils.get().getString(args[1] + "." + s) != null) {
+            } else if (Configs.get().getString(args[1] + "." + s) != null) {
                 key = new NamespacedKey(Quests.getInstance(), s);
-                scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Utils.get().getString(args[1] + "." + s));
+                scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, Configs.get().getString(args[1] + "." + s));
 
                 if (s.equalsIgnoreCase("random")) {
                     key = new NamespacedKey(Quests.getInstance(), "randomTime");
-                    if (Utils.get().getString(args[1] + ".randomTimer") != null) {
+                    if (Configs.get().getString(args[1] + ".randomTimer") != null) {
                         key = new NamespacedKey(Quests.getInstance(), "randomTimer");
-                        scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, Utils.get().getLong(args[1] + ".randomTimer"));
+                        scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, Configs.get().getLong(args[1] + ".randomTimer"));
                     } else {
                         scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.LONG, 600000L);
                     }
@@ -233,18 +234,18 @@ public class Generators implements CommandExecutor {
             }
         }
 
-        if (Utils.get().getString(args[1] + ".texture") != null) {
-            String textureS = Utils.get().getString(args[1] + ".texture");
+        if (Configs.get().getString(args[1] + ".texture") != null) {
+            String textureS = Configs.get().getString(args[1] + ".texture");
             int texture = 0;
             if (textureS.contains("-")) {
                 texture = ThreadLocalRandom.current().nextInt(Integer.parseInt(textureS.split("-")[0]), Integer.parseInt(textureS.split("-")[1]));
             } else {
-                texture = Integer.parseInt(Utils.get().getString(args[1] + ".texture"));
+                texture = Integer.parseInt(Configs.get().getString(args[1] + ".texture"));
             }
             scrollMeta.setCustomModelData(texture);
         }
         Boolean permission = false;
-        if (Utils.get().getString(args[1] + ".permission") != null) {
+        if (Configs.get().getString(args[1] + ".permission") != null) {
             permission = true;
         }
 
@@ -252,7 +253,7 @@ public class Generators implements CommandExecutor {
         key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
         scrollMeta.getPersistentDataContainer().set(key, PersistentDataType.STRING, lorePath);
 
-        Utils.log(player.getName() + " collected quest scroll " + args[1] + "_" + args[2]);
+        Messaging.log(player.getName() + " collected quest scroll " + args[1] + "_" + args[2]);
 
         scrollMeta.setLore(lore);
         scroll.setItemMeta(scrollMeta);
@@ -269,27 +270,27 @@ public class Generators implements CommandExecutor {
                     player.getInventory().setItem(slot, scroll);
                 }
                 slot = 50;
-                if (Utils.get().getStringList(args[1] + ".message.lines").size() > 0) {
-                    if (Utils.get().getString(args[1] + ".message.name") == null) {
-                        Utils.sendMessage(player, Utils.get().getStringList(args[1] + ".message.lines").get(0).toString());
+                if (Configs.get().getStringList(args[1] + ".message.lines").size() > 0) {
+                    if (Configs.get().getString(args[1] + ".message.name") == null) {
+                        Messaging.sendMessage(player, Configs.get().getStringList(args[1] + ".message.lines").get(0).toString());
                     } else {
-                        List messages = Utils.get().getStringList(args[1] + ".message.lines");
-                        String msgName = Utils.get().getString(args[1] + ".message.name");
-                        String msgColour = Utils.get().getString(args[1] + ".message.colour");
+                        List messages = Configs.get().getStringList(args[1] + ".message.lines");
+                        String msgName = Configs.get().getString(args[1] + ".message.name");
+                        String msgColour = Configs.get().getString(args[1] + ".message.colour");
                         for (int i = 0; i < messages.size(); i++) {
                             player.sendMessage(ChatColor.valueOf(msgColour) + bold + msgName + " > " + white + messages.get(i).toString());
                         }
                     }
-                } else if (Utils.get().getString(args[1] + ".message") != null) {
-                    Utils.sendMessage(player, Utils.get().getString(args[1] + ".message"));
+                } else if (Configs.get().getString(args[1] + ".message") != null) {
+                    Messaging.sendMessage(player, Configs.get().getString(args[1] + ".message"));
                 }
                 if (permission) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + args[0] + "_" + args[1] + " true " + Utils.get().getString(args[1] + ".permission"));
+                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + args[0] + "_" + args[1] + " true " + Configs.get().getString(args[1] + ".permission"));
                 }
                 return true;
             }
         }
-        Utils.sendMessage(player, "Please clear room in your inventory before trying to collect a quest scroll");
+        Messaging.sendMessage(player, "Please clear room in your inventory before trying to collect a quest scroll");
         return false;
     }
 }

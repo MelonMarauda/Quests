@@ -1,10 +1,10 @@
 package com.jagsnet.minecraft.plugins.quests;
 
 import com.jagsnet.minecraft.plugins.quests.commands.*;
-import com.jagsnet.minecraft.plugins.quests.listeners.*;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.MoveToOffhand;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
-import com.jagsnet.minecraft.plugins.quests.scheduledTasks.*;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.bedrock.MoveToOffhand;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
+import com.jagsnet.minecraft.plugins.quests.trackers.listeners.*;
+import com.jagsnet.minecraft.plugins.quests.trackers.scheduledTasks.*;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
 
@@ -90,8 +90,8 @@ public final class Quests extends JavaPlugin {
         // For using persistent data container, don't touch k thx
         instance = this;
 
-        Utils.setupLists();
-        Utils.setupGlobal();
+        Configs.setupLists();
+        Configs.setupGlobal();
         setAuto();
     }
 
@@ -101,6 +101,6 @@ public final class Quests extends JavaPlugin {
     }
 
        public static void setAuto() {
-        auto = Utils.getGlobal().getBoolean("auto");
+        auto = Configs.getGlobal().getBoolean("auto");
     }
 }

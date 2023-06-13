@@ -1,7 +1,10 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
 import com.jagsnet.minecraft.plugins.quests.Quests;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.Utils;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Claim;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Scroll;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -31,50 +34,50 @@ public class Admin implements CommandExecutor {
 
             Player player = (Player) sender;
             if (!player.hasPermission("quests.admin")) {
-                Utils.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
+                Messaging.sendMessage(player, "You are missing quests admin permissions. Speak to Melon for more info");
                 return true;
             }
             if (args.length < 1) {
-                Utils.sendMessage(player, "/aquest rewardList");
-                Utils.sendMessage(player, "/aquest expiry <expiryInMillis>");
-                Utils.sendMessage(player, "/aquest claim");
-                Utils.sendMessage(player, "/aquest who");
-                Utils.sendMessage(player, "/aquest setWho <UUID>");
-                Utils.sendMessage(player, "/aquest reloadList");
-                Utils.sendMessage(player, "/aquest version");
-                Utils.sendMessage(player, "/aquest auto");
-                Utils.sendMessage(player, "/aquest auto [true|false]");
-                Utils.sendMessage(player, "/aquest list");
-                Utils.sendMessage(player, "/aquest list <fileName>");
+                Messaging.sendMessage(player, "/aquest rewardList");
+                Messaging.sendMessage(player, "/aquest expiry <expiryInMillis>");
+                Messaging.sendMessage(player, "/aquest claim");
+                Messaging.sendMessage(player, "/aquest who");
+                Messaging.sendMessage(player, "/aquest setWho <UUID>");
+                Messaging.sendMessage(player, "/aquest reloadList");
+                Messaging.sendMessage(player, "/aquest version");
+                Messaging.sendMessage(player, "/aquest auto");
+                Messaging.sendMessage(player, "/aquest auto [true|false]");
+                Messaging.sendMessage(player, "/aquest list");
+                Messaging.sendMessage(player, "/aquest list <fileName>");
                 return true;
             }
             // ------------------------------------------------------
             // ------------------ List Rewards ----------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("rewardList")) {
-                if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
+                if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
                     ItemMeta mainHandItem = null;
-                    if (Utils.isScrollMain(player)) {
+                    if (Scroll.isScrollMain(player)) {
                         mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                     }
-                    if (Utils.isScrollOff(player)) {
+                    if (Scroll.isScrollOff(player)) {
                         mainHandItem = player.getInventory().getItemInOffHand().getItemMeta();
                     }
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "rewardLocation");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
                         String location = mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING);
-                        Utils.load(location.split("_")[0]);
-                        List rewards = Utils.get().getStringList( location.split("_")[1] + ".rewards");
+                        Configs.load(location.split("_")[0]);
+                        List rewards = Configs.get().getStringList( location.split("_")[1] + ".rewards");
                         int rewardCount = rewards.size();
-                        Utils.sendMessage(player, rewardCount + " Rewards ------------------------");
+                        Messaging.sendMessage(player, rewardCount + " Rewards ------------------------");
                         for (int i = 0; i < rewardCount; i++) {
-                            Utils.sendMessage(player, "/" + rewards.get(i).toString());
+                            Messaging.sendMessage(player, "/" + rewards.get(i).toString());
                         }
                     } else {
-                        Utils.sendMessage(player, "No rewards set for this item");
+                        Messaging.sendMessage(player, "No rewards set for this item");
                     }
                 } else {
-                    Utils.sendMessage(player, "Please hold a valid quest scroll");
+                    Messaging.sendMessage(player, "Please hold a valid quest scroll");
                 }
                 return true;
             }
@@ -83,22 +86,22 @@ public class Admin implements CommandExecutor {
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("expiry")) {
                 if (args.length < 2) {
-                    Utils.sendMessage(player, "Insufficient arguments. Please enter the command like /aQuest expiry <timeInMilliseconds>");
+                    Messaging.sendMessage(player, "Insufficient arguments. Please enter the command like /aQuest expiry <timeInMilliseconds>");
                     return true;
                 }
                 long expiry;
                 try {
                     expiry = parseLong(args[1]);
                 } catch (Exception e) {
-                    Utils.sendMessage(player, "Please enter a valid time in milliseconds");
+                    Messaging.sendMessage(player, "Please enter a valid time in milliseconds");
                     return true;
                 }
                 expiry = expiry + System.currentTimeMillis();
-                if (Utils.isScrollMain(player)) {
+                if (Scroll.isScrollMain(player)) {
                     ItemMeta mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "expiry");
                     mainHandItem.getPersistentDataContainer().set(key, PersistentDataType.LONG, expiry);
-                    Utils.sendMessage(player, "Expiry set for " + expiry + " milliseconds from now");
+                    Messaging.sendMessage(player, "Expiry set for " + expiry + " milliseconds from now");
                     ItemStack itemStack = player.getInventory().getItemInMainHand();
                     itemStack.setItemMeta(mainHandItem);
                 }
@@ -109,7 +112,7 @@ public class Admin implements CommandExecutor {
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("monthly")) {
                 if (args.length < 4) {
-                    Utils.sendMessage(player, "Insufficient arguments.");
+                    Messaging.sendMessage(player, "Insufficient arguments.");
                     return true;
                 }
                 String out = "";
@@ -120,8 +123,8 @@ public class Admin implements CommandExecutor {
                         out = out + args[i - 1] + " ";
                     }
                 }
-                Utils.get().set(args[1] + "." + args[2], out);
-                Utils.save();
+                Configs.get().set(args[1] + "." + args[2], out);
+                Configs.save();
                 return true;
             }
             // ------------------------------------------------------
@@ -130,28 +133,28 @@ public class Admin implements CommandExecutor {
             if (args[0].equalsIgnoreCase("claim")) {
                 if (args.length > 1) {
                     if (args[1].equalsIgnoreCase("force")) {
-                        if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
-                            return Utils.claim(player, false, ".rewards", true);
+                        if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
+                            return Claim.claim(player, false, ".rewards", true);
                         }
                     }
                 }
-                if (Utils.isScrollMain(player) || Utils.isScrollOff(player)) {
-                    return Utils.claim(player, false, ".rewards", false);
+                if (Scroll.isScrollMain(player) || Scroll.isScrollOff(player)) {
+                    return Claim.claim(player, false, ".rewards", false);
                 }
-                Utils.sendMessage(player, "Please hold a valid quest scroll.");
+                Messaging.sendMessage(player, "Please hold a valid quest scroll.");
                 return true;
             }
             // ------------------------------------------------------
             // --------------------- Who ----------------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("who")) {
-                if (Utils.isScrollMain(player)) {
+                if (Scroll.isScrollMain(player)) {
                     ItemMeta mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
                     NamespacedKey key = new NamespacedKey(Quests.getInstance(), "UUID");
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                        Utils.sendMessage(player, Bukkit.getPlayer(UUID.fromString(mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING))).getDisplayName());
+                        Messaging.sendMessage(player, Bukkit.getPlayer(UUID.fromString(mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING))).getDisplayName());
                     } else {
-                        Utils.sendMessage(player, "Anyone can use this scroll");
+                        Messaging.sendMessage(player, "Anyone can use this scroll");
                     }
                 }
                 return true;
@@ -160,9 +163,9 @@ public class Admin implements CommandExecutor {
             // --------------------- Set Who ------------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("setwho")) {
-                if (Utils.isScrollMain(player)) {
+                if (Scroll.isScrollMain(player)) {
                     if (args.length < 2) {
-                        Utils.sendMessage(player, "Please specify a UUID like /aquest setwho 1234-5678-etc");
+                        Messaging.sendMessage(player, "Please specify a UUID like /aquest setwho 1234-5678-etc");
                         return true;
                     }
                     ItemMeta mainHandItem = player.getInventory().getItemInMainHand().getItemMeta();
@@ -171,9 +174,9 @@ public class Admin implements CommandExecutor {
                     ItemStack itemStack = player.getInventory().getItemInMainHand();
                     itemStack.setItemMeta(mainHandItem);
                     if (mainHandItem.getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                        Utils.sendMessage(player, Bukkit.getOfflinePlayer(UUID.fromString(mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING))).getName());
+                        Messaging.sendMessage(player, Bukkit.getOfflinePlayer(UUID.fromString(mainHandItem.getPersistentDataContainer().get(key, PersistentDataType.STRING))).getName());
                     } else {
-                        Utils.sendMessage(player, "Anyone can use this scroll");
+                        Messaging.sendMessage(player, "Anyone can use this scroll");
                     }
                 }
                 return true;
@@ -182,8 +185,8 @@ public class Admin implements CommandExecutor {
             // --------------------- Reload Lists -------------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("reloadlist")) {
-                Utils.loadLists();
-                Utils.sendMessage(player, "List reload complete.");
+                Configs.loadLists();
+                Messaging.sendMessage(player, "List reload complete.");
                 return true;
             }
             // ------------------------------------------------------
@@ -203,13 +206,13 @@ public class Admin implements CommandExecutor {
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("auto")) {
                 if (args.length < 2) {
-                    Utils.sendMessage(player, "Autocomplete status: " + Quests.auto);
+                    Messaging.sendMessage(player, "Autocomplete status: " + Quests.auto);
                     return true;
                 }
-                Utils.getGlobal().set("auto", Boolean.valueOf(args[1]));
-                Utils.saveGlobal();
+                Configs.getGlobal().set("auto", Boolean.valueOf(args[1]));
+                Configs.saveGlobal();
                 Quests.setAuto();
-                Utils.sendMessage(player, "Autocomplete status: " + Quests.auto);
+                Messaging.sendMessage(player, "Autocomplete status: " + Quests.auto);
                 return true;
             }
 
@@ -218,10 +221,10 @@ public class Admin implements CommandExecutor {
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("check")) {
                 if (args.length < 2) {
-                    Utils.sendMessage(player, "Something something");
+                    Messaging.sendMessage(player, "Something something");
                     return true;
                 }
-                List<String> lines = Utils.getLists().getStringList(args[1]);
+                List<String> lines = Configs.getLists().getStringList(args[1]);
                 for (String s : lines) {
                     List<String> line = Arrays.asList(s.split(" "));
                     switch (line.get(0)) {
@@ -241,7 +244,7 @@ public class Admin implements CommandExecutor {
                     File[] files = new File(String.valueOf(Bukkit.getServer().getPluginManager().getPlugin("Quests").getDataFolder())).listFiles();
                     for (File f : files) {
                         if (f.getName().contains(".yml") && !f.getName().contains("Global.yml") && !f.getName().contains("Lists.yml")){
-                            Utils.sendMessage(player, f.getName().replace(".yml", ""));
+                            Messaging.sendMessage(player, f.getName().replace(".yml", ""));
                         }
                     }
                     return true;
@@ -251,15 +254,15 @@ public class Admin implements CommandExecutor {
                 FileConfiguration fc = YamlConfiguration.loadConfiguration(file);
                 Set<String> keys = fc.getKeys(false);
                 for (String key : keys) {
-                    Utils.sendMessage(player, "/gquest " + args[1] + " " + key + " <playerName>");
+                    Messaging.sendMessage(player, "/gquest " + args[1] + " " + key + " <playerName>");
                 }
 
                 return true;
             }
 
-            Utils.sendMessage(player, "Please use a valid quests command");
+            Messaging.sendMessage(player, "Please use a valid quests command");
         } else {
-            Utils.log("A player must run this command");
+            Messaging.log("A player must run this command");
         }
         return true;
     }
