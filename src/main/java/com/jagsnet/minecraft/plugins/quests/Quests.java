@@ -83,9 +83,8 @@ public final class Quests extends JavaPlugin {
         this.getCommand("aquest").setExecutor(new Admin());
         this.getCommand("gquest").setExecutor(new Generators());
         this.getCommand("cquest").setExecutor(new Completer());
-        this.getCommand("addeve").setExecutor(new Help());
-        this.getCommand("melon").setExecutor(new Help());
-        this.getCommand("melmon").setExecutor(new Help());
+        this.getCommand("addeve").setExecutor(new Main());
+        this.getCommand("melon").setExecutor(new Melon());
 
         // For using persistent data container, don't touch k thx
         instance = this;

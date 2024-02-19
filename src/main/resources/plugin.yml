@@ -25,8 +25,5 @@ commands:
     description: Melon plugin help command.
     usage: /addeve
   melon:
-    description: Melon plugin help command.
+    description: Melon special little playground.
     usage: /melon
-  melmon:
-    description: Melon plugin help command.
-    usage: /melmon

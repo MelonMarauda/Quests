@@ -603,6 +603,8 @@ commands:
     quest: weekly_weekly
     denyMessage: You have already collected a weekly quest scroll this week.
     description: Randomly generated weekly quest scroll.
+permissions:
+  set: lp user <player> permission settemp <permission> true <time>
 ```
 
 ## Auto
@@ -617,6 +619,14 @@ Commands allows you to add quests to the `/quest list` commands output as well a
 `quest` - The location of the quest attached to this command. For example the above configuration would target `weekly.yml` and the quest called weekly within it. The first half is the file name and the second half is the quest name.  
 `denyMessage` - The message displayed if the player has already collected the quest.  
 `description` - The description of the quest as shown in `/quest list`.
+
+## Permissions  
+Permissions allows you to specify certain permissions commands to be used. The available placeholders are:
+- `<player>` - gets replaced with the players name allowing you to specify a user.
+- `<permission>` - the permission that will be set.
+- `<time>` - the cooldown for the permission.
+
+If any of the above placeholders aren't used or the permissions command supplied is incorrect in any way then the permissions features in the plugin wont work correctly.
 
 ---
 
@@ -719,6 +729,8 @@ plugins
 ---
 
 # Changelog
+### 1.8.4
+Added the ability to change the permissions command used to give players permissions to remove the requirement for luckperms.
 ### 1.8.2  
 Added a thing to allow people to right click quests into their offhand so that bedrock players can offhand quests.
 ### 1.8.1  

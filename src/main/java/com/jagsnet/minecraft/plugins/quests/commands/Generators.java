@@ -3,6 +3,7 @@ package com.jagsnet.minecraft.plugins.quests.commands;
 import com.jagsnet.minecraft.plugins.quests.Quests;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Perms;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -47,6 +48,7 @@ public class Generators implements CommandExecutor {
         Configs.loadLists();
         Boolean force = false;
         Boolean verbose = true;
+        Boolean track = false;
         if (args.length > 3) {
             for (int i = 3; i < args.length; i++) {
                 switch (args[i].toLowerCase()) {
@@ -278,14 +280,15 @@ public class Generators implements CommandExecutor {
                         String msgName = Configs.get().getString(args[1] + ".message.name");
                         String msgColour = Configs.get().getString(args[1] + ".message.colour");
                         for (int i = 0; i < messages.size(); i++) {
-                            player.sendMessage(ChatColor.valueOf(msgColour) + bold + msgName + " > " + white + messages.get(i).toString());
+                            Messaging.sendUnformattedMessage(player, ChatColor.valueOf(msgColour) + bold + msgName + " > " + white + messages.get(i).toString());
                         }
                     }
                 } else if (Configs.get().getString(args[1] + ".message") != null) {
                     Messaging.sendMessage(player, Configs.get().getString(args[1] + ".message"));
                 }
                 if (permission) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + args[0] + "_" + args[1] + " true " + Configs.get().getString(args[1] + ".permission"));
+                    Perms.setPerm(player.getName(), "quest." + args[0] + "_" + args[1], Configs.get().getString(args[1] + ".permission"));
+                    //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + args[0] + "_" + args[1] + " true " + Configs.get().getString(args[1] + ".permission"));
                 }
                 return true;
             }

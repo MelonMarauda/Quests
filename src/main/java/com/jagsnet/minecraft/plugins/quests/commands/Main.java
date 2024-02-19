@@ -1,12 +1,8 @@
 package com.jagsnet.minecraft.plugins.quests.commands;
 
 import com.jagsnet.minecraft.plugins.quests.Quests;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Gui;
+import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.*;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Claim;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Completion;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
-import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Scroll;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -32,20 +28,34 @@ public class Main implements CommandExecutor {
 
         if (sender instanceof Player) {
             Player player = (Player) sender;
+            String white = ChatColor.WHITE + "";
+
+            if (!Messaging.ddeve) {
+                if (cmd.getName().equals("addeve")){
+                    Messaging.sendMessage(player, white + "Unknown command. Type \"/help\" for help.", false);
+                    return true;
+                }
+            }
+
+            if (Messaging.ddeve) {
+                if (cmd.getName().equals("quest")){
+                    Messaging.sendMessage(player, white + "Unknown command. Type \"/addeve\" for help.", false);
+                    return true;
+                }
+            }
             // ------------------------------------------------------
             // ------------------ See help info ---------------------
             // ------------------------------------------------------
             if (args.length < 1 || args[0].equalsIgnoreCase("help")) {
                 String boldGold = ChatColor.GOLD + "" + ChatColor.BOLD + "";
-                String white = ChatColor.WHITE + "";
 
-                player.sendMessage(boldGold + "---General Quest Help---");
-                player.sendMessage(boldGold + "/quest help " + white + "lists quest specific help if available.");
-                player.sendMessage(boldGold + "/quest claim " + white + "claims the rewards on a quest.");
-                player.sendMessage(boldGold + "/quest expiry " + white + "checks when a quest expires.");
-                player.sendMessage(boldGold + "/quest list " + white + "lists quests available to collect.");
-                player.sendMessage(boldGold + "/quest secret <code> " + white + "tests the supplied code with the one defined secretly on the scroll IF the scroll has one.");
-                player.sendMessage(boldGold + "Remember " + white + "always hold your scroll in your offhand when completing objectives and always hold it in your main hand when running quest commands.");
+                Messaging.sendMessage(player, boldGold + "---General Quest Help---", false);
+                Messaging.sendMessage(player, boldGold + "/quest help " + white + "lists quest specific help if available.", false);
+                Messaging.sendMessage(player, boldGold + "/quest claim " + white + "claims the rewards on a quest.", false);
+                Messaging.sendMessage(player, boldGold + "/quest expiry " + white + "checks when a quest expires.", false);
+                Messaging.sendMessage(player, boldGold + "/quest list " + white + "lists quests available to collect.", false);
+                Messaging.sendMessage(player, boldGold + "/quest secret <code> " + white + "tests the supplied code with the one defined secretly on the scroll IF the scroll has one.", false);
+                Messaging.sendMessage(player, boldGold + "Remember " + white + "always hold your scroll in your offhand when completing objectives and always hold it in your main hand when running quest commands.", false);
 
 
                 ItemMeta mainHandItem = null;
@@ -62,9 +72,9 @@ public class Main implements CommandExecutor {
                         Configs.load(location[0]);
                         List helps = Configs.get().getStringList( location[1] + ".help");
                         if (helps != null && helps.size() != 0) {
-                            player.sendMessage(boldGold + "---Quest Specific Help---");
+                            Messaging.sendMessage(player, boldGold + "---Quest Specific Help---", false);
                             for (int i = 0; i < helps.size(); i++) {
-                                player.sendMessage(boldGold + (i+1) + ". " + ChatColor.WHITE + helps.get(i));
+                                Messaging.sendMessage(player, boldGold + (i+1) + ". " + ChatColor.WHITE + helps.get(i), false);
                             }
                         }
                     }
@@ -386,12 +396,11 @@ public class Main implements CommandExecutor {
             // ------------------------------------------------------
             Configs.loadGlobal();
             if (args[0].equalsIgnoreCase("list")) {
-                String white = ChatColor.WHITE + "";
                 String boldGold = ChatColor.GOLD + "" + ChatColor.BOLD + "";
                 String boldRed = ChatColor.RED + "" + ChatColor.BOLD + "";
                 String boldGreen = ChatColor.GREEN + "" + ChatColor.BOLD + "";
-                //player.sendMessage(boldGold + "---Quests available to collect---");
-                //player.sendMessage(boldGreen + "Green" + white + " - Available | " + boldRed + "Red" + white + " - Unavailable");
+                //Messaging.sendUnformattedMessage(player, boldGold + "---Quests available to collect---");
+                //Messaging.sendUnformattedMessage(player, boldGreen + "Green" + white + " - Available | " + boldRed + "Red" + white + " - Unavailable");
 
                 ArrayList<ItemStack> items = new ArrayList<>();
 
@@ -406,10 +415,10 @@ public class Main implements CommandExecutor {
                         String date = df.format(new Date());
 
                         if (!player.hasPermission("quest." + permissionName + "." + date)) {
-                            //player.sendMessage(boldGreen + "/quest " + command + " - " + white + description);
+                            //Messaging.sendUnformattedMessage(player, boldGreen + "/quest " + command + " - " + white + description);
                             items.add(Gui.createGuiItem(Quests.getInstance(), Material.PAPER, boldGreen + "/quest " + command, "quest " + command + "&quest list", white + description, white + "Click to collect the scroll!"));
                         } else {
-                            //player.sendMessage(boldRed + "/quest " + command + " - " + white + description);
+                            //Messaging.sendUnformattedMessage(player, boldRed + "/quest " + command + " - " + white + description);
                             items.add(Gui.createGuiItem(Quests.getInstance(), Material.RED_STAINED_GLASS_PANE, boldRed + "/quest " + command, "", white + description, white + "Scroll is unavailable, check back later!"));
                         }
                     }
@@ -442,7 +451,8 @@ public class Main implements CommandExecutor {
                 String[] genStuff = {quest.split("_")[0], quest.split("_")[1], player.getName()};
 
                 if (Generators.genScroll(genStuff, player)) {
-                    Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + permissionName + "." + date + " true " + permissionCooldown);
+                    Perms.setPerm(player.getName(), "quest." + permissionName + "." + date, permissionCooldown);
+                    //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest." + permissionName + "." + date + " true " + permissionCooldown);
                     return true;
                 }
 

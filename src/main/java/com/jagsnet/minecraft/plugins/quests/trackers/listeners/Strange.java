@@ -42,6 +42,10 @@ public class Strange implements Listener {
                 Messaging.sendMessage(player, "You can't use more than one bucket at a time. I know, a pain, sorry.");
                 return;
             }
+            if (mainHandItem.equals("milk") && player.getInventory().getItemInMainHand().getItemMeta().hasLore()) {
+                Messaging.sendMessage(player, "You can't use special buckets for this task, sorry! :)");
+                return;
+            }
             if (mainHandItem.equalsIgnoreCase("shears")) mainHandItem = "shear";
 
             ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();

@@ -15,19 +15,35 @@ public class Messaging {
     }
 
     // ------------- Send Formatted Message To Player ------------------
+
     public static void sendMessage(Player player, String msg){
+        sendMessage(player, msg, true);
+    }
+    public static void sendMessage(Player player, String msg, Boolean b){
         if (ddeve) {
-            msg = msg.replaceAll("quest", "ddeve");
-            msg = msg.replaceAll("Quest", "ddeve");
-            sendMessage(player, msg, ChatColor.GOLD, "DDEVE");
+            msg = msg.replaceAll("quest", "addeve");
+            msg = msg.replaceAll("Quest", "Addeve");
+            if (b) {
+                sendMessage(player, msg, ChatColor.GOLD, "ADDEVE");
+            } else {
+                sendUnformattedMessage(player, msg);
+            }
         } else {
-            sendMessage(player, msg, ChatColor.GOLD, "QUESTS");
+            if (b) {
+                sendMessage(player, msg, ChatColor.GOLD, "QUESTS");
+            } else {
+                sendUnformattedMessage(player, msg);
+            }
         }
     }
 
     public static void sendMessage(Player player, String msg, ChatColor color, String plugin){
         String bold = ChatColor.BOLD + "";
-        player.sendMessage(color + bold + plugin + ChatColor.DARK_GRAY + bold + " > " + ChatColor.WHITE + msg);
+        Messaging.sendUnformattedMessage(player, color + bold + plugin + ChatColor.DARK_GRAY + bold + " > " + ChatColor.WHITE + msg);
+    }
+
+    public static void sendUnformattedMessage(Player player, String msg){
+        player.sendMessage(msg);
     }
 
     public static void log(String msg, String level){

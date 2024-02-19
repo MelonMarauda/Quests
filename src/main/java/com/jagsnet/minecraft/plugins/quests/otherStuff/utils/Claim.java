@@ -55,7 +55,8 @@ public class Claim {
             }
 
             if (Configs.get().getString(location.split("_")[1] + ".permissionComplete") != null) {
-                Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest.completed." + location + " true " + Configs.get().getString(location.split("_")[1] + ".permission"));
+                Perms.setPerm(player.getName(), "quest.completed." + location, Configs.get().getString(location.split("_")[1] + ".permission"));
+                //Bukkit.dispatchCommand(Bukkit.getConsoleSender(), "lp user " + player.getName() + " permission settemp quest.completed." + location + " true " + Configs.get().getString(location.split("_")[1] + ".permission"));
             }
 
             Messaging.log(player.getName() + " completed quest scroll " + location);
@@ -71,7 +72,7 @@ public class Claim {
                 String msgName = Configs.get().getString(path + ".claimMessage.name");
                 String msgColour = Configs.get().getString(path + ".claimMessage.colour");
                 for (int i = 0; i < messages.size(); i++) {
-                    player.sendMessage(ChatColor.valueOf(msgColour) + bold + msgName + " > " + ChatColor.WHITE + messages.get(i).toString());
+                    Messaging.sendUnformattedMessage(player, ChatColor.valueOf(msgColour) + bold + msgName + " > " + ChatColor.WHITE + messages.get(i).toString());
                 }
             }
             for (int i = 0; rewards.size() > i; i++) {
