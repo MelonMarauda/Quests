@@ -22,8 +22,11 @@ commands:
     description: Base wiki command
     usage: /wiki
   addeve:
-    description: Melon plugin help command.
+    description: A Mystery... oooOOOOoooooOOOOOooooo.....
     usage: /addeve
+  daddeve:
+    description: Melon plugin help command.
+    usage: /daddeve
   melon:
     description: Melon special little playground.
     usage: /melon

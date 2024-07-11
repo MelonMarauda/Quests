@@ -196,7 +196,7 @@ public class Admin implements CommandExecutor {
                 String bold = ChatColor.BOLD + "";
                 String gold = ChatColor.GOLD + "";
                 String white = ChatColor.WHITE + "";
-                Messaging.sendUnformattedMessage(player, gold + bold + "QUESTS" + white + bold + " VERSION 1.8.4");
+                Messaging.sendUnformattedMessage(player, gold + bold + "QUESTS" + white + bold + " VERSION 1.8.6");
                 Messaging.sendUnformattedMessage(player, white + bold + "-------------------------------------------");
                 Messaging.sendUnformattedMessage(player, gold + bold + "Quest Documentation:" + white + " https://github.com/MelonMarauda/Quests");
                 return true;

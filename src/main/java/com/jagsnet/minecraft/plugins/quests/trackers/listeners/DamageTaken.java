@@ -1,5 +1,6 @@
 package com.jagsnet.minecraft.plugins.quests.trackers.listeners;
 
+import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Messaging;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.messages.Strings;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Completion;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Scroll;
@@ -21,14 +22,20 @@ public class DamageTaken implements Listener {
             Player player = (Player) event.getEntity();
             if (Scroll.isScrollOff(player)) {
 
-                String entity = "take";
+                String entity;
                 ArrayList<String> lore = (ArrayList<String>) player.getInventory().getItemInOffHand().getItemMeta().getLore();
-                boolean isEntityEvent = false;
 
                 if (event instanceof EntityDamageByEntityEvent) {
                     EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) event;
                     entity = e.getDamager().getType().toString().replace("_", " ").toLowerCase();
-                    isEntityEvent = true;
+                } else {
+                    entity = event.getCause().toString().replace("_", " ").toLowerCase();
+                    if (entity.equalsIgnoreCase("fire tick")) {
+                        entity = "fire";
+                    }
+                    if (entity.equalsIgnoreCase("contact")) {
+                        entity = "cacti";
+                    }
                 }
 
                 for (int i = 0; i < lore.size(); i++) {
@@ -41,10 +48,10 @@ public class DamageTaken implements Listener {
                         }
                     }
 
-                    if (isEntityEvent && ((line.contains(" " + entity) &&
+                    if ((line.contains(" " + entity) &&
                             line.split(" ", 0).length ==
                             entity.split(" ").length + 5) &&
-                            (line.contains("damage") && line.contains("take")))) {
+                            (line.contains("damage") && line.contains("take"))) {
                         if (Completion.updateNumLine(lore, player, (int) event.getFinalDamage(), i)) {
                             return;
                         }

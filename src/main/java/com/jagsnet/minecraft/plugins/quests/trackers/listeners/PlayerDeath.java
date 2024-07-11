@@ -22,6 +22,9 @@ public class PlayerDeath implements Listener {
             if (entity.equalsIgnoreCase("fire tick")) {
                 entity = "fire";
             }
+            if (entity.equalsIgnoreCase("contact")) {
+                entity = "cacti";
+            }
             if (player.getLastDamageCause() instanceof EntityDamageByEntityEvent) {
                 EntityDamageByEntityEvent e = (EntityDamageByEntityEvent) player.getLastDamageCause();
                 entity = e.getDamager().getType().toString().replace("_", " ").toLowerCase();

@@ -394,6 +394,28 @@ Take 100 Damage: 0
 Take x Damage From <Entity Type>: 0
 Take 100 Damage From Zombies: 0
 ```
+`<Entity Type>` may be any of the following values:
+```
+A mobtype such as creeper, zombie, etc
+Freeze
+Fall
+Drowning
+Suffocation
+Cacti
+Falling Block (Anvil)
+Wither (Potion Effect)
+Hot Floor (Magma blocks)
+Lightning
+Fire (Standing in fire or on a campfire)
+Fire Tick (Ticking out to the fire effect)
+Lava
+Primed TNT
+Splash Potion
+Area Effect Cloud (Like ender dragon fire)
+Void (Dying to the void)
+Starvation
+Fly Into Wall
+```
 
 ### Dealing Damage
 **Example:**
@@ -548,7 +570,7 @@ Freeze
 Fall
 Drowning
 Suffocation
-Contact (Cactus)
+Cacti
 Falling Block (Anvil)
 Wither (Potion Effect)
 Hot Floor (Magma blocks)

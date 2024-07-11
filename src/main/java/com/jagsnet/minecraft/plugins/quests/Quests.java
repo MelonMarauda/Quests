@@ -1,5 +1,6 @@
 package com.jagsnet.minecraft.plugins.quests;
 
+import com.google.common.collect.ImmutableBiMap;
 import com.jagsnet.minecraft.plugins.quests.commands.*;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.bedrock.MoveToOffhand;
 import com.jagsnet.minecraft.plugins.quests.otherStuff.utils.Configs;
@@ -14,9 +15,9 @@ public final class Quests extends JavaPlugin {
         return instance;
     }
     public static Boolean auto = false;
-
     @Override
     public void onEnable() {
+
         // Register event listeners for tracking quests
         getServer().getPluginManager().registerEvents(new MobKills(), this);
         getServer().getPluginManager().registerEvents(new Crafting(), this);
@@ -40,6 +41,7 @@ public final class Quests extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Strange(), this);
         getServer().getPluginManager().registerEvents(new Chat(), this);
         getServer().getPluginManager().registerEvents(new MoveToOffhand(), this);
+        getServer().getPluginManager().registerEvents(new Login(), this);
 
         // Schedule check for player movement
         BukkitScheduler scheduler = getServer().getScheduler();
@@ -84,6 +86,7 @@ public final class Quests extends JavaPlugin {
         this.getCommand("gquest").setExecutor(new Generators());
         this.getCommand("cquest").setExecutor(new Completer());
         this.getCommand("addeve").setExecutor(new Main());
+        this.getCommand("daddeve").setExecutor(new Help());
         this.getCommand("melon").setExecutor(new Melon());
 
         // For using persistent data container, don't touch k thx
@@ -98,8 +101,7 @@ public final class Quests extends JavaPlugin {
     public void onDisable() {
 
     }
-
-       public static void setAuto() {
+    public static void setAuto() {
         auto = Configs.getGlobal().getBoolean("auto");
     }
 }

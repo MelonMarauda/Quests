@@ -26,14 +26,17 @@ public class Completion {
             int x = parseInt(loreLine[1]) + newNum;
             lore.set(lineNum, loreLine[0] + ": " + x);
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(lore.get(lineNum)));
-            if (x >= parseInt(loreLine[0].split(" ", 0)[1])) {
-                NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
-                if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
-                    if (lore.get(lineNum + 1).contains(strike)) {
-                        lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
+
+            try {
+                if (x >= parseInt(loreLine[0].split(" ", 0)[1])) {
+                    NamespacedKey key = new NamespacedKey(Quests.getInstance(), "locked");
+                    if (p.getInventory().getItemInOffHand().getItemMeta().getPersistentDataContainer().has(key, PersistentDataType.STRING)) {
+                        if (lore.get(lineNum + 1).contains(strike)) {
+                            lore.set(lineNum + 1, lore.get(lineNum + 1).replace(strike, ""));
+                        }
                     }
                 }
-            }
+            } catch (Exception ee) {}
 
             ItemStack itemStack = p.getInventory().getItemInOffHand();
             ItemMeta m = itemStack.getItemMeta();
