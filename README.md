@@ -772,6 +772,8 @@ plugins
 ---
 
 # Changelog
+### 1.9
+Added the ability to control which biomes quests can be completed in.
 ### 1.8.4
 Added the ability to change the permissions command used to give players permissions to remove the requirement for luckperms.
 ### 1.8.2  
