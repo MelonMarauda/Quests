@@ -12,6 +12,7 @@ import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.potion.PotionEffectType;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static java.lang.Integer.parseInt;
 
@@ -58,6 +59,7 @@ public class Completion {
             String strike = ChatColor.STRIKETHROUGH + "";
             if (lore.get(lineNum).contains(strike)) {return false;}
             if (!parseModifiers(p, lore)) {return false;}
+            if (!parseBiomes(p, lore)) {return false;}
             String[] loreLine = lore.get(lineNum).split(": ", 0);
             lore.set(lineNum, loreLine[0] + ": Complete");
             p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(lore.get(lineNum)));
@@ -91,11 +93,26 @@ public class Completion {
     }
 
     public static boolean parseModifiers(Player p, ArrayList<String> lore) {
-        String s = ChatColor.stripColor(lore.get(1));
-        if (s.contains("Modifiers: ")) {
-            String[] modList = s.split(": ")[1].toUpperCase().replace(" ", "_").split(",_");
-            for (String mods : modList) {
-                if (!p.hasPotionEffect(PotionEffectType.getByName(mods))) {
+        for (int i = 1; i < 3; i++) {
+            String s = ChatColor.stripColor(lore.get(i));
+            if (s.contains("Modifiers: ")) {
+                String[] modList = s.split(": ")[1].toUpperCase().replace(" ", "_").split(",_");
+                for (String mods : modList) {
+                    if (!p.hasPotionEffect(PotionEffectType.getByName(mods))) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+
+    public static boolean parseBiomes(Player p, ArrayList<String> lore) {
+        for (int i = 1; i < 3; i++) {
+            String s = ChatColor.stripColor(lore.get(i));
+            if (s.contains("Biomes: ")) {
+                String[] biomeList = s.split(": ")[1].toUpperCase().replace(" ", "_").split(",_");
+                if (Arrays.stream(biomeList).noneMatch(biome -> p.getLocation().getBlock().getBiome().name().equals(biome))) {
                     return false;
                 }
             }

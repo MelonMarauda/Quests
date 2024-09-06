@@ -193,12 +193,7 @@ public class Admin implements CommandExecutor {
             // ----------------- Quests Version Info ----------------
             // ------------------------------------------------------
             if (args[0].equalsIgnoreCase("version") || args[0].equalsIgnoreCase("help")) {
-                String bold = ChatColor.BOLD + "";
-                String gold = ChatColor.GOLD + "";
-                String white = ChatColor.WHITE + "";
-                Messaging.sendUnformattedMessage(player, gold + bold + "QUESTS" + white + bold + " VERSION 1.8.6");
-                Messaging.sendUnformattedMessage(player, white + bold + "-------------------------------------------");
-                Messaging.sendUnformattedMessage(player, gold + bold + "Quest Documentation:" + white + " https://github.com/MelonMarauda/Quests");
+                Messaging.sendVersion(player);
                 return true;
             }
             // ------------------------------------------------------

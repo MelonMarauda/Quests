@@ -67,4 +67,13 @@ public class Messaging {
                 + seconds + " Seconds";
         return msg;
     }
+
+    public static void sendVersion(Player p) {
+        String bold = ChatColor.BOLD + "";
+        String gold = ChatColor.GOLD + "";
+        String white = ChatColor.WHITE + "";
+        Messaging.sendUnformattedMessage(p, gold + bold + "QUESTS" + white + bold + " VERSION " + Strings.questVersion());
+        Messaging.sendUnformattedMessage(p, white + bold + "-------------------------------------------");
+        Messaging.sendUnformattedMessage(p, gold + bold + "Quest Documentation:" + white + " https://github.com/MelonMarauda/Quests");
+    }
 }

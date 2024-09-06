@@ -330,8 +330,8 @@ Coords allows you to define coordinate based objectives such as `Go To X1 Y1 Z1:
 coords: true
 ```
 
-### Modifiers
-Modifiers allow you to define effects players must be under to complete objectives on the scroll. For example you can add modifiers to say that a player must have slow falling and blindness to complete the objectives. To do this you do not need to set a configuration option but instead just add it as the second line on the scroll as seen below.  
+### Effect Modifiers
+Modifiers allow you to define effects players must be under to complete objectives on the scroll. For example you can add modifiers to say that a player must have slow falling and blindness to complete the objectives. To do this you do not need to set a configuration option but instead just add it as the second or third line on the scroll as seen below.  
 **Example:**
 ```yaml
 ring:
@@ -350,6 +350,27 @@ ring:
     - gquest wildcard wildcard1 <player>
 ```
 The available effects are any a player can have. They must be the name of the effect as seen when applying it using the `/effect` command in game. For effects with underscores instead use a space as seen above with `Slow Falling`.
+
+### Biome Modifiers
+Biome modifiers allow you to define biomes players must be in to complete objectives on the scroll. For example you can add biomes to say that a player must be in the taiga or plains biome to complete the objectives. To do this you do not need to set a configuration option but instead just add it as the second or third line on the scroll as seen below.  
+**Example:**
+```yaml
+ring:
+  name: 'Wildcard Quest Scroll'
+  lines:
+    - <player>'s Quest Scroll
+    - 'Biomes: Taiga, Plains'
+    - <break>
+    - <empty>
+    - '&fChop 10 Oak Logs: 0'
+    - '&f<movement>'
+    - <empty>
+    - <break>
+    - Use /quest help | for quest info
+  rewards:
+    - gquest wildcard wildcard1 <player>
+```
+The available biomes are any a player can be in. They must be the name of the biome as found when using F3. For biomes with underscores instead use a space such as `Birch Forest`.
 
 ---
 

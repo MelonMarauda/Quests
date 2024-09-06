@@ -1,6 +1,7 @@
 package com.jagsnet.minecraft.plugins.quests.otherStuff.messages;
 
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 
 public class Strings {
     public static String colourIt(String s) {
@@ -42,5 +43,9 @@ public class Strings {
 
     public static String cleanEntity(String s) {
         return " " + s.replace("_", " ").toLowerCase();
+    }
+
+    public static String questVersion(){
+        return "1.9";
     }
 }
